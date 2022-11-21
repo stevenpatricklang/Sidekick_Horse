@@ -9,19 +9,18 @@ public record NewMember(
         String firstName,
         @NotBlank
         String lastName,
-        @Email
-        String email,
         @NotBlank
         String street,
         @NotBlank
         String zipcode,
         @NotBlank
         String city,
-
+        @Email
+        String email,
 ) {
 
 
     public Member withId(String id) {
-        return new Member(id, firstName, lastName, email, street, zipcode, city,);}
+        return new Member(id, firstName, lastName, street, zipcode, city, email);}
 
 }

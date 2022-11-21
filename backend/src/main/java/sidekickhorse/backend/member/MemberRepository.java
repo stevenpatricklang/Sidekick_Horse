@@ -1,4 +1,6 @@
 package sidekickhorse.backend.member;
 
-public interface MemberRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface MemberRepository extends MongoRepository<Member, String> {
 }
