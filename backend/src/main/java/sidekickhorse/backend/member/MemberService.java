@@ -2,6 +2,8 @@ package sidekickhorse.backend.member;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MemberService {
 
@@ -18,5 +20,9 @@ public class MemberService {
         String uuid = this.memberUtils.generateUUID();
         Member member = new Member(newMember.firstName(), newMember.lastName(), newMember.street(), newMember.zipcode(), newMember.city(), newMember.email(), uuid);
         return this.memberRepository.save(member);
+    }
+
+    public List<Member> getMembersList() {
+        return this.memberRepository.findAll();
     }
 }

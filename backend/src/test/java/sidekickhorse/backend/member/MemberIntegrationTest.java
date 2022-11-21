@@ -29,7 +29,6 @@ class MemberIntegrationTest {
     void addMember() throws Exception {
 
         // GIVEN
-
         String body = mvc.perform(MockMvcRequestBuilders.post("/api/members")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
@@ -46,11 +45,9 @@ class MemberIntegrationTest {
         Member member = objectMapper.readValue(body, Member.class);
 
         // WHEN
-
         mvc.perform(MockMvcRequestBuilders.get("/api/members/"))
 
         // THEN
-
         .andExpect(status().isOk())
         .andExpect(content().json("""
                          [{"firstName": "Steven",
@@ -58,7 +55,7 @@ class MemberIntegrationTest {
                          "street": "Kirchweg 6",
                          "zipcode": "86856",
                          "city": "Hiltenfingen",
-                         "email": "steven@gmail.com"
+                         "email": "steven@gmail.com",
                           "id" : "<id>"}]
                 """.replace("<id>", member.id())));;
     }
