@@ -6,6 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public record Member(
+        @Id
         String id,
         @NotBlank
         String firstName,
@@ -20,7 +21,6 @@ public record Member(
         @NotBlank
         String city,
 
-        MemberStatus status
 ) {
 
         Member(
@@ -30,13 +30,10 @@ public record Member(
                 String street,
                 String zipcode,
                 String city,
-                MemberStatus status
-        ) {
-                this(null, firstName, lastName, email, street, zipcode, city, status);
-}
+
+) {
+                this(null, firstName, lastName, email, street, zipcode, city,);}
 
 
-        public Member withId(String id) {
-                        return new Member(id, firstName, lastName, email, street, zipcode, city, status);}
 
 }
