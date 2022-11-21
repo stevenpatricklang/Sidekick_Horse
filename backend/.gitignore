@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+mvnw
+mvwn.cmd
+.mvn
+
+src/main/resources/static
