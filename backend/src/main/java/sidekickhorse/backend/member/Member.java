@@ -1,7 +1,5 @@
 package sidekickhorse.backend.member;
 
-import org.springframework.data.annotation.Id;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
@@ -19,7 +17,7 @@ public record Member(
         String city,
         @Email
         String email,
-        @Id
+
         String id
 )
 {}
