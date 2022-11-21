@@ -17,7 +17,6 @@ public record Member(
         String city,
         @Email
         String email,
-
         String id
 )
 {}
