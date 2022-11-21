@@ -16,11 +16,11 @@ public record NewMember(
         @NotBlank
         String city,
         @Email
-        String email,
+        String email
 ) {
-
-
     public Member withId(String id) {
-        return new Member(id, firstName, lastName, street, zipcode, city, email);}
+        Member member = new Member (firstName(), lastName(), street(), zipcode(), city(), email(), id);
+        return member;
+    }
 
 }
