@@ -63,7 +63,7 @@ class MemberIntegrationTest {
     @DirtiesContext
     @Test
     void getAllMembersAndExpectEmptyList() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/api/guests"))
+        mvc.perform(MockMvcRequestBuilders.get("/api/members"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
     }
