@@ -22,5 +22,4 @@ public record NewMember(
         Member member = new Member (firstName(), lastName(), street(), zipcode(), city(), email(), id);
         return member;
     }
-
 }
