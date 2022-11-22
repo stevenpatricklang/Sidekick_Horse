@@ -3,7 +3,7 @@ import './App.css';
 import styled from "styled-components";
 import {Route, Routes} from "react-router-dom";
 import Homepage from "./pages/About";
-import MembersOverview from "./member/MembersOverview";
+import AddMemberForm from "./member/AddMemberForm";
 
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
     <StyledMain>
       <Routes>
         <Route path="/" element={<Homepage />}/>
-        <Route path="/members" element={<MembersOverview />}/>
+        <Route path="/members" element={<AddMemberForm />}/>
       </Routes>
     </StyledMain>
 
