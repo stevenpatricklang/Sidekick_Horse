@@ -26,7 +26,7 @@ export default function MembersOverview() {
             })
             .then((status) => {
                 if (status === 200) {
-                    setMessageStatus(firstName + " " + lastName + ' successfully created.');
+                    setMessageStatus(' New Member ' + firstName + " " + lastName + ' successfully created.');
                 }
             })
             .then(() => setTimeout(() => setBackHome(), 2000))
@@ -71,7 +71,7 @@ export default function MembersOverview() {
 
 
         <StyledSection>
-            <h2>Members Form</h2>
+            <h2>Add new Member</h2>
             <StyledForm onSubmit={handleFormSubmit}>
                 <StyledDiv1>
                     <StyledLabel htmlFor="firstName">First name:</StyledLabel>
