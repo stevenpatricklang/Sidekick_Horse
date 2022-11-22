@@ -197,6 +197,3 @@ const StyledForm = styled.form`
   align-self: center;
   align-items: center;
 `;
-
-
-
