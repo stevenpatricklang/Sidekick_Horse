@@ -3,6 +3,10 @@ import axios from "axios";
 import styled from "styled-components";
 import {NavLink, useNavigate} from "react-router-dom";
 
+function Icon(props: { icon: string, width: string }) {
+    return null;
+}
+
 export default function AddMemberForm() {
 
     const baseUrl = '/api/members/';
