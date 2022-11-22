@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 
-public class MemberServiceTest {
+class MemberServiceTest {
 
     @Test
     void addMemberWithID() {
