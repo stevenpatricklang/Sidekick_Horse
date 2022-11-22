@@ -1,7 +1,7 @@
-import React, {FormEvent, useState} from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 function Icon(props: { icon: string, width: string }) {
     return null;
@@ -71,7 +71,7 @@ export default function MembersOverview() {
 
 
         <StyledSection>
-            <h2>Registration:</h2>
+            <h2>Members Form</h2>
             <StyledForm onSubmit={handleFormSubmit}>
                 <StyledDiv1>
                     <StyledLabel htmlFor="firstName">First name:</StyledLabel>
@@ -126,6 +126,7 @@ export default function MembersOverview() {
                     <Icon icon="mdi:register" width="14"/> Add new Member</StyledButton>
             </StyledDiv2>
         </StyledSection>
+        <NavLink to="/">Home</NavLink><br />
     </>;
 }
 
@@ -137,7 +138,7 @@ const StyledSection = styled.section`
   border: 1px solid rgba(10 10 10 0.3);
   border-radius: 1pc;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .4);
-`
+ `
 
 const StyledLabel = styled.label`
   font-size: 0.8rem;
@@ -181,7 +182,7 @@ const StyledInput = styled.input`
 const StyledDiv1 = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  margin: 10px;
   padding: 10px;
 `;
 
