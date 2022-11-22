@@ -1,6 +1,4 @@
 package sidekickhorse.backend.member;
-
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
