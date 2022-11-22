@@ -57,13 +57,13 @@ class MemberIntegrationTest {
                          "city": "Hiltenfingen",
                          "email": "steven@gmail.com",
                           "id" : "<id>"}]
-                """.replace("<id>", member.id())));
+                """.replace("<id>", member.id())));;
     }
 
     @DirtiesContext
     @Test
     void getAllMembersAndExpectEmptyList() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/api/members"))
+        mvc.perform(MockMvcRequestBuilders.get("/api/guests"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
     }
