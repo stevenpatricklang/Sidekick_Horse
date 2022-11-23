@@ -41,7 +41,7 @@ const StyledHeader = styled.header`
 const StyledMain = styled.main`
   margin: 50px;
   min-height: 200px;
-  background-color: var(--color-background);`
+  background-color: white;`
   
   
   
@@ -51,4 +51,5 @@ const StyledMain = styled.main`
   margin: 10px;
   padding: 10px;
   font-size: 1rem;
-  background-color: var(--color-background);`
+  background-color: white;
+ `
