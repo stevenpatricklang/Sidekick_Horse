@@ -22,21 +22,7 @@ export default function MemberCard(props: MemberCardProps) {
         setEditModal(false)
     }
 
-    const deleteMember = () => {
-        axios.delete("/api/members/" + props.member.id)
-            .then((response) => response.status)
-            .catch((error) => {
-                if (error.status === 404) setMessageStatus('Error: Your Delition was not successfully!!')
-            })
-            .then((status) => {
-                if (status === 200) {
-                    setMessageStatus(' New Member ' + props.member.firstName + " " + props.member.lastName + ' successfully deleted.');
-                }
-            })
-            .then(() => setTimeout(() => props.fetchAllMembers(), 2000))
-    }
-
-    return (
+      return (
         <>
 
             <StyledLi>
@@ -54,9 +40,8 @@ export default function MemberCard(props: MemberCardProps) {
                 </StyledMail>
 
                 <StyledDiv>
-                    <StyledButton onClick={handleEdit}>Edit Member</StyledButton>
-                    <StyledButton onClick={deleteMember}>delete</StyledButton>
-                </StyledDiv>
+
+                                   </StyledDiv>
                 {editModal &&
                     <MemberModal closeModal={closeModal}
                                 member={props.member}

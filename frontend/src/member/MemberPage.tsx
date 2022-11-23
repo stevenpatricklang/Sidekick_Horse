@@ -32,9 +32,9 @@ export default function MemberPage() {
 
      return <>
          <StyledButton>
-             <NavLink to="/">Go to MainPage</NavLink></StyledButton>
+             <NavLink to="/">Home</NavLink></StyledButton>
          <StyledButton>
-             <NavLink to="/add/members">Add MemberPage</NavLink></StyledButton>
+             <NavLink to="/add/members">Add Member</NavLink></StyledButton>
          <StyledSection>
              <h3>Members List:</h3>
              <StyledUl>{memberListOnBoard}</StyledUl>

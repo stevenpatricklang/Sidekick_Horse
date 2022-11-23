@@ -37,7 +37,7 @@ class MemberIntegrationTest {
                                  "street": "Kirchweg 6",
                                  "zipcode": "86856",
                                  "city": "Hiltenfingen",
-                                 "email": "steven@gmail.com"}
+                                 "email": "horsty@gmail.com"}
                                 """))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
@@ -55,12 +55,10 @@ class MemberIntegrationTest {
                          "street": "Kirchweg 6",
                          "zipcode": "86856",
                          "city": "Hiltenfingen",
-                         "email": "steven@gmail.com",
+                         "email": "horsty@gmail.com",
                           "id" : "<id>"}]
                 """.replace("<id>", member.id())));;
     }
-
-    @DirtiesContext
     @Test
     void getAllMembersAndExpectEmptyList() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/api/members"))
