@@ -6,10 +6,8 @@ import styled from "styled-components";
 export default function About() {
     return (
         <nav>
-           <StyledButton><NavLink to="/add/members">Go to the Add Members page</NavLink></StyledButton>
-            <br />
-            <StyledButton><NavLink to="/list/members">Go to the Members List</NavLink></StyledButton>
-            <br />
+           <StyledButton><NavLink to="/members/add">Add Member</NavLink></StyledButton>
+            <StyledButton><NavLink to="/members/list">Members List</NavLink></StyledButton>
             <p>Oida Daggl, Gscheidhaferl, Flaschn, Dreeghamml, Presssack, Schachtlhuba, Luada, hoit dei damische Goschn, Duitaff, Knedlfressa, Scheißbürschdl, Schachtlhuba, Krippnmandl, Klugscheissa, Bauernfünfa, oida Daggl, Zipfebritschn, krummhaxata Goaßbog, Zwedschgndatschi, gscherte Nuss, Griggalheudda, Schanial, Hubbfa, Hosnscheissa, gscherte Nuss, Schuibuamtratza, Kreizdeifi, Zwedschgnmanndl, oida Daggl, Radlfahra, Saggrament, Schoaßwiesn, Schlawina, Auftreiwa, Zuagroasta, Geizgroogn, Wuidsau, i werd da zoagn, wo da Bartl an Most hoid, eigschnabbda, Hopfastanga, Charaktasau, Wuidsau, Wurznsepp, Hemmadbiesla!
                </p>
         </nav>
