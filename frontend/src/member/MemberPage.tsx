@@ -31,32 +31,23 @@ export default function MemberPage() {
 
 
      return <>
+         <p> </p>
+         <h3>Members List:</h3>
+         <StyledUl>{memberListOnBoard}</StyledUl>
+         <p> </p>
          <StyledButton>
              <NavLink to="/">Home</NavLink></StyledButton>
          <StyledButton>
              <NavLink to="/add/members">Add Member</NavLink></StyledButton>
-         <StyledSection>
-             <h3>Members List:</h3>
-             <StyledUl>{memberListOnBoard}</StyledUl>
-         </StyledSection>
      </>;
 }
 
-const StyledSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 8px 20px 25px 20px;
-  border: 1px solid rgba(10 10 10 3);
-  border-radius: 1pc;
-  box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, 4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, 4);
-  background-color: #e3e3e3;
-`
+
 
 const StyledUl = styled.ul`
   padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-wrap: wrap;
 `
 const StyledButton = styled.button`
