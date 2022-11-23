@@ -2,13 +2,9 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {MemberModel} from "./MemberModel";
 import styled from "styled-components";
+import MemberBoard from "./MemberBoard";
 
-class MemberBoard extends React.Component<{ guest: any, fetchAllGuests: any }> {
-    render() {
-        return null;
-    }
-}
-const baseUrl = '/api/list/members/';
+const baseUrl = '/api/members/';
 
 export default function MemberPage() {
     const [memberList, setMemberList] = useState<MemberModel[]>([])
@@ -28,17 +24,17 @@ export default function MemberPage() {
             })
     }
 
-   // const memberListOnBoard = memberList.map(member => {
-   //     return <MemberBoard key={member.id} member={member} fetchAllGuests={fetchAllMembers}/>
-   // })
+    const memberListOnBoard = memberList.map(member => {
+        return <MemberBoard key={member.id} member={member} fetchAllMembers={fetchAllMembers}/>
+    })
 
 
-   // return <>
-   //     <StyledSection>
-   //         <h2>Members List:</h2>
-   //         <StyledUl>{memberListOnBoard}</StyledUl>
-   //     </StyledSection>
-   // </>;
+     return <>
+         <StyledSection>
+             <h2>Members List:</h2>
+             <StyledUl>{memberListOnBoard}</StyledUl>
+         </StyledSection>
+     </>;
 }
 
 const StyledSection = styled.section`
