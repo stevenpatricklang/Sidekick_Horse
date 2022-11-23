@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {MemberModel} from "./MemberModel";
 import MemberModal from "./MemberModal";
 
-import axios from "axios";
+
 import styled from "styled-components";
 
 type MemberCardProps = {
@@ -10,19 +10,16 @@ type MemberCardProps = {
     fetchAllMembers: () => void
 }
 
+function closeModal() {
+
+}
+
 export default function MemberCard(props: MemberCardProps) {
-    const [editModal, setEditModal] = useState(false)
-    const [messageStatus, setMessageStatus] = useState('')
 
-    const handleEdit = () => {
-        setEditModal(!editModal)
-    }
 
-    const closeModal = () => {
-        setEditModal(false)
-    }
-
-      return (
+    let editModal;
+    let messageStatus;
+    return (
         <>
 
             <StyledLi>
@@ -41,7 +38,7 @@ export default function MemberCard(props: MemberCardProps) {
 
                 <StyledDiv>
 
-                                   </StyledDiv>
+                </StyledDiv>
                 {editModal &&
                     <MemberModal closeModal={closeModal}
                                 member={props.member}
@@ -91,25 +88,3 @@ const StyledDeleteMessage = styled.p`
   padding: 8px;
   font-size: 0.85rem;
 `
-
-const StyledButton = styled.button`
-  margin: 3px;
-  padding: 5px;
-  width: 75px;
-  transition-duration: 0.5s;
-  background-color: var(--color-button-background);
-  color: var(--color-text);
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 10px;
-
-  &:hover {
-    background-color: var(--color-button-hover);
-  }
-
-  &:active {
-    background-color: var(--color-button-active);
-  }
-`;
