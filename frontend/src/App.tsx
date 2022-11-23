@@ -11,7 +11,7 @@ import MemberPage from "./member/MemberPage";
 export default function App() {
   return <>
     <StyledHeader>
-            <h1>Welcome to Sidekick Horses Administration</h1>
+            <h1>Welcome to Sidekick Horse Administration</h1>
       </StyledHeader>
 
     <StyledMain>
@@ -23,7 +23,7 @@ export default function App() {
     </StyledMain>
 
   <StyledFooter>
-    <p>© 2022 Sidekick Horses</p>
+    <p>© 2022 Sidekick Horse</p>
   </StyledFooter>
   </>
 }

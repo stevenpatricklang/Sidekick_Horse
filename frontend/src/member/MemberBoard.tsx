@@ -87,4 +87,4 @@ const StyledDeleteMessage = styled.p`
   margin-bottom: 10px;
   padding: 8px;
   font-size: 0.85rem;
-`
+`;
