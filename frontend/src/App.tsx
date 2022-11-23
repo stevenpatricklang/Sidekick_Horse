@@ -17,8 +17,8 @@ export default function App() {
     <StyledMain>
       <Routes>
         <Route path="/" element={<Homepage />}/>
-        <Route path="/add/members" element={<AddMemberForm />}/>
-        <Route path="/list/members" element={<MemberPage />}/>
+        <Route path="/members/add" element={<AddMemberForm />}/>
+        <Route path="/members/list" element={<MemberPage />}/>
       </Routes>
     </StyledMain>
 
