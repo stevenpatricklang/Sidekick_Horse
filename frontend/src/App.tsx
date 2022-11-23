@@ -6,6 +6,7 @@ import Homepage from "./pages/About";
 import AddMemberForm from "./member/AddMemberForm";
 
 
+
 export default function App() {
   return <>
     <StyledHeader>
@@ -15,7 +16,7 @@ export default function App() {
     <StyledMain>
       <Routes>
         <Route path="/" element={<Homepage />}/>
-        <Route path="/members" element={<AddMemberForm />}/>
+        <Route path="/add/members" element={<AddMemberForm />}/>
       </Routes>
     </StyledMain>
 

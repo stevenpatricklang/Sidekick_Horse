@@ -9,7 +9,7 @@ function Icon(props: { icon: string, width: string }) {
 
 export default function AddMemberForm() {
 
-    const baseUrl = '/api/members/';
+    const baseUrl = '/api/add/members/';
 
     const postForm = () => {
         axios.post(baseUrl, {
@@ -71,7 +71,6 @@ export default function AddMemberForm() {
 
 
         <StyledSection>
-            <h2>Add new Member</h2>
             <StyledForm onSubmit={handleFormSubmit}>
                 <StyledDiv1>
                     <StyledLabel htmlFor="firstName">First name:</StyledLabel>
@@ -126,11 +125,13 @@ export default function AddMemberForm() {
                     <Icon icon="mdi:register" width="14"/> Add new Member</StyledButton>
             </StyledDiv2>
         </StyledSection>
-        <NavLink to="/">Home</NavLink><br />
+        <StyledButton>
+            <NavLink to="/">Go to MainPage</NavLink></StyledButton><br />
     </>;
 }
 
 const StyledSection = styled.section`
+  width: 550px;
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -147,7 +148,7 @@ const StyledLabel = styled.label`
 const StyledButton = styled.button`
   margin: 3px;
   padding: 10px;
-  width: 125px;
+  width: 150px;
   transition-duration: 0.4s;
   background-color: var(--color-button-background);
   color: var(--color-text);
