@@ -43,10 +43,16 @@ export default function MemberCard(props: MemberCardProps) {
                 <StyledName>
                     {props.member.firstName}&nbsp;{props.member.lastName}
                 </StyledName>
-
+                <StyledStreet>
+                    Street: {props.member.street}
+                </StyledStreet>
+                <StyledCity>
+                    {props.member.zipcode}&nbsp;{props.member.city}
+                </StyledCity>
                 <StyledMail>
-                    E-Mail: {props.member.email}
+                    {props.member.email}
                 </StyledMail>
+
                 <StyledDiv>
                     <StyledButton onClick={handleEdit}>Edit Member</StyledButton>
                     <StyledButton onClick={deleteMember}>delete</StyledButton>
@@ -66,7 +72,6 @@ const StyledLi = styled.li`
   flex-direction: column;
   align-items: center;
   margin: 10px;
-  padding: 2px 5px 10px 5px;
   border: 1px solid rgba(10 10 10 0.3);
   border-radius: 1pc;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
@@ -88,7 +93,14 @@ const StyledMail = styled.p`
   padding: 4px 0 0 4px;
   font-size: 0.85rem;
 `
-
+const StyledStreet = styled.p`
+  padding: 4px 0 0 4px;
+  font-size: 0.85rem;
+`
+const StyledCity = styled.p`
+  padding: 4px 0 0 4px;
+  font-size: 0.85rem;
+`
 const StyledDeleteMessage = styled.p`
   margin-bottom: 10px;
   padding: 8px;
@@ -99,14 +111,14 @@ const StyledButton = styled.button`
   margin: 3px;
   padding: 5px;
   width: 75px;
-  transition-duration: 0.4s;
+  transition-duration: 0.5s;
   background-color: var(--color-button-background);
   color: var(--color-text);
   border: none;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 10px;
 
   &:hover {
     background-color: var(--color-button-hover);

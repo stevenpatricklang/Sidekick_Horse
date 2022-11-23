@@ -31,14 +31,14 @@ export default function MemberPage() {
 
 
      return <>
+         <StyledButton>
+             <NavLink to="/">Go to MainPage</NavLink></StyledButton>
+         <StyledButton>
+             <NavLink to="/add/members">Add MemberPage</NavLink></StyledButton>
          <StyledSection>
              <h3>Members List:</h3>
              <StyledUl>{memberListOnBoard}</StyledUl>
          </StyledSection>
-         <StyledButton>
-             <NavLink to="/">Go to MainPage</NavLink></StyledButton><br />
-         <StyledButton>
-             <NavLink to="/add/members">Go to Add MemberPage</NavLink></StyledButton><br />
      </>;
 }
 
@@ -47,9 +47,10 @@ const StyledSection = styled.section`
   flex-direction: column;
   margin: 10px;
   padding: 8px 20px 25px 20px;
-  border: 1px solid rgba(10 10 10 0.3);
+  border: 1px solid rgba(10 10 10 3);
   border-radius: 1pc;
-  box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .4);
+  box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, 4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, 4);
+  background-color: #e3e3e3;
 `
 
 const StyledUl = styled.ul`
@@ -69,7 +70,7 @@ const StyledButton = styled.button`
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 10px;
 
   &:hover {
     background-color: var(--color-button-hover);
