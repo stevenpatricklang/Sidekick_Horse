@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {MemberModel} from "./MemberModel";
-import
+import MemberModal from "./MemberModal";
+
 import axios from "axios";
 import styled from "styled-components";
 

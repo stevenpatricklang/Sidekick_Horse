@@ -3,6 +3,7 @@ import axios from "axios";
 import {MemberModel} from "./MemberModel";
 import styled from "styled-components";
 import MemberBoard from "./MemberBoard";
+import {NavLink} from "react-router-dom";
 
 const baseUrl = '/api/members/';
 
@@ -31,9 +32,13 @@ export default function MemberPage() {
 
      return <>
          <StyledSection>
-             <h2>Members List:</h2>
+             <h3>Members List:</h3>
              <StyledUl>{memberListOnBoard}</StyledUl>
          </StyledSection>
+         <StyledButton>
+             <NavLink to="/">Go to MainPage</NavLink></StyledButton><br />
+         <StyledButton>
+             <NavLink to="/add/members">Go to Add MemberPage</NavLink></StyledButton><br />
      </>;
 }
 
@@ -53,3 +58,24 @@ const StyledUl = styled.ul`
   justify-content: center;
   flex-wrap: wrap;
 `
+const StyledButton = styled.button`
+  margin: 3px;
+  padding: 10px;
+  width: 150px;
+  transition-duration: 0.4s;
+  background-color: var(--color-button-background);
+  color: var(--color-text);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--color-button-hover);
+  }
+
+  &:active {
+    background-color: var(--color-button-active);
+  }
+`;

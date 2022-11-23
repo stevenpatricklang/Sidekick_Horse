@@ -9,7 +9,7 @@ export default function About() {
         <nav>
             <StyledButton><NavLink to="/add/members">Go to the Add Members page</NavLink></StyledButton>
             <br />
-            <StyledButton><NavLink to="/members">Go to the Members List</NavLink></StyledButton>
+            <StyledButton><NavLink to="/list/members">Go to the Members List</NavLink></StyledButton>
             <br />
         </nav>
     );
