@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {Route, Routes} from "react-router-dom";
 import Homepage from "./pages/About";
 import AddMemberForm from "./member/AddMemberForm";
+import MemberPage from "./member/MemberPage";
 
 
 
@@ -17,6 +18,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Homepage />}/>
         <Route path="/add/members" element={<AddMemberForm />}/>
+        <Route path="/list/members" element={<MemberPage />}/>
       </Routes>
     </StyledMain>
 

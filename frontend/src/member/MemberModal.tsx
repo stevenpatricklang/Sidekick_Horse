@@ -1,18 +1,19 @@
 import {MemberModel} from "./MemberModel";
+
 import {ChangeEvent, useState} from "react";
 import axios from "axios";
 import styled from "styled-components";
 
 type ModalProps = {
     closeModal: () => void
-    guest: GuestModel
+    member: MemberModel
     fetchAllTasks: () => void
 }
 
-export default function GuestModal(props: ModalProps) {
-    const [firstName, setFirstName] = useState(props.guest.firstName)
-    const [lastName, setLastName] = useState(props.guest.lastName)
-    const [email, setEmail] = useState(props.guest.email)
+export default function MemberModal(props: ModalProps) {
+    const [firstName, setFirstName] = useState(props.member.firstName)
+    const [lastName, setLastName] = useState(props.member.lastName)
+    const [email, setEmail] = useState(props.member.email)
 
     function handleNewFirstName(event: ChangeEvent<HTMLInputElement>) {
         setFirstName(event.target.value)
@@ -26,9 +27,9 @@ export default function GuestModal(props: ModalProps) {
         setEmail(event.target.value)
     }
 
-    function updateGuest() {
-        axios.put("/api/guests/" + props.guest.id, {
-            id: props.guest.id,
+    function updateMember() {
+        axios.put("/api/members/" + props.member.id, {
+            id: props.member.id,
             firstName,
             lastName,
             email
@@ -49,7 +50,7 @@ export default function GuestModal(props: ModalProps) {
             <StyledInput type="text" value={lastName} onChange={handleNewLastName}/>
             <StyledLabel>FirstName</StyledLabel>
             <StyledInput type="text" value={email} onChange={handleNewEmail}/>
-            <StyledButton onClick={updateGuest}>Update</StyledButton>
+            <StyledButton onClick={updateMember}>Update</StyledButton>
             <StyledButton onClick={props.closeModal}>Cancel</StyledButton>
         </StyledDiv>
     )

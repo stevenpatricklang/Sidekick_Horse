@@ -9,7 +9,7 @@ function Icon(props: { icon: string, width: string }) {
 
 export default function AddMemberForm() {
 
-    const baseUrl = '/api/add/members/';
+    const baseUrl = '/api/members/';
 
     const postForm = () => {
         axios.post(baseUrl, {
