@@ -8,6 +8,7 @@ class MemberBoard extends React.Component<{ guest: any, fetchAllGuests: any }> {
         return null;
     }
 }
+const baseUrl = '/api/list/members/';
 
 export default function MemberPage() {
     const [memberList, setMemberList] = useState<MemberModel[]>([])
@@ -17,7 +18,7 @@ export default function MemberPage() {
     }, [])
 
     const fetchAllMembers = () => {
-        axios.get("/api/members")
+        axios.get(baseUrl)
             .then((response) => response.data)
             .catch((error) => {
                 console.log('[Error von GET]: =>' + error)
@@ -27,17 +28,17 @@ export default function MemberPage() {
             })
     }
 
-    const memberListOnBoard = memberList.map(member => {
-        return <MemberBoard key={member.id} member={member} fetchAllGuests={fetchAllMembers}/>
-    })
+   // const memberListOnBoard = memberList.map(member => {
+   //     return <MemberBoard key={member.id} member={member} fetchAllGuests={fetchAllMembers}/>
+   // })
 
 
-    return <>
-        <StyledSection>
-            <h2>Members List:</h2>
-            <StyledUl>{memberListOnBoard}</StyledUl>
-        </StyledSection>
-    </>;
+   // return <>
+   //     <StyledSection>
+   //         <h2>Members List:</h2>
+   //         <StyledUl>{memberListOnBoard}</StyledUl>
+   //     </StyledSection>
+   // </>;
 }
 
 const StyledSection = styled.section`
