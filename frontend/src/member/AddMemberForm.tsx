@@ -126,7 +126,7 @@ export default function AddMemberForm() {
             </StyledDiv2>
         </StyledSection>
         <StyledButton>
-            <NavLink to="/">Go to MainPage</NavLink></StyledButton><br />
+            <NavLink to="/">Home</NavLink></StyledButton><br />
     </>;
 }
 

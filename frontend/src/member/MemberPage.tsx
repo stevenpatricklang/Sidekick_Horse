@@ -38,7 +38,7 @@ export default function MemberPage() {
          <StyledButton>
              <NavLink to="/">Home</NavLink></StyledButton>
          <StyledButton>
-             <NavLink to="/add/members">Add Member</NavLink></StyledButton>
+             <NavLink to="/members/add">Add Member</NavLink></StyledButton>
      </>;
 }
 

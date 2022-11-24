@@ -26,22 +26,6 @@ export default function MemberModal(props: ModalProps) {
     function handleNewEmail(event: ChangeEvent<HTMLInputElement>) {
         setEmail(event.target.value)
     }
-
-    function updateMember() {
-        axios.put("/api/members/" + props.member.id, {
-            id: props.member.id,
-            firstName,
-            lastName,
-            email
-        })
-            .then(response => {
-                props.fetchAllTasks()
-                props.closeModal()
-                return response.data
-            })
-            .catch(error => console.log(error))
-    }
-
     return (
         <StyledDiv>
             <StyledLabel>FirstName</StyledLabel>
@@ -50,7 +34,6 @@ export default function MemberModal(props: ModalProps) {
             <StyledInput type="text" value={lastName} onChange={handleNewLastName}/>
             <StyledLabel>FirstName</StyledLabel>
             <StyledInput type="text" value={email} onChange={handleNewEmail}/>
-            <StyledButton onClick={updateMember}>Update</StyledButton>
             <StyledButton onClick={props.closeModal}>Cancel</StyledButton>
         </StyledDiv>
     )

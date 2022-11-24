@@ -15,7 +15,7 @@ export default function App() {
       </StyledHeader>
 
     <StyledMain>
-      <Routes>
+        <Routes>
         <Route path="/" element={<Homepage />}/>
         <Route path="/members/add" element={<AddMemberForm />}/>
         <Route path="/members/list" element={<MemberPage />}/>
@@ -30,7 +30,7 @@ export default function App() {
 
 const StyledHeader = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .04), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
   padding: 10px;
