@@ -29,7 +29,6 @@ export default function MemberPage() {
         return <MemberBoard key={member.id} member={member} fetchAllMembers={fetchAllMembers}/>
     })
 
-
     return <>
         <h3>Members List:</h3>
         <StyledUl>{memberListOnBoard}</StyledUl>

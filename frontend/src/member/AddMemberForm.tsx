@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from "axios";
 import styled from "styled-components";
 import {NavLink, useNavigate} from "react-router-dom";
-import { Icon } from '@iconify/react';
+import {Icon} from '@iconify/react';
 
 export default function AddMemberForm() {
 
@@ -65,8 +65,6 @@ export default function AddMemberForm() {
     }
 
     return <>
-
-
         <StyledSection>
             <StyledForm onSubmit={handleFormSubmit}>
                 <StyledDiv1>
@@ -119,7 +117,7 @@ export default function AddMemberForm() {
             </StyledForm>
             <StyledDiv2>
                 <StyledButton onClick={handleFormSubmit}>
-                    <Icon icon="mdi:register" width="14"/> Add new Member</StyledButton>
+                    <Icon icon="mdi:register" width="14"/> Add Member</StyledButton>
             </StyledDiv2>
         </StyledSection>
         <StyledNavLink to="/">Home</StyledNavLink>
