@@ -57,8 +57,9 @@ class MemberIntegrationTest {
                          "city": "Hiltenfingen",
                          "email": "horsty@gmail.com",
                           "id" : "<id>"}]
-                """.replace("<id>", member.id())));;
+                """.replace("<id>", member.id())));
     }
+    
     @Test
     void getAllMembersAndExpectEmptyList() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/api/members"))
