@@ -1,7 +1,6 @@
 import {MemberModel} from "./MemberModel";
 
 import {ChangeEvent, useState} from "react";
-import axios from "axios";
 import styled from "styled-components";
 
 type ModalProps = {
