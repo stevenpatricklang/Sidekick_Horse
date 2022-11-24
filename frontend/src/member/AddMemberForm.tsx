@@ -2,10 +2,7 @@ import React, {useState} from 'react';
 import axios from "axios";
 import styled from "styled-components";
 import {NavLink, useNavigate} from "react-router-dom";
-
-function Icon(props: { icon: string, width: string }) {
-    return null;
-}
+import { Icon } from '@iconify/react';
 
 export default function AddMemberForm() {
 
@@ -43,7 +40,7 @@ export default function AddMemberForm() {
     const navigate = useNavigate();
 
     const setBackHome = () => {
-        navigate("/")
+        navigate("/members/list")
     }
 
     const isValidEmail = (email: string) => {
@@ -125,8 +122,8 @@ export default function AddMemberForm() {
                     <Icon icon="mdi:register" width="14"/> Add new Member</StyledButton>
             </StyledDiv2>
         </StyledSection>
-        <StyledButton>
-            <NavLink to="/">Home</NavLink></StyledButton><br />
+        <StyledNavLink to="/">Home</StyledNavLink>
+    <br />
     </>;
 }
 
@@ -145,7 +142,8 @@ const StyledLabel = styled.label`
   font-size: 0.8rem;
 `
 
-const StyledButton = styled.button`
+const StyledNavLink = styled(NavLink)`
+  font-size: 1.0rem;
   margin: 3px;
   padding: 10px;
   width: 150px;
@@ -166,6 +164,30 @@ const StyledButton = styled.button`
     background-color: var(--color-button-active);
   }
 `;
+
+const StyledButton = styled.button`
+  font-size: 1.0rem;
+  margin: 3px;
+  padding: 10px;
+  width: 150px;
+  transition-duration: 0.4s;
+  background-color: var(--color-button-background);
+  color: var(--color-text);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--color-button-hover);
+  }
+
+  &:active {
+    background-color: var(--color-button-active);
+  }
+`;
+
 
 const StyledMessage = styled.p`
   margin: 10px;

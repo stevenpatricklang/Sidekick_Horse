@@ -30,18 +30,13 @@ export default function MemberPage() {
     })
 
 
-     return <>
-         <p> </p>
-         <h3>Members List:</h3>
-         <StyledUl>{memberListOnBoard}</StyledUl>
-         <p> </p>
-         <StyledButton>
-             <NavLink to="/">Home</NavLink></StyledButton>
-         <StyledButton>
-             <NavLink to="/members/add">Add Member</NavLink></StyledButton>
-     </>;
+    return <>
+        <h3>Members List:</h3>
+        <StyledUl>{memberListOnBoard}</StyledUl>
+        <StyledButton to="/">Home</StyledButton>
+        <StyledButton to="/members/add">Add Member</StyledButton>
+    </>;
 }
-
 
 
 const StyledUl = styled.ul`
@@ -50,7 +45,8 @@ const StyledUl = styled.ul`
   justify-content: left;
   flex-wrap: wrap;
 `
-const StyledButton = styled.button`
+const StyledButton = styled(NavLink)`
+  font-size: 1.0rem;
   margin: 3px;
   padding: 10px;
   width: 150px;

@@ -2,7 +2,6 @@ package sidekickhorse.backend.member;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,10 +41,11 @@ class MemberServiceTest {
 
         //GIVEN
 
+        MemberService memberService;
         MemberRepository memberRepository = mock(MemberRepository.class);
-        List<Member> members = new ArrayList<>();
-        Member member = new Member ("Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen", "horsty@gmail.com", "1");
-        members.add(member);
+        List<Member> members = List.of(
+                new Member ("Steven", "Lang", "Kirchweg 6", "86856",
+                        "Hiltenfingen", "horsty@gmail.com", "1")) ;
 
         //WHEN
 
