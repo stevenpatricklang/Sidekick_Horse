@@ -30,16 +30,21 @@ export default function MemberPage() {
     })
 
     return <>
-        <h3>Members List:</h3>
+        <StyledHeadline> Members List:</StyledHeadline>
         <StyledUl>{memberListOnBoard}</StyledUl>
         <StyledButton to="/">Home</StyledButton>
         <StyledButton to="/members/add">Add Member</StyledButton>
     </>;
 }
 
+const StyledHeadline = styled.h1`
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+`
 
 const StyledUl = styled.ul`
-  padding: 0;
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
@@ -57,7 +62,7 @@ const StyledButton = styled(NavLink)`
   text-decoration: none;
   display: inline-block;
   border-radius: 10px;
-
+  
   &:hover {
     background-color: var(--color-button-hover);
   }

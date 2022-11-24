@@ -126,7 +126,6 @@ export default function AddMemberForm() {
 }
 
 const StyledSection = styled.section`
-  width: 550px;
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -152,7 +151,10 @@ const StyledNavLink = styled(NavLink)`
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 8px;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 
   &:hover {
     background-color: var(--color-button-hover);
