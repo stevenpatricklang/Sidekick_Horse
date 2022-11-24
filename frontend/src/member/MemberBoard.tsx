@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {MemberModel} from "./MemberModel";
-
+import MemberModal from "./MemberModal";
 import styled from "styled-components";
 
 type MemberCardProps = {
@@ -9,6 +9,15 @@ type MemberCardProps = {
 }
 
 export default function MemberCard(props: MemberCardProps) {
+    const [editModal, setEditModal] = useState(false)
+
+    const handleEdit = () => {
+        setEditModal(!editModal)
+    }
+
+    const closeModal = () => {
+        setEditModal(false)
+    }
 
     return (
         <>
@@ -25,6 +34,13 @@ export default function MemberCard(props: MemberCardProps) {
                 <StyledMail>
                     {props.member.email}
                 </StyledMail>
+                <StyledDiv>
+                    <StyledButton onClick={handleEdit}>Update Member</StyledButton>
+                </StyledDiv>
+                {editModal &&
+                    <MemberModal closeModal={closeModal}
+                                 member={props.member}
+                                 fetchAllTasks={props.fetchAllMembers}/>}
             </StyledLi>
         </>
     );
@@ -38,6 +54,11 @@ const StyledLi = styled.li`
   border: 1px solid rgba(10 10 10 0.3);
   border-radius: 1pc;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
+`
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 `
 
 const StyledName = styled.p`
@@ -57,3 +78,24 @@ const StyledCity = styled.p`
   padding: 4px 0 0 4px;
   font-size: 0.85rem;
 `
+const StyledButton = styled.button`
+  margin: 3px;
+  padding: 5px;
+  width: 75px;
+  transition-duration: 0.4s;
+  background-color: var(--color-button-background);
+  color: var(--color-text);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--color-button-hover);
+  }
+
+  &:active {
+    background-color: var(--color-button-active);
+  }
+`;
