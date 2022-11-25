@@ -16,7 +16,7 @@ export default function AddMemberForm() {
             zipcode,
             city,
             email,
-            })
+        })
             .then((response) => response.status)
             .catch((error) => {
                 console.log("Error =>" + error)
@@ -29,6 +29,10 @@ export default function AddMemberForm() {
             .then(() => setTimeout(() => setBackHome(), 2000))
     }
 
+    const setBackHome = () => {
+        navigate("/members/list")
+    }
+
     const [messageStatus, setMessageStatus] = useState('')
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -38,10 +42,6 @@ export default function AddMemberForm() {
     const [city, setCity] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
-
-    const setBackHome = () => {
-        navigate("/members/list")
-    }
 
     const isValidEmail = (email: string) => {
         return /.@./.test(email);
@@ -121,7 +121,7 @@ export default function AddMemberForm() {
             </StyledDiv2>
         </StyledSection>
         <StyledNavLink to="/">Home</StyledNavLink>
-    <br />
+        <br/>
     </>;
 }
 
