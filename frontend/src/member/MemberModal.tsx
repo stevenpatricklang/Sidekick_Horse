@@ -1,91 +1,91 @@
 import {MemberModel} from "./MemberModel";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useState} from "react";
 import axios from "axios";
 import styled from "styled-components";
 
 type ModalProps = {
     closeModal: () => void
     member: MemberModel
-    fetchAllTasks: () => void
+    fetchAllMembers: () => void
 }
 
 export default function MemberModal(props: ModalProps) {
-    const [firstName, setFirstName] = useState(props.member.firstName)
-    const [lastName, setLastName] = useState(props.member.lastName)
-    const [street, setStreet] = useState(props.member.street)
-    const [zipcode, setZipcode] = useState(props.member.zipcode)
-    const [city, setCity] = useState(props.member.city)
-    const [email, setEmail] = useState(props.member.email)
 
-    function handleNewFirstName(event: ChangeEvent<HTMLInputElement>) {
-        setFirstName(event.target.value)
-    }
+    const [newFirstName, setFirstName] = useState<string>()
+    const [newLastName, setLastName] = useState<string>()
+    const [newStreet, setStreet] = useState<string>()
+    const [newZipcode, setZipcode] = useState<string>()
+    const [newCity, setCity] = useState<string>()
+    const [newEmail, setEmail] = useState<string>()
 
-    function handleNewLastName(event: ChangeEvent<HTMLInputElement>) {
-        setLastName(event.target.value)
-    }
-
-    function handleNewStreet(event: ChangeEvent<HTMLInputElement>) {
-        setStreet(event.target.value)
-    }
-
-    function handleNewZipcode(event: ChangeEvent<HTMLInputElement>) {
-        setZipcode(event.target.value)
-    }
-
-    function handleNewCity(event: ChangeEvent<HTMLInputElement>) {
-        setCity(event.target.value)
-    }
-
-    function handleNewEmail(event: ChangeEvent<HTMLInputElement>) {
-        setEmail(event.target.value)
-    }
-
-    function updateMember() {
+    const updateMember = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
         axios.put("/api/members/" + props.member.id, {
             id: props.member.id,
-            firstName,
-            lastName,
-            street,
-            zipcode,
-            city,
-            email
+            newFirstName,
+            newLastName,
+            newStreet,
+            newZipcode,
+            newCity,
+            newEmail
         })
             .then(response => {
-                props.fetchAllTasks()
+                props.fetchAllMembers()
                 props.closeModal()
                 return response.data
             })
             .catch(error => console.log(error))
     }
 
+    const handleNewFirstName = (event: ChangeEvent<HTMLInputElement>) => {
+        setFirstName(event.target.value)
+    }
+    const handleNewLastName = (event: ChangeEvent<HTMLInputElement>) => {
+        setLastName(event.target.value)
+    }
+    const handleNewStreet = (event: ChangeEvent<HTMLInputElement>) => {
+        setStreet(event.target.value)
+    }
+    const handleNewZipcode = (event: ChangeEvent<HTMLInputElement>) => {
+        setZipcode(event.target.value)
+    }
+    const handleNewCity = (event: ChangeEvent<HTMLInputElement>) => {
+        setCity(event.target.value)
+    }
+    const handleNewEmail = (event: ChangeEvent<HTMLInputElement>) => {
+        setEmail(event.target.value)
+    }
+
     return (
-        <StyledDiv>
-            <StyledLabel>FirstName</StyledLabel>
-            <StyledInput type="text" value={firstName} onChange={handleNewFirstName}/>
+        <div>
+            <StyledForm onSubmit={updateMember}>
+                <StyledLabel>FirstName</StyledLabel>
+                <StyledInput type="text" value={newFirstName} onChange={handleNewFirstName}/>
 
-            <StyledLabel>LastName</StyledLabel>
-            <StyledInput type="text" value={lastName} onChange={handleNewLastName}/>
+                <StyledLabel>LastName</StyledLabel>
+                <StyledInput type="text" value={newLastName} onChange={handleNewLastName}/>
 
-            <StyledLabel>Street</StyledLabel>
-            <StyledInput type="text" value={street} onChange={handleNewStreet}/>
+                <StyledLabel>Street</StyledLabel>
+                <StyledInput type="text" value={newStreet} onChange={handleNewStreet}/>
 
-            <StyledLabel>Zipcode</StyledLabel>
-            <StyledInput type="text" value={zipcode} onChange={handleNewZipcode}/>
+                <StyledLabel>Zipcode</StyledLabel>
+                <StyledInput type="text" value={newZipcode} onChange={handleNewZipcode}/>
 
-            <StyledLabel>City</StyledLabel>
-            <StyledInput type="text" value={city} onChange={handleNewCity}/>
+                <StyledLabel>City</StyledLabel>
+                <StyledInput type="text" value={newCity} onChange={handleNewCity}/>
 
-            <StyledLabel>Email</StyledLabel>
-            <StyledInput type="text" value={email} onChange={handleNewEmail}/>
+                <StyledLabel>Email</StyledLabel>
+                <StyledInput type="text" value={newEmail} onChange={handleNewEmail}/>
 
-            <StyledButton onClick={updateMember}>Update</StyledButton>
-            <StyledButton onClick={props.closeModal}>Cancel</StyledButton>
-        </StyledDiv>
+                <StyledButton onClick={props.closeModal}>Update</StyledButton>
+
+                <StyledButton onClick={props.closeModal}>Cancel</StyledButton>
+            </StyledForm>
+        </div>
     )
 }
 
-const StyledDiv = styled.div`
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   margin: 10px;

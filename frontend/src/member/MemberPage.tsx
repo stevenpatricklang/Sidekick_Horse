@@ -5,10 +5,12 @@ import styled from "styled-components";
 import MemberBoard from "./MemberBoard";
 import {NavLink} from "react-router-dom";
 
-const baseUrl = '/api/members/';
 
 export default function MemberPage() {
+
     const [memberList, setMemberList] = useState<MemberModel[]>([])
+
+    const baseUrl = '/api/members/';
 
     useEffect(() => {
         fetchAllMembers()
@@ -26,7 +28,9 @@ export default function MemberPage() {
     }
 
     const memberListOnBoard = memberList.map(member => {
-        return <MemberBoard key={member.id} member={member} fetchAllMembers={fetchAllMembers}/>
+        return <MemberBoard key={member.id}
+                            member={member}
+                            fetchAllMembers={fetchAllMembers}/>
     })
 
     return <>
@@ -63,7 +67,7 @@ const StyledButton = styled(NavLink)`
   text-decoration: none;
   display: inline-block;
   border-radius: 10px;
-  
+
   &:hover {
     background-color: var(--color-button-hover);
   }

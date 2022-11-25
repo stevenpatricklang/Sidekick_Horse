@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 type MemberCardProps = {
     member: MemberModel;
-    fetchAllMembers: () => void
+        fetchAllMembers: () => void
 }
 
 export default function MemberCard(props: MemberCardProps) {
@@ -40,7 +40,7 @@ export default function MemberCard(props: MemberCardProps) {
                 {editModal &&
                     <MemberModal closeModal={closeModal}
                                  member={props.member}
-                                 fetchAllTasks={props.fetchAllMembers}/>}
+                                 fetchAllMembers={props.fetchAllMembers}/>}
             </StyledLi>
         </>
     );
