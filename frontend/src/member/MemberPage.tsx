@@ -45,6 +45,7 @@ const StyledHeadline = styled.h1`
 `
 
 const StyledUl = styled.ul`
+  align-content: center;
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
