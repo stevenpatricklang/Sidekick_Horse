@@ -15,7 +15,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-
 class MemberIntegrationTest {
 
     @Autowired
@@ -47,24 +46,83 @@ class MemberIntegrationTest {
         // WHEN
         mvc.perform(MockMvcRequestBuilders.get("/api/members/"))
 
-        // THEN
-        .andExpect(status().isOk())
-        .andExpect(content().json("""
-                         [{"firstName": "Steven",
-                         "lastName": "Lang",
-                         "street": "Kirchweg 6",
-                         "zipcode": "86856",
-                         "city": "Hiltenfingen",
-                         "email": "horsty@gmail.com",
-                          "id" : "<id>"}]
-                """.replace("<id>", member.id())));
+                // THEN
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                                 [{"firstName": "Steven",
+                                 "lastName": "Lang",
+                                 "street": "Kirchweg 6",
+                                 "zipcode": "86856",
+                                 "city": "Hiltenfingen",
+                                 "email": "horsty@gmail.com",
+                                  "id" : "<id>"}]
+                        """.replace("<id>", member.id())));
     }
-    
+
     @Test
     void getAllMembersAndExpectEmptyList() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/api/members"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
+    }
+
+    @Test
+    @DirtiesContext
+    void putRequestUpdateMemberData() throws Exception {
+        // GIVEN
+        String body = mvc.perform(MockMvcRequestBuilders.post("/api/members")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"firstName": "Test",
+                                "lastName": "Lang",
+                                "street": "Kirchweg 4a",
+                                "zipcode": "86830",
+                                "city": "Hornbach",
+                                "email": "horsty@gmail.com",
+                                 "id" : "<id>"}
+                                """))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+
+        Member member = objectMapper.readValue(body, Member.class);
+
+        // WHEN
+        mvc.perform(MockMvcRequestBuilders.put("/api/members/" + member.id())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(("""
+                                 {"firstName": "Herr",
+                                "lastName": "Pfarrer",
+                                "street": "Kirchweg 4a",
+                                "zipcode": "86830",
+                                "city": "Hornbach",
+                                "email": "horsty@gmail.com",
+                                 "id" : "<id>"},
+                                 {"firstName": "Frau",
+                                "lastName": "Pfarrer",
+                                "street": "Kirchweg 4a",
+                                "zipcode": "86830",
+                                "city": "Hornbach",
+                                "email": "horsty@gmail.com",
+                                 "id" : "<id>"}
+                                """.replace("<id>", member.id()))))
+                // THEN
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                                          {"firstName": "Herr",
+                                "lastName": "Pfarrer",
+                                "street": "Kirchweg 4a",
+                                "zipcode": "86830",
+                                "city": "Hornbach",
+                                "email": "horsty@gmail.com",
+                                 "id" : "<id>"},
+                                 {"firstName": "Frau",
+                                "lastName": "Pfarrer",
+                                "street": "Kirchweg 4a",
+                                "zipcode": "86830",
+                                "city": "Hornbach",
+                                "email": "horsty@gmail.com",
+                                 "id" : "<id>"}
+                        """.replace("<id>", member.id())));
     }
 
 }
