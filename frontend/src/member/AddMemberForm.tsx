@@ -205,6 +205,7 @@ const StyledInput = styled.input`
 `;
 
 const StyledDiv1 = styled.div`
+  align-content: center;
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -212,6 +213,7 @@ const StyledDiv1 = styled.div`
 `;
 
 const StyledDiv2 = styled.div`
+  align-content: center;
   display: flex;
   justify-content: center;
   padding: 20px;
