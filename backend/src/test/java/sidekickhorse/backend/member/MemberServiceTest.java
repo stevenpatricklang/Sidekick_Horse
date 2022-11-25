@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -83,26 +82,4 @@ class MemberServiceTest {
         assertEquals(updatedMember, actual);
     }
 
-    @Test
-    void updateMemberByInvalidId() {
-
-        //GIVEN
-        MemberUtils memberId = mock(MemberUtils.class);
-        MemberRepository memberRepository = mock(MemberRepository.class);
-        MemberService memberService = new MemberService(memberRepository, memberId);
-        List<Member> members = new ArrayList<>();
-        Member member1 = new Member("Steven", "Lang", "Kirchweg 6", "86856",
-                "Hiltenfingen", "horsty@gmail.com", "1");
-        Member updatedMember = new Member("Steven", "Lang", "Kirchweg 6", "86856",
-                "Hiltenfingen", "horsty@gmail.com", "4");
-        members.add(member1);
-
-        //WHEN
-
-        try {
-            memberService.updateMemberById(member1.id(), updatedMember);
-        } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }

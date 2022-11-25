@@ -11,7 +11,7 @@ type ModalProps = {
 
 export default function MemberModal(props: ModalProps) {
 
-    const [newFirstName, setFirstName] = useState<string>()
+    const [newFirstName, setFirstName] = useState("")
     const [newLastName, setLastName] = useState<string>()
     const [newStreet, setStreet] = useState<string>()
     const [newZipcode, setZipcode] = useState<string>()
