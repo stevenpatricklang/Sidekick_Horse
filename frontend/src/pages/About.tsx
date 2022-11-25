@@ -6,7 +6,7 @@ import styled from "styled-components";
 export default function About() {
     return <>
         <StyledDiv>
-        <StyledImage src={process.env.PUBLIC_URL + '/p7.jpg'} alt="Logo von Pferden bw"/></StyledDiv>
+            <StyledImage src={process.env.PUBLIC_URL + '/horse1.png'} alt="Logo von Pferden bw"/></StyledDiv>
         <StyledNav>
             <StyledButton to="/members/add">Add Member</StyledButton>
             <StyledButton to="/members/list">Members List</StyledButton>

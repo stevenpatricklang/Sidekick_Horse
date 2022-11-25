@@ -128,12 +128,14 @@ export default function AddMemberForm() {
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
   margin: 10px;
   padding: 8px 20px 25px 20px;
   border: 1px solid rgba(10 10 10 0.3);
   border-radius: 1pc;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .4);
- `
+`
 
 const StyledLabel = styled.label`
   font-size: 0.8rem;
