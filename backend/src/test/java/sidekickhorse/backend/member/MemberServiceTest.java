@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -76,8 +77,9 @@ class MemberServiceTest {
 
         //WHEN
 
-        when(memberRepository.findAll()).thenReturn(members);
-        Member actual = memberService.updateMemberById("1", updatedMember);
+        when(memberRepository.findById(member.id())).thenReturn(Optional.of(member));
+        when(memberRepository.save(updatedMember)).thenReturn(updatedMember);
+        Member actual = memberService.updateMemberById(updatedMember);
 
         //THEN
 
@@ -102,7 +104,7 @@ class MemberServiceTest {
         //WHEN
 
         try {
-            memberService.updateMemberById(member1.id(), updatedMember);
+            memberService.updateMemberById(updatedMember);
         } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
         }

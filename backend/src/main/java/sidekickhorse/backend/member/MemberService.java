@@ -27,10 +27,11 @@ public class MemberService {
         return this.memberRepository.findAll();
     }
 
-    public Member updateMemberById(String id, Member member) {
-        memberRepository.findById(id).orElseThrow(() -> new NoSuchElementException("There is no Member active with this ID"));
-        memberRepository.save(member);
-        return member;
+    public Member updateMemberById(Member member) {
+        memberRepository.findById(member.id()).orElseThrow(() -> new NoSuchElementException("There is no Member active with this ID"));
+        Member updatedMember = new Member(member.firstName(), member.lastName(), member.street(), member.zipcode(), member.city(), member.email(), member.id());
+        memberRepository.save(updatedMember);
+        return updatedMember;
     }
 }
 
