@@ -96,26 +96,12 @@ class MemberIntegrationTest {
                                 "zipcode": "86830",
                                 "city": "Hornbach",
                                 "email": "horsty@gmail.com",
-                                 "id" : "<id>"},
-                                 {"firstName": "Frau",
-                                "lastName": "Pfarrer",
-                                "street": "Kirchweg 4a",
-                                "zipcode": "86830",
-                                "city": "Hornbach",
-                                "email": "horsty@gmail.com",
                                  "id" : "<id>"}
                                 """.replace("<id>", member.id()))))
                 // THEN
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                                           {"firstName": "Herr",
-                                "lastName": "Pfarrer",
-                                "street": "Kirchweg 4a",
-                                "zipcode": "86830",
-                                "city": "Hornbach",
-                                "email": "horsty@gmail.com",
-                                 "id" : "<id>"},
-                                 {"firstName": "Frau",
                                 "lastName": "Pfarrer",
                                 "street": "Kirchweg 4a",
                                 "zipcode": "86830",
@@ -173,7 +159,7 @@ class MemberIntegrationTest {
                                 "email": "horsty@gmail.com",
                                  "id" : "1511"}
                                     """))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isNotFound());
     }
 
 }

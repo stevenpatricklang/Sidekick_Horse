@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import styled from "styled-components";
-import {NavLink, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {Icon} from '@iconify/react';
 
 export default function AddMemberForm() {
@@ -33,7 +33,7 @@ export default function AddMemberForm() {
         navigate("/members/list")
     }
 
-    const [messageStatus, setMessageStatus] = useState('')
+    const [messageStatus, setMessageStatus] = useState("")
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -73,21 +73,21 @@ export default function AddMemberForm() {
                                  id="firstName"
                                  value={firstName}
                                  onChange={(e) => setFirstName(e.target.value)}
-                                 placeholder={"Hunz"}/>
+                                 placeholder="Hunz" required/>
 
                     <StyledLabel htmlFor={"lastName"}>Last name:</StyledLabel>
                     <StyledInput type='text'
                                  id="lastName"
                                  value={lastName}
                                  onChange={(e) => setLastName(e.target.value)}
-                                 placeholder={"Kunz"}/>
+                                 placeholder="Kunz" required/>
 
                     <StyledLabel htmlFor={"street"}>Street:</StyledLabel>
                     <StyledInput type='text'
                                  id="street"
                                  value={street}
                                  onChange={(e) => setStreet(e.target.value)}
-                                 placeholder={"Hopfenstrasse 1"}/>
+                                 placeholder="Hopfenstrasse 1" required/>
 
                     <StyledLabel htmlFor={"zipcode"}>Zipcode:</StyledLabel>
                     <StyledInput type='text'
@@ -117,10 +117,9 @@ export default function AddMemberForm() {
             </StyledForm>
             <StyledDiv2>
                 <StyledButton onClick={handleFormSubmit}>
-                    <Icon icon="mdi:register" width="14"/> Add Member</StyledButton>
+                    <Icon icon="mdi:register" inline={true} width="14"/> Add Member</StyledButton>
             </StyledDiv2>
         </StyledSection>
-        <StyledNavLink to="/">Home</StyledNavLink>
         <br/>
     </>;
 }
@@ -140,32 +139,6 @@ const StyledSection = styled.section`
 const StyledLabel = styled.label`
   font-size: 0.8rem;
 `
-
-const StyledNavLink = styled(NavLink)`
-  font-size: 1.0rem;
-  margin: 3px;
-  padding: 10px;
-  width: 150px;
-  transition-duration: 0.4s;
-  background-color: var(--color-button-background);
-  color: var(--color-text);
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 8px;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
-
-  &:hover {
-    background-color: var(--color-button-hover);
-  }
-
-  &:active {
-    background-color: var(--color-button-active);
-  }
-`;
 
 const StyledButton = styled.button`
   font-size: 1.0rem;

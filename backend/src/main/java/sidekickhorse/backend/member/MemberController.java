@@ -30,6 +30,6 @@ public class MemberController {
         if (member.id().equals(id)) {
             return memberService.updateMemberById(member);
         }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 }
