@@ -113,7 +113,7 @@ class MemberIntegrationTest {
 
     @Test
     @DirtiesContext
-    void putRequestUpdateMemberDataWithBadRequest() throws Exception {
+    void putRequestUpdateMemberDataNotFound() throws Exception {
         mvc.perform(MockMvcRequestBuilders.put("/api/members/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
@@ -125,7 +125,7 @@ class MemberIntegrationTest {
                                 "email": "horsty@gmail.com",
                                  "id" : "<id>"}
                                     """))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isNotFound());
     }
 
     @Test
