@@ -3,7 +3,6 @@ package sidekickhorse.backend.member;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class MemberService {
@@ -28,7 +27,7 @@ public class MemberService {
     }
 
     public Member updateMemberById(Member member) {
-        memberRepository.findById(member.id()).orElseThrow(() -> new NoSuchElementException("There is no Member active with this ID"));
+        memberRepository.findById(member.id());
         Member updatedMember = new Member(member.firstName(), member.lastName(), member.street(), member.zipcode(), member.city(), member.email(), member.id());
         memberRepository.save(updatedMember);
         return updatedMember;

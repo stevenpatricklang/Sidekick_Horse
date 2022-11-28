@@ -3,7 +3,6 @@ package sidekickhorse.backend.member;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -80,31 +79,4 @@ class MemberServiceTest {
 
         assertEquals(updatedMember, actual);
     }
-
-    @Test
-    void updateMemberByInvalidId() {
-
-        //GIVEN
-
-        MemberUtils memberId = mock(MemberUtils.class);
-        MemberRepository memberRepository = mock(MemberRepository.class);
-        MemberService memberService = new MemberService(memberRepository, memberId);
-        Member updatedMember = new Member("Steven", "Lang", "Kirchweg 6", "86856",
-                "Hiltenfingen", "horsty@gmail.com", "4");
-
-
-        //WHEN
-        String message = null;
-        try {
-            memberService.updateMemberById(updatedMember);
-        } catch (NoSuchElementException e) {
-            message = e.getMessage();
-        }
-
-        //THEN
-
-        assertEquals("There is no Member active with this ID", message);
-    }
-
-
 }
