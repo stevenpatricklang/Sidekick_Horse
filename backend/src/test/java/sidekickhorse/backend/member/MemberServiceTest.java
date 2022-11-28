@@ -107,4 +107,6 @@ class MemberServiceTest {
             System.out.println(e.getMessage());
         }
     }
+
+
 }
