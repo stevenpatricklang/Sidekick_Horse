@@ -1,84 +1,67 @@
 import {MemberModel} from "./MemberModel";
-import {ChangeEvent, FormEvent, useState} from "react";
+import {FormEvent, useState} from "react";
 import axios from "axios";
 import styled from "styled-components";
 
 type ModalProps = {
-    closeModal: () => void
+    closeModal: (value: boolean) => void
     member: MemberModel
     fetchAllMembers: () => void
 }
 
 export default function MemberModal(props: ModalProps) {
 
-    const [newFirstName, setFirstName] = useState("")
-    const [newLastName, setLastName] = useState("")
-    const [newStreet, setStreet] = useState("")
-    const [newZipcode, setZipcode] = useState("")
-    const [newCity, setCity] = useState("")
-    const [newEmail, setEmail] = useState("")
+    const [newFirstName, setFirstName] = useState(props.member.firstName)
+    const [newLastName, setLastName] = useState(props.member.lastName)
+    const [newStreet, setStreet] = useState(props.member.street)
+    const [newZipcode, setZipcode] = useState(props.member.zipcode)
+    const [newCity, setCity] = useState(props.member.city)
+    const [newEmail, setEmail] = useState(props.member.email)
 
     function updateMember(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
         axios.put("/api/members/" + props.member.id, {
-            newFirstName,
-            newLastName,
-            newStreet,
-            newZipcode,
-            newCity,
-            newEmail
+            id: props.member.id,
+            firstName: newFirstName,
+            lastName: newLastName,
+            street: newStreet,
+            zipcode: newZipcode,
+            city: newCity,
+            email: newEmail
         })
             .then(response => {
                 props.fetchAllMembers()
-                props.closeModal()
+                props.closeModal(false)
                 return response.data
             })
             .catch(error => console.log(error))
-    }
-
-    const handleNewFirstName = (event: any) => {
-        setFirstName(event.target.value)
-    }
-    const handleNewLastName = (event: ChangeEvent<HTMLInputElement>) => {
-        setLastName(event.target.value)
-    }
-    const handleNewStreet = (event: ChangeEvent<HTMLInputElement>) => {
-        setStreet(event.target.value)
-    }
-    const handleNewZipcode = (event: ChangeEvent<HTMLInputElement>) => {
-        setZipcode(event.target.value)
-    }
-    const handleNewCity = (event: ChangeEvent<HTMLInputElement>) => {
-        setCity(event.target.value)
-    }
-    const handleNewEmail = (event: ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value)
+            .then(props.closeModal)
     }
 
     return (
         <div>
             <StyledForm onSubmit={updateMember}>
                 <StyledLabel>FirstName</StyledLabel>
-                <StyledInput type="text" value={newFirstName} onChange={handleNewFirstName}/>
+                <StyledInput type="text" value={newFirstName} onChange={event => setFirstName((event.target.value))}/>
 
                 <StyledLabel>LastName</StyledLabel>
-                <StyledInput type="text" value={newLastName} onChange={handleNewLastName}/>
+                <StyledInput type="text" value={newLastName} onChange={event => setLastName((event.target.value))}/>
 
                 <StyledLabel>Street</StyledLabel>
-                <StyledInput type="text" value={newStreet} onChange={handleNewStreet}/>
+                <StyledInput type="text" value={newStreet} onChange={event => setStreet((event.target.value))}/>
 
                 <StyledLabel>Zipcode</StyledLabel>
-                <StyledInput type="text" value={newZipcode} onChange={handleNewZipcode}/>
+                <StyledInput type="text" value={newZipcode} onChange={event => setZipcode((event.target.value))}/>
 
                 <StyledLabel>City</StyledLabel>
-                <StyledInput type="text" value={newCity} onChange={handleNewCity}/>
+                <StyledInput type="text" value={newCity} onChange={event => setCity((event.target.value))}/>
 
                 <StyledLabel>Email</StyledLabel>
-                <StyledInput type="text" value={newEmail} onChange={handleNewEmail}/>
+                <StyledInput type="text" value={newEmail} onChange={event => setEmail((event.target.value))}/>
 
-                <StyledButton onClick={props.closeModal}>Update</StyledButton>
+                <StyledButton>Submit</StyledButton>
 
-                <StyledButton onClick={props.closeModal}>Cancel</StyledButton>
+                <StyledButton onClick={() => props.closeModal(false)}>Cancel</StyledButton>
             </StyledForm>
         </div>
     )

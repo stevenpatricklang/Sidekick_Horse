@@ -36,7 +36,6 @@ export default function MemberPage() {
     return <>
         <StyledHeadline> Members List:</StyledHeadline>
         <StyledUl>{memberListOnBoard}</StyledUl>
-        <StyledButton to="/">Home</StyledButton>
         <StyledButton to="/members/add">Add Member</StyledButton>
     </>;
 }

@@ -15,10 +15,6 @@ export default function MemberCard(props: MemberCardProps) {
         setEditModal(!editModal)
     }
 
-    function closeModal() {
-        setEditModal(false)
-    }
-
     return (
         <>
             <StyledLi>
@@ -38,7 +34,7 @@ export default function MemberCard(props: MemberCardProps) {
                     <StyledButton onClick={handleEdit}>Update Member</StyledButton>
                 </StyledDiv>
                 {editModal &&
-                    <MemberModal closeModal={closeModal}
+                    <MemberModal closeModal={handleEdit}
                                  member={props.member}
                                  fetchAllMembers={props.fetchAllMembers}/>}
             </StyledLi>
@@ -47,6 +43,8 @@ export default function MemberCard(props: MemberCardProps) {
 }
 
 const StyledLi = styled.li`
+  min-width: 300px;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,6 +60,8 @@ const StyledDiv = styled.div`
 `
 
 const StyledName = styled.p`
+  max-width: 340px;
+  word-wrap: break-word;
   margin-bottom: 5px;
   padding: 4px;
   font-size: 1.1rem;
