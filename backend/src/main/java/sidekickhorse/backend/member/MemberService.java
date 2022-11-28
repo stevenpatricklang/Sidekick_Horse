@@ -28,14 +28,9 @@ public class MemberService {
     }
 
     public Member updateMemberById(String id, Member member) {
-        List<Member> members = memberRepository.findAll();
-        for (Member person : members) {
-            if (person.id().equals(id)) {
-                memberRepository.save(person);
-                return member;
-            }
-        }
-        throw new NoSuchElementException("There is no Member active with this ID");
+        memberRepository.findById(id).orElseThrow(() -> new NoSuchElementException("There is no Member active with this ID"));
+        memberRepository.save(member);
+        return member;
     }
 }
 
