@@ -171,9 +171,9 @@ class MemberIntegrationTest {
                                 "zipcode": "86830",
                                 "city": "Hornbach",
                                 "email": "horsty@gmail.com",
-                                 "id" : "1510"}
+                                 "id" : "1511"}
                                     """))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isBadRequest());
     }
 
 }
