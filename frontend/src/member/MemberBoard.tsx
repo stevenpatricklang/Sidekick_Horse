@@ -11,11 +11,11 @@ type MemberCardProps = {
 export default function MemberCard(props: MemberCardProps) {
     const [editModal, setEditModal] = useState(false)
 
-    const handleEdit = () => {
+    function handleEdit() {
         setEditModal(!editModal)
     }
 
-    const closeModal = () => {
+    function closeModal() {
         setEditModal(false)
     }
 
