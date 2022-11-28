@@ -10,7 +10,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    private MemberUtils memberUtils;
+    private final MemberUtils memberUtils;
 
     public MemberService(MemberRepository memberRepository, MemberUtils memberUtils) {
         this.memberRepository = memberRepository;
