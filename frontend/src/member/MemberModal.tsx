@@ -12,16 +12,15 @@ type ModalProps = {
 export default function MemberModal(props: ModalProps) {
 
     const [newFirstName, setFirstName] = useState("")
-    const [newLastName, setLastName] = useState<string>()
-    const [newStreet, setStreet] = useState<string>()
-    const [newZipcode, setZipcode] = useState<string>()
-    const [newCity, setCity] = useState<string>()
-    const [newEmail, setEmail] = useState<string>()
+    const [newLastName, setLastName] = useState("")
+    const [newStreet, setStreet] = useState("")
+    const [newZipcode, setZipcode] = useState("")
+    const [newCity, setCity] = useState("")
+    const [newEmail, setEmail] = useState("")
 
-    const updateMember = (event: FormEvent<HTMLFormElement>) => {
+    function updateMember(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
         axios.put("/api/members/" + props.member.id, {
-            id: props.member.id,
             newFirstName,
             newLastName,
             newStreet,
@@ -37,7 +36,7 @@ export default function MemberModal(props: ModalProps) {
             .catch(error => console.log(error))
     }
 
-    const handleNewFirstName = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleNewFirstName = (event: any) => {
         setFirstName(event.target.value)
     }
     const handleNewLastName = (event: ChangeEvent<HTMLInputElement>) => {
