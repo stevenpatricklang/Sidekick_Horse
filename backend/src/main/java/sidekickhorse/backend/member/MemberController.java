@@ -30,7 +30,7 @@ public class MemberController {
     public Member updateMemberById(@PathVariable String id, @RequestBody Member member) {
         try {
             if (member.id().equals(id)) {
-                return memberService.updateMemberById(id, member);
+                return memberService.updateMemberById(member);
             }
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } catch (NoSuchElementException e) {
