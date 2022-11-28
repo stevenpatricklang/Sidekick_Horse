@@ -73,42 +73,42 @@ export default function AddMemberForm() {
                                  id="firstName"
                                  value={firstName}
                                  onChange={(e) => setFirstName(e.target.value)}
-                                 placeholder={"Hunz"} required/>
+                                 placeholder={"Hunz"}/>
 
                     <StyledLabel htmlFor={"lastName"}>Last name:</StyledLabel>
                     <StyledInput type='text'
                                  id="lastName"
                                  value={lastName}
                                  onChange={(e) => setLastName(e.target.value)}
-                                 placeholder={"Kunz"} required/>
+                                 placeholder={"Kunz"}/>
 
                     <StyledLabel htmlFor={"street"}>Street:</StyledLabel>
                     <StyledInput type='text'
                                  id="street"
                                  value={street}
                                  onChange={(e) => setStreet(e.target.value)}
-                                 placeholder={"Hopfenstrasse 1"} required/>
+                                 placeholder={"Hopfenstrasse 1"}/>
 
                     <StyledLabel htmlFor={"zipcode"}>Zipcode:</StyledLabel>
                     <StyledInput type='text'
                                  id="zipcode"
                                  value={zipcode}
                                  onChange={(e) => setZipcode(e.target.value)}
-                                 placeholder={"86830"} required/>
+                                 placeholder={"86830"}/>
 
                     <StyledLabel htmlFor={"city"}>City:</StyledLabel>
                     <StyledInput type='text'
                                  id="city"
                                  value={city}
                                  onChange={(e) => setCity(e.target.value)}
-                                 placeholder={"Hopfenhausen"} required/>
+                                 placeholder={"Hopfenhausen"}/>
 
                     <StyledLabel htmlFor={"email"}>E-Mail:</StyledLabel>
                     <StyledInput type='text'
                                  id="email"
                                  value={email}
                                  onChange={(e) => setEmail(e.target.value)}
-                                 placeholder={"abc@gmail.com"} required/>
+                                 placeholder={"abc@gmail.com"}/>
 
                     {error && <StyledMessage>{error}</StyledMessage>}
                     {messageStatus && <StyledMessage>{messageStatus}</StyledMessage>}

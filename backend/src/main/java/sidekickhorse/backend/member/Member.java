@@ -2,19 +2,18 @@ package sidekickhorse.backend.member;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 public record Member(
 
-        @NotBlank @NotEmpty
+        @NotBlank
         String firstName,
-        @NotBlank @NotEmpty
+        @NotBlank
         String lastName,
-        @NotBlank @NotEmpty
+        @NotBlank
         String street,
-        @NotBlank @NotEmpty
+        @NotBlank
         String zipcode,
-        @NotBlank @NotEmpty
+        @NotBlank
         String city,
         @Email
         String email,
