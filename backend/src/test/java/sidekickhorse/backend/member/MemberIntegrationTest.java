@@ -125,4 +125,55 @@ class MemberIntegrationTest {
                         """.replace("<id>", member.id())));
     }
 
+    @Test
+    @DirtiesContext
+    void putRequestUpdateMemberDataWithBadRequest() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.put("/api/members/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"firstName": "Test",
+                                "lastName": "Lang",
+                                "street": "Kirchweg 4a",
+                                "zipcode": "86830",
+                                "city": "Hornbach",
+                                "email": "horsty@gmail.com",
+                                 "id" : "<id>"}
+                                    """))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DirtiesContext
+    void putRequestUpdateMemberMethodNotAllowed() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.put("/api/members/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"firstName": "Test",
+                                "lastName": "Lang",
+                                "street": "Kirchweg 4a",
+                                "zipcode": "86830",
+                                "city": "Hornbach",
+                                "email": "horsty@gmail.com",
+                                 "id" : "<id>"}
+                                    """))
+                .andExpect(status().isMethodNotAllowed());
+    }
+
+    @Test
+    @DirtiesContext
+    void putRequestUpdateMemberNotFound() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.put("/api/members/1510")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"firstName": "Test",
+                                "lastName": "Lang",
+                                "street": "Kirchweg 4a",
+                                "zipcode": "86830",
+                                "city": "Hornbach",
+                                "email": "horsty@gmail.com",
+                                 "id" : "1510"}
+                                    """))
+                .andExpect(status().isNotFound());
+    }
+
 }
