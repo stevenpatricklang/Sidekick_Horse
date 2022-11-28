@@ -2,7 +2,6 @@ package sidekickhorse.backend.member;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -25,7 +24,6 @@ class MemberServiceTest {
         NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen", "horsty@gmail.com");
         Member testMember = newMember.withId("2");
 
-        Member expected = testMember;
         when(memberRepository.save(testMember)).thenReturn(testMember);
         when(memberUtils.generateUUID()).thenReturn("2");
 
@@ -36,7 +34,7 @@ class MemberServiceTest {
         //THEN
 
         verify(memberUtils).generateUUID();
-        assertEquals(expected, actual);
+        assertEquals(testMember, actual);
     }
 
     @Test
@@ -44,7 +42,6 @@ class MemberServiceTest {
 
         //GIVEN
 
-        MemberService memberService;
         MemberRepository memberRepository = mock(MemberRepository.class);
         List<Member> members = List.of(
                 new Member("Steven", "Lang", "Kirchweg 6", "86856",
@@ -68,12 +65,10 @@ class MemberServiceTest {
         MemberRepository memberRepository = mock(MemberRepository.class);
         MemberService memberService = new MemberService(memberRepository, memberId);
 
-        List<Member> members = new ArrayList<>();
         Member member = new Member("Steven", "Lang", "Kirchweg 6", "86856",
                 "Hiltenfingen", "horsty@gmail.com", "1");
         Member updatedMember = new Member("Horst", "Lang", "Kirchweg 6", "86856",
                 "Hiltenfingen", "horsty@gmail.com", "1");
-        members.add(member);
 
         //WHEN
 
@@ -94,20 +89,21 @@ class MemberServiceTest {
         MemberUtils memberId = mock(MemberUtils.class);
         MemberRepository memberRepository = mock(MemberRepository.class);
         MemberService memberService = new MemberService(memberRepository, memberId);
-        List<Member> members = new ArrayList<>();
-        Member member1 = new Member("Steven", "Lang", "Kirchweg 6", "86856",
-                "Hiltenfingen", "horsty@gmail.com", "1");
         Member updatedMember = new Member("Steven", "Lang", "Kirchweg 6", "86856",
                 "Hiltenfingen", "horsty@gmail.com", "4");
-        members.add(member1);
+
 
         //WHEN
-
+        String message = null;
         try {
             memberService.updateMemberById(updatedMember);
         } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
+            message = e.getMessage();
         }
+
+        //THEN
+
+        assertEquals("There is no Member active with this ID", message);
     }
 
 
