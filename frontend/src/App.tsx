@@ -12,10 +12,10 @@ export default function App() {
         <StyledHeader>
 
             <StyledButton to="/">Home</StyledButton>
-            <h1>Welcome to Sidekick Horse Administration</h1>
-            <div>
+            <StyledH1>Welcome to Sidekick Horse Administration</StyledH1>
+            <StyledDiv>
 
-            </div>
+            </StyledDiv>
         </StyledHeader>
 
         <StyledMain>
@@ -32,11 +32,20 @@ export default function App() {
     </>
 }
 
+
+const StyledH1 = styled.h1`
+  font-size: 2.75rem;
+`
+
+const StyledDiv = styled.div`
+  width: 160px;
+`
+
 const StyledButton = styled(NavLink)`
   font-size: 1.0rem;
   margin: 3px;
   padding: 10px;
-  width: 150px;
+  width: 160px;
   transition-duration: 0.4s;
   background-color: var(--color-button-background);
   color: var(--color-text);
@@ -73,9 +82,10 @@ const StyledMain = styled.main`
 
 const StyledFooter = styled.footer`
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin: 10px;
   padding: 10px;
   font-size: 1rem;
   background-color: var(--color-background-footer);
+  box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .5), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .5);
 `

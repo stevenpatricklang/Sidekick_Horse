@@ -144,7 +144,7 @@ const StyledButton = styled.button`
   font-size: 1.0rem;
   margin: 3px;
   padding: 10px;
-  width: 150px;
+  width: 160px;
   transition-duration: 0.4s;
   background-color: var(--color-button-background);
   color: var(--color-text);
