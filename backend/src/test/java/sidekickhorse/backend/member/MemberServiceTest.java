@@ -81,7 +81,7 @@ class MemberServiceTest {
     }
 
     @Test
-    void deleteMemberById() {
+    void deleteMemberByExistingId() {
         // given
         MemberUtils memberId = mock(MemberUtils.class);
         MemberRepository memberRepository = mock(MemberRepository.class);
