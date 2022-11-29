@@ -1,10 +1,12 @@
 package sidekickhorse.backend.member;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/members")
@@ -32,4 +34,16 @@ public class MemberController {
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
+
+    @DeleteMapping("{id}")
+    public Member deleteMemberById(@PathVariable String id) {
+        try {
+            return memberService.deleteMemberById(id);
+
+        } catch (NoSuchElementException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+
+
 }
