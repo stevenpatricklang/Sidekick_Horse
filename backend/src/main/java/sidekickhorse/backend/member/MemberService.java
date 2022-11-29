@@ -3,6 +3,8 @@ package sidekickhorse.backend.member;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class MemberService {
@@ -32,6 +34,18 @@ public class MemberService {
         memberRepository.save(updatedMember);
         return updatedMember;
     }
+
+    public Member deleteMemberById(String id) {
+        Optional<Member> memberToFind = memberRepository
+                .findAll()
+                .stream()
+                .filter(member -> member.id().equals(id))
+                .findFirst();
+        if (memberToFind.isEmpty()) {
+            throw new NoSuchElementException("Member with this Id could not be found");
+        }
+        Member member = memberToFind.get();
+        memberRepository.deleteById(id);
+        return member;
+    }
 }
-
-
