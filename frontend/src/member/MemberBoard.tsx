@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {MemberModel} from "./MemberModel";
 import MemberModal from "./MemberModal";
 import styled from "styled-components";
+import axios from "axios";
 
 type MemberCardProps = {
     member: MemberModel;
@@ -10,9 +11,24 @@ type MemberCardProps = {
 
 export default function MemberCard(props: MemberCardProps) {
     const [editModal, setEditModal] = useState(false)
+    const [messageStatus, setMessageStatus] = useState("")
 
     function handleEdit() {
         setEditModal(!editModal)
+    }
+
+    const deleteMember = () => {
+        axios.delete("/api/members/" + props.member.id)
+            .then((response) => response.status)
+            .catch((error) => {
+                if (error.status === 404) setMessageStatus('Error: Delete was not successfully!!')
+            })
+            .then((status) => {
+                if (status === 200) {
+                    setMessageStatus("The Member " + props.member.firstName + " " + props.member.lastName + ' has been successfully deleted.');
+                }
+            })
+            .then(() => setTimeout(() => props.fetchAllMembers(), 2000))
     }
 
     return (
@@ -32,15 +48,23 @@ export default function MemberCard(props: MemberCardProps) {
                 </StyledMail>
                 <StyledDiv>
                     <StyledButton onClick={handleEdit}>Update Member</StyledButton>
+                    <StyledButton onClick={deleteMember}>Delete</StyledButton>
                 </StyledDiv>
                 {editModal &&
                     <MemberModal closeModal={handleEdit}
                                  member={props.member}
                                  fetchAllMembers={props.fetchAllMembers}/>}
+                {messageStatus && <StyledDeleteMessage>{messageStatus}</StyledDeleteMessage>}
             </StyledLi>
         </>
     );
 }
+
+const StyledDeleteMessage = styled.p`
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 0.85rem;
+`
 
 const StyledLi = styled.li`
   min-width: 300px;
