@@ -11,11 +11,6 @@ import static org.mockito.Mockito.*;
 
 class MemberServiceTest {
 
-    private final MemberUtils memberUtils = mock(MemberUtils.class);
-    private final MemberRepository memberRepository = mock(MemberRepository.class);
-
-    private final MemberService memberService = new MemberService(memberRepository, memberUtils);
-
     @Test
     void addMemberWithID() {
 
@@ -86,12 +81,16 @@ class MemberServiceTest {
     }
 
     @Test
-    void deleteMemberWithExistingId() {
+    void deleteMemberById() {
         // given
+        MemberUtils memberId = mock(MemberUtils.class);
+        MemberRepository memberRepository = mock(MemberRepository.class);
+        MemberService memberService = new MemberService(memberRepository, memberId);
+
         Member member = new Member("Florian", "Wurst", "Hosenstraße 4", "89784", "Mittelneufnach", "12345@gmail.com", "12345");
 
         // when
-        doNothing().when(memberRepository).deleteById(member.id());
+
         memberService.deleteMemberById((member.id()));
 
         // then
