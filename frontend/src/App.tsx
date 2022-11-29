@@ -27,7 +27,7 @@ export default function App() {
         </StyledMain>
 
         <StyledFooter>
-            <p>© 2022 Sidekick Horse</p>
+            <p>© 2022 Sidekick Horses</p>
         </StyledFooter>
     </>
 }
