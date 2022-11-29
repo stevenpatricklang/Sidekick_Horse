@@ -6,7 +6,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/members")
@@ -36,14 +35,9 @@ public class MemberController {
     }
 
     @DeleteMapping("{id}")
-    public Member deleteMemberById(@PathVariable String id) {
-        try {
-            return memberService.deleteMemberById(id);
-
-        } catch (NoSuchElementException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
-        }
+    public Member deleteMember(@PathVariable @Valid String id) {
+        return memberService.deleteMemberById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
     }
-
 
 }
