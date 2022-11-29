@@ -162,4 +162,38 @@ class MemberIntegrationTest {
                 .andExpect(status().isNotFound());
     }
 
+    @Test
+    @DirtiesContext
+    void deleteMemberByIdIsSuccessful() throws Exception {
+
+        String body = mvc.perform(MockMvcRequestBuilders.post("/api/members")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"firstName": "Stefan",
+                                "lastName": "Laffer",
+                                "street": "Kirchweg 4a",
+                                "zipcode": "86830",
+                                "city": "Hornbach",
+                                "email": "horsty@gmail.com",
+                                 "id" : "1511"}
+                                """))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+
+        Member member = objectMapper.readValue(body, Member.class);
+
+        mvc
+                .perform(MockMvcRequestBuilders.delete("/api/members/" + member.id()))
+                .andExpect(status().isOk())
+                .andExpect(content().json(body));
+    }
+
+    @Test
+    @DirtiesContext
+    void deleteMemberByIdNotFound() throws Exception {
+
+        mvc.perform(MockMvcRequestBuilders.delete("/api/members/954ujfew90ru30rfi033"))
+                .andExpect(status().isNotFound());
+    }
+
 }
