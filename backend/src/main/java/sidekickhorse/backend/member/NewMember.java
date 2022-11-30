@@ -18,7 +18,6 @@ public record NewMember(
         String city,
         @NotBlank @NotNull
         String beginMembership,
-
         Boolean membershipActive,
         @Email
         String email

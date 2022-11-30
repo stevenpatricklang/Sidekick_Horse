@@ -36,6 +36,8 @@ class MemberIntegrationTest {
                                  "street": "Kirchweg 6",
                                  "zipcode": "86856",
                                  "city": "Hiltenfingen",
+                                 "beginMembership": "09/22",
+                                 "membershipActive": true,
                                  "email": "horsty@gmail.com"}
                                 """))
                 .andExpect(status().isOk())
@@ -54,6 +56,8 @@ class MemberIntegrationTest {
                                  "street": "Kirchweg 6",
                                  "zipcode": "86856",
                                  "city": "Hiltenfingen",
+                                 "beginMembership": "09/22",
+                                 "membershipActive": true,
                                  "email": "horsty@gmail.com",
                                   "id" : "<id>"}]
                         """.replace("<id>", member.id())));
@@ -78,6 +82,8 @@ class MemberIntegrationTest {
                                 "street": "Kirchweg 4a",
                                 "zipcode": "86830",
                                 "city": "Hornbach",
+                                "beginMembership": "09/22",
+                                 "membershipActive": true,
                                 "email": "horsty@gmail.com",
                                  "id" : "<id>"}
                                 """))
@@ -95,6 +101,8 @@ class MemberIntegrationTest {
                                 "street": "Kirchweg 4a",
                                 "zipcode": "86830",
                                 "city": "Hornbach",
+                                "beginMembership": "09/22",
+                                 "membershipActive": true,
                                 "email": "horsty@gmail.com",
                                  "id" : "<id>"}
                                 """.replace("<id>", member.id()))))
@@ -106,6 +114,8 @@ class MemberIntegrationTest {
                                 "street": "Kirchweg 4a",
                                 "zipcode": "86830",
                                 "city": "Hornbach",
+                                "beginMembership": "09/22",
+                                 "membershipActive": true,
                                 "email": "horsty@gmail.com",
                                  "id" : "<id>"}
                         """.replace("<id>", member.id())));
@@ -122,6 +132,8 @@ class MemberIntegrationTest {
                                 "street": "Kirchweg 4a",
                                 "zipcode": "86830",
                                 "city": "Hornbach",
+                                "beginMembership": "09/22",
+                                 "membershipActive": true,
                                 "email": "horsty@gmail.com",
                                  "id" : "<id>"}
                                     """))
@@ -139,6 +151,8 @@ class MemberIntegrationTest {
                                 "street": "Kirchweg 4a",
                                 "zipcode": "86830",
                                 "city": "Hornbach",
+                                "beginMembership": "09/22",
+                                 "membershipActive": true,
                                 "email": "horsty@gmail.com",
                                  "id" : "<id>"}
                                     """))
@@ -156,6 +170,8 @@ class MemberIntegrationTest {
                                 "street": "Kirchweg 4a",
                                 "zipcode": "86830",
                                 "city": "Hornbach",
+                                "beginMembership": "09/22",
+                                 "membershipActive": true,
                                 "email": "horsty@gmail.com",
                                  "id" : "1511"}
                                     """))
@@ -174,6 +190,8 @@ class MemberIntegrationTest {
                                 "street": "Kirchweg 4a",
                                 "zipcode": "86830",
                                 "city": "Hornbach",
+                                "beginMembership": "09/22",
+                                 "membershipActive": true,
                                 "email": "horsty@gmail.com",
                                  "id" : "1511"}
                                 """))
