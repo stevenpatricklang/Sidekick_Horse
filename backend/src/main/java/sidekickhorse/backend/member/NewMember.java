@@ -16,10 +16,14 @@ public record NewMember(
         String zipcode,
         @NotBlank @NotNull
         String city,
+        @NotBlank @NotNull
+        String beginMembership,
+
+        Boolean membershipActive,
         @Email
         String email
 ) {
     public Member withId(String id) {
-        return new Member(this.firstName(), this.lastName(), this.street(), this.zipcode(), this.city(), this.email(), id);
+        return new Member(this.firstName(), this.lastName(), this.street(), this.zipcode(), this.city(), this.beginMembership(), this.membershipActive(), this.email(), id);
     }
 }

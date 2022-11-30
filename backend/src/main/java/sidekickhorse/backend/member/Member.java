@@ -1,7 +1,5 @@
 package sidekickhorse.backend.member;
 
-import sidekickhorse.backend.membership.Membership;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
@@ -19,18 +17,13 @@ public record Member(
         String city,
         @NotBlank
         String beginMembership,
+
+        Boolean membershipActive,
         @Email
         String email,
         String id
 
 
-) implements Membership {
-    public boolean startMembership() {
-        return true;
-    }
-
-    public boolean endMembership() {
-        return false;
-    }
+) {
 }
 
