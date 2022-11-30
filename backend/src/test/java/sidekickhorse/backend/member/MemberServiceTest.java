@@ -20,7 +20,7 @@ class MemberServiceTest {
         MemberUtils memberUtils = mock(MemberUtils.class);
         MemberService memberService = new MemberService(memberRepository, memberUtils);
 
-        NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen", "horsty@gmail.com");
+        NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen", "09/22", true, "horsty@gmail.com");
         Member testMember = newMember.withId("2");
 
         when(memberRepository.save(testMember)).thenReturn(testMember);
@@ -44,7 +44,7 @@ class MemberServiceTest {
         MemberRepository memberRepository = mock(MemberRepository.class);
         List<Member> members = List.of(
                 new Member("Steven", "Lang", "Kirchweg 6", "86856",
-                        "Hiltenfingen", "horsty@gmail.com", "1"));
+                        "Hiltenfingen", "09/22", true, "horsty@gmail.com", "1"));
 
         //WHEN
 
@@ -65,9 +65,9 @@ class MemberServiceTest {
         MemberService memberService = new MemberService(memberRepository, memberId);
 
         Member member = new Member("Steven", "Lang", "Kirchweg 6", "86856",
-                "Hiltenfingen", "horsty@gmail.com", "1");
-        Member updatedMember = new Member("Horst", "Lang", "Kirchweg 6", "86856",
-                "Hiltenfingen", "horsty@gmail.com", "1");
+                "Hiltenfingen", "09/22", true, "horsty@gmail.com", "1");
+        Member updatedMember = new Member("Stefan", "Lang", "Kirchweg 6", "86856",
+                "Hiltenfingen", "09/22", true, "horsty@gmail.com", "1");
 
         //WHEN
 
@@ -87,7 +87,8 @@ class MemberServiceTest {
         MemberRepository memberRepository = mock(MemberRepository.class);
         MemberService memberService = new MemberService(memberRepository, memberId);
 
-        Member member = new Member("Florian", "Wurst", "Hosenstraße 4", "89784", "Mittelneufnach", "12345@gmail.com", "12345");
+        Member member = new Member("Steven", "Lang", "Kirchweg 6", "86856",
+                "Hiltenfingen", "09/22", true, "horsty@gmail.com", "1");
 
         // when
 
