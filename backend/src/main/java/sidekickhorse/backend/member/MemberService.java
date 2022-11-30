@@ -19,7 +19,7 @@ public class MemberService {
 
     public Member addMemberData(NewMember newMember) {
         String uuid = this.memberUtils.generateUUID();
-        Member member = new Member(newMember.firstName(), newMember.lastName(), newMember.street(), newMember.zipcode(), newMember.city(), newMember.email(), uuid);
+        Member member = new Member(newMember.firstName(), newMember.lastName(), newMember.street(), newMember.zipcode(), newMember.city(), newMember.beginMembership(), newMember.membershipActive(), newMember.email(), uuid);
         return this.memberRepository.save(member);
     }
 
@@ -29,7 +29,7 @@ public class MemberService {
 
     public Member updateMemberById(Member member) {
         memberRepository.findById(member.id());
-        Member updatedMember = new Member(member.firstName(), member.lastName(), member.street(), member.zipcode(), member.city(), member.email(), member.id());
+        Member updatedMember = new Member(member.firstName(), member.lastName(), member.street(), member.zipcode(), member.city(), member.beginMembership(), member.membershipActive(), member.email(), member.id());
         memberRepository.save(updatedMember);
         return updatedMember;
     }
