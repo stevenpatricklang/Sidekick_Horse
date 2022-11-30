@@ -15,6 +15,8 @@ export default function AddMemberForm() {
             street,
             zipcode,
             city,
+            beginMembership,
+            membershipActive,
             email,
         })
             .then((response) => response.status)
@@ -40,6 +42,8 @@ export default function AddMemberForm() {
     const [street, setStreet] = useState("");
     const [zipcode, setZipcode] = useState("");
     const [city, setCity] = useState("");
+    const [beginMembership, setBeginMembership] = useState("");
+    const [membershipActive, setMembershipActive] = useState(true);
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
@@ -62,6 +66,8 @@ export default function AddMemberForm() {
         setStreet("");
         setZipcode("");
         setCity("");
+        setBeginMembership("");
+        setMembershipActive(true);
     }
 
     return <>
@@ -102,6 +108,21 @@ export default function AddMemberForm() {
                                  value={city}
                                  onChange={(e) => setCity(e.target.value)}
                                  placeholder="Schwabmünchen" required/>
+
+                    <StyledLabel htmlFor={"beginMembership"}>Begin Membership:</StyledLabel>
+                    <StyledInput type='text'
+                                 id="beginMembership"
+                                 value={beginMembership}
+                                 onChange={(e) => setBeginMembership(e.target.value)}
+                                 placeholder="Month/Year" required/>
+
+                    <StyledLabel htmlFor={"membershipActive"}>Membership Active:</StyledLabel>
+                    <input
+                        type="checkbox"
+                        id="membershipActive"
+                        name="membershipActive"
+                        checked={membershipActive}
+                    />
 
                     <StyledLabel htmlFor={"email"}>E-Mail:</StyledLabel>
                     <StyledInput type='text'
