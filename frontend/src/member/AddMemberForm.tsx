@@ -6,17 +6,24 @@ import {Icon} from '@iconify/react';
 
 export default function AddMemberForm() {
 
-    const [messageStatus, setMessageStatus] = useState("")
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
     const [street, setStreet] = useState("");
     const [zipcode, setZipcode] = useState("");
     const [city, setCity] = useState("");
+    const [age, setAge] = useState("");
+    const [email, setEmail] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
     const [beginMembership, setBeginMembership] = useState("");
+    const [ridingExperience, setRidingExperience] = useState("");
     const [membershipActive, setMembershipActive] = useState(false);
+    const [accountHolder, setAccountHolder] = useState("");
+    const [iban, setIban] = useState("");
+    const [bankName, setBankName] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const [messageStatus, setMessageStatus] = useState("")
 
     const baseUrl = '/api/members/';
 
@@ -27,9 +34,15 @@ export default function AddMemberForm() {
             street,
             zipcode,
             city,
-            beginMembership,
-            membershipActive,
+            age,
             email,
+            phoneNumber,
+            beginMembership,
+            ridingExperience,
+            membershipActive,
+            accountHolder,
+            iban,
+            bankName,
         })
             .then((response) => response.status)
             .catch((error) => {
@@ -62,12 +75,18 @@ export default function AddMemberForm() {
         postForm();
         setFirstName("");
         setLastName("");
-        setEmail("");
         setStreet("");
         setZipcode("");
         setCity("");
+        setAge("");
+        setEmail("");
+        setPhoneNumber("");
         setBeginMembership("");
+        setRidingExperience("");
         setMembershipActive(false);
+        setAccountHolder("");
+        setIban("");
+        setBankName("");
     }
 
     const checkHandler = () => {
@@ -113,27 +132,70 @@ export default function AddMemberForm() {
                                  onChange={(e) => setCity(e.target.value)}
                                  placeholder="Schwabmünchen" required/>
 
-                    <StyledLabel htmlFor={"beginMembership"}>Begin Membership:</StyledLabel>
-                    <StyledInput type='text'
-                                 id="beginMembership"
-                                 value={beginMembership}
-                                 onChange={(e) => setBeginMembership(e.target.value)}
-                                 placeholder="Month/Year" required/>
+                    <StyledLabel htmlFor={"age"}>Age:</StyledLabel>
+                    <StyledInput type='number'
+                                 id="age"
+                                 value={age}
+                                 onChange={(e) => setAge(e.target.value)}
+                                 placeholder="18" required/>
 
-                    <StyledLabel htmlFor={"membershipActive"}>Membership Active:</StyledLabel>
-                    <input type="checkbox"
-                           id="membershipActive"
-                           name="membershipActive"
-                           checked={membershipActive}
-                           onChange={checkHandler}
-                    />
-
-                    <StyledLabel htmlFor={"email"}>E-Mail:</StyledLabel>
-                    <StyledInput type='text'
+                    <StyledLabel htmlFor={"email"}>Email:</StyledLabel>
+                    <StyledInput type='email'
                                  id="email"
                                  value={email}
                                  onChange={(e) => setEmail(e.target.value)}
-                                 placeholder="abcdefg@gmail.com" required/>
+                                 placeholder="abcdefg@gmx.de" required/>
+
+                    <StyledLabel htmlFor={"phoneNumber"}>Phone number:</StyledLabel>
+                    <StyledInput type='text'
+                                 id="phoneNumber"
+                                 value={phoneNumber}
+                                 onChange={(e) => setPhoneNumber(e.target.value)}
+                                 placeholder="0176 12345678" required/>
+
+
+                    <StyledLabel htmlFor={"beginMembership"}>Begin membership:</StyledLabel>
+                    <StyledInput type='date'
+                                 id="beginMembership"
+                                 value={beginMembership}
+                                 onChange={(e) => setBeginMembership(e.target.value)}
+                                 placeholder="12/22" required/>
+
+                    <StyledLabel htmlFor={"ridingExperience"}>Riding experience:</StyledLabel>
+                    <StyledInput type='text'
+                                 id="ridingExperience"
+                                 value={ridingExperience}
+                                 onChange={(e) => setRidingExperience(e.target.value)}
+                                 placeholder="Beginner" required/>
+
+                    <StyledLabel htmlFor={"membershipActive"}>Membership active:</StyledLabel>
+                    <StyledInput type='checkbox'
+                                 id="membershipActive"
+                                 checked={membershipActive}
+                                 onChange={checkHandler}
+                                 required/>
+
+                    <StyledLabel htmlFor={"accountHolder"}>Account holder:</StyledLabel>
+                    <StyledInput type='text'
+                                 id="accountHolder"
+                                 value={accountHolder}
+                                 onChange={(e) => setAccountHolder(e.target.value)}
+                                 placeholder="Stefan Maier" required/>
+
+                    <StyledLabel htmlFor={"iban"}>IBAN:</StyledLabel>
+                    <StyledInput type='text'
+                                 id="iban"
+                                 value={iban}
+                                 onChange={(e) => setIban(e.target.value)}
+                                 placeholder="DE12345678901234567890" required/>
+
+                    <StyledLabel htmlFor={"bankName"}>Bank name:</StyledLabel>
+                    <StyledInput type='text'
+                                 id="bankName"
+                                 value={bankName}
+                                 onChange={(e) => setBankName(e.target.value)}
+                                 placeholder="Sparkasse" required/>
+
 
                     {error && <StyledMessage>{error}</StyledMessage>}
                     {messageStatus && <StyledMessage>{messageStatus}</StyledMessage>}
