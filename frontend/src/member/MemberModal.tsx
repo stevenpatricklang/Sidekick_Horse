@@ -16,6 +16,8 @@ export default function MemberModal(props: ModalProps) {
     const [newStreet, setStreet] = useState(props.member.street)
     const [newZipcode, setZipcode] = useState(props.member.zipcode)
     const [newCity, setCity] = useState(props.member.city)
+    const [newBeginMembership, setBeginMembership] = useState(props.member.beginMembership)
+    const [newMembershipActive, setMembershipActive] = useState(props.member.membershipActive)
     const [newEmail, setEmail] = useState(props.member.email)
 
     function updateMember(event: FormEvent<HTMLFormElement>) {
@@ -27,6 +29,8 @@ export default function MemberModal(props: ModalProps) {
             street: newStreet,
             zipcode: newZipcode,
             city: newCity,
+            beginMembership: newBeginMembership,
+            membershipActive: newMembershipActive,
             email: newEmail
         })
             .then(response => {
@@ -37,6 +41,11 @@ export default function MemberModal(props: ModalProps) {
             .catch(error => console.log(error))
             .then(props.closeModal)
     }
+
+    const checkHandler = () => {
+        setMembershipActive(!newMembershipActive);
+    }
+
 
     return (
         <div>
@@ -55,6 +64,15 @@ export default function MemberModal(props: ModalProps) {
 
                 <StyledLabel>City</StyledLabel>
                 <StyledInput type="text" value={newCity} onChange={event => setCity((event.target.value))}/>
+
+                <StyledLabel>Begin Membership</StyledLabel>
+                <StyledInput type="text" value={newBeginMembership}
+                             onChange={event => setBeginMembership((event.target.value))}/>
+
+                <StyledLabel>Membership Active</StyledLabel>
+                <input type="checkbox"
+                       checked={newMembershipActive}
+                       onChange={checkHandler}/>
 
                 <StyledLabel>Email</StyledLabel>
                 <StyledInput type="text" value={newEmail} onChange={event => setEmail((event.target.value))}/>

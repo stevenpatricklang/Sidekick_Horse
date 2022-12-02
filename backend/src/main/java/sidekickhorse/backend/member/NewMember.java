@@ -1,9 +1,12 @@
 package sidekickhorse.backend.member;
 
+import lombok.With;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@With
 public record NewMember(
 
         @NotBlank @NotNull
@@ -17,12 +20,33 @@ public record NewMember(
         @NotBlank @NotNull
         String city,
         @NotBlank @NotNull
-        String beginMembership,
-        Boolean membershipActive,
+        String age,
         @Email
-        String email
+        String email,
+        @NotBlank @NotNull
+        String phoneNumber,
+        @NotBlank @NotNull
+        String beginMembership,
+
+        RidingExperience ridingExperience,
+        Boolean membershipActive,
+
+        @NotBlank @NotNull
+        String accountHolder,
+
+        @NotBlank @NotNull
+        String iban,
+
+        @NotBlank @NotNull
+        String bankName
+
 ) {
     public Member withId(String id) {
-        return new Member(this.firstName(), this.lastName(), this.street(), this.zipcode(), this.city(), this.beginMembership(), this.membershipActive(), this.email(), id);
+        return new Member(id, this.firstName(), this.lastName(), this.street(), this.zipcode(), this.city(), this.age(), this.email(), this.phoneNumber(),
+                this.beginMembership(), thisRidingExperience(), this.membershipActive(), this.accountHolder(), this.iban(), this.bankName());
+    }
+
+    private RidingExperience thisRidingExperience() {
+        return null;
     }
 }

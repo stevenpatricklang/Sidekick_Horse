@@ -36,9 +36,15 @@ class MemberIntegrationTest {
                                  "street": "Kirchweg 6",
                                  "zipcode": "86856",
                                  "city": "Hiltenfingen",
+                                 "age": "25",
+                                 "email": "horsty@gmail.com",
+                                 "phoneNumber": "017612345678",
                                  "beginMembership": "09/22",
+                                 "ridingExperience": "BEGINNER ",
                                  "membershipActive": true,
-                                 "email": "horsty@gmail.com"}
+                                 "accountHolder": "Steven Lang",
+                                 "iban": "DE12345678901234567890",
+                                 "bankName": "Sparkasse Oberhausen"}
                                 """))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
@@ -46,20 +52,26 @@ class MemberIntegrationTest {
         Member member = objectMapper.readValue(body, Member.class);
 
         // WHEN
-        mvc.perform(MockMvcRequestBuilders.get("/api/members/"))
+        mvc.perform(MockMvcRequestBuilders.get("/api/members"))
 
                 // THEN
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
-                                 [{"firstName": "Steven",
+                                 [{"id" : "<id>",
+                                 "firstName": "Steven",
                                  "lastName": "Lang",
                                  "street": "Kirchweg 6",
                                  "zipcode": "86856",
                                  "city": "Hiltenfingen",
-                                 "beginMembership": "09/22",
-                                 "membershipActive": true,
+                                 "age": "25",
                                  "email": "horsty@gmail.com",
-                                  "id" : "<id>"}]
+                                 "phoneNumber": "017612345678",
+                                 "beginMembership": "09/22",
+                                 "ridingExperience": "BEGINNER",
+                                 "membershipActive": true,
+                                 "accountHolder": "Steven Lang",
+                                 "iban": "DE12345678901234567890",
+                                 "bankName": "Sparkasse Oberhausen"}]
                         """.replace("<id>", member.id())));
     }
 
@@ -77,15 +89,21 @@ class MemberIntegrationTest {
         String body = mvc.perform(MockMvcRequestBuilders.post("/api/members")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {"firstName": "Test",
-                                "lastName": "Lang",
-                                "street": "Kirchweg 4a",
-                                "zipcode": "86830",
-                                "city": "Hornbach",
-                                "beginMembership": "09/22",
+                                {"id" : "<id>",
+                                 "firstName": "Steven",
+                                 "lastName": "Lang",
+                                 "street": "Kirchweg 6",
+                                 "zipcode": "86856",
+                                 "city": "Hiltenfingen",
+                                 "age": "25",
+                                 "email": "horsty@gmail.com",
+                                 "phoneNumber": "017612345678",
+                                 "beginMembership": "09/22",
+                                 "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
-                                "email": "horsty@gmail.com",
-                                 "id" : "<id>"}
+                                 "accountHolder": "Steven Lang",
+                                 "iban": "DE12345678901234567890",
+                                 "bankName": "Sparkasse Oberhausen"}
                                 """))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
@@ -96,28 +114,40 @@ class MemberIntegrationTest {
         mvc.perform(MockMvcRequestBuilders.put("/api/members/" + member.id())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(("""
-                                 {"firstName": "Herr",
-                                "lastName": "Pfarrer",
-                                "street": "Kirchweg 4a",
-                                "zipcode": "86830",
-                                "city": "Hornbach",
-                                "beginMembership": "09/22",
+                                 {"id" : "<id>",
+                                 "firstName": "Philipp",
+                                 "lastName": "Lang",
+                                 "street": "Kirchweg 6",
+                                 "zipcode": "86856",
+                                 "city": "Hiltenfingen",
+                                 "age": "25",
+                                 "email": "horsty@gmail.com",
+                                 "phoneNumber": "017612345678",
+                                 "beginMembership": "09/22",
+                                 "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
-                                "email": "horsty@gmail.com",
-                                 "id" : "<id>"}
+                                 "accountHolder": "Steven Lang",
+                                 "iban": "DE12345678901234567890",
+                                 "bankName": "Sparkasse Oberhausen"}
                                 """.replace("<id>", member.id()))))
                 // THEN
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
-                                          {"firstName": "Herr",
-                                "lastName": "Pfarrer",
-                                "street": "Kirchweg 4a",
-                                "zipcode": "86830",
-                                "city": "Hornbach",
-                                "beginMembership": "09/22",
+                                 {"id" : "<id>",
+                                 "firstName": "Philipp",
+                                 "lastName": "Lang",
+                                 "street": "Kirchweg 6",
+                                 "zipcode": "86856",
+                                 "city": "Hiltenfingen",
+                                 "age": "25",
+                                 "email": "horsty@gmail.com",
+                                 "phoneNumber": "017612345678",
+                                 "beginMembership": "09/22",
+                                 "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
-                                "email": "horsty@gmail.com",
-                                 "id" : "<id>"}
+                                 "accountHolder": "Steven Lang",
+                                 "iban": "DE12345678901234567890",
+                                 "bankName": "Sparkasse Oberhausen"}
                         """.replace("<id>", member.id())));
     }
 
@@ -127,15 +157,21 @@ class MemberIntegrationTest {
         mvc.perform(MockMvcRequestBuilders.put("/api/members/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {"firstName": "Test",
-                                "lastName": "Lang",
-                                "street": "Kirchweg 4a",
-                                "zipcode": "86830",
-                                "city": "Hornbach",
-                                "beginMembership": "09/22",
+                                {"id" : "<id>",
+                                 "firstName": "Steven",
+                                 "lastName": "Lang",
+                                 "street": "Kirchweg 6",
+                                 "zipcode": "86856",
+                                 "city": "Hiltenfingen",
+                                 "age": "25",
+                                 "email": "horsty@gmail.com",
+                                 "phoneNumber": "017612345678",
+                                 "beginMembership": "09/22",
+                                 "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
-                                "email": "horsty@gmail.com",
-                                 "id" : "<id>"}
+                                 "accountHolder": "Steven Lang",
+                                 "iban": "DE12345678901234567890",
+                                 "bankName": "Sparkasse Oberhausen"}
                                     """))
                 .andExpect(status().isNotFound());
     }
@@ -146,15 +182,21 @@ class MemberIntegrationTest {
         mvc.perform(MockMvcRequestBuilders.put("/api/members/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {"firstName": "Test",
-                                "lastName": "Lang",
-                                "street": "Kirchweg 4a",
-                                "zipcode": "86830",
-                                "city": "Hornbach",
-                                "beginMembership": "09/22",
+                                {"id" : "<id>",
+                                 "firstName": "Steven",
+                                 "lastName": "Lang",
+                                 "street": "Kirchweg 6",
+                                 "zipcode": "86856",
+                                 "city": "Hiltenfingen",
+                                 "age": "25",
+                                 "email": "horsty@gmail.com",
+                                 "phoneNumber": "017612345678",
+                                 "beginMembership": "09/22",
+                                 "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
-                                "email": "horsty@gmail.com",
-                                 "id" : "<id>"}
+                                 "accountHolder": "Steven Lang",
+                                 "iban": "DE12345678901234567890",
+                                 "bankName": "Sparkasse Oberhausen"}
                                     """))
                 .andExpect(status().isMethodNotAllowed());
     }
@@ -165,15 +207,21 @@ class MemberIntegrationTest {
         mvc.perform(MockMvcRequestBuilders.put("/api/members/1510")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {"firstName": "Test",
-                                "lastName": "Lang",
-                                "street": "Kirchweg 4a",
-                                "zipcode": "86830",
-                                "city": "Hornbach",
-                                "beginMembership": "09/22",
+                                {"id" : "1511",
+                                 "firstName": "Steven",
+                                 "lastName": "Lang",
+                                 "street": "Kirchweg 6",
+                                 "zipcode": "86856",
+                                 "city": "Hiltenfingen",
+                                 "age": "25",
+                                 "email": "horsty@gmail.com",
+                                 "phoneNumber": "017612345678",
+                                 "beginMembership": "09/22",
+                                 "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
-                                "email": "horsty@gmail.com",
-                                 "id" : "1511"}
+                                 "accountHolder": "Steven Lang",
+                                 "iban": "DE12345678901234567890",
+                                 "bankName": "Sparkasse Oberhausen"}
                                     """))
                 .andExpect(status().isNotFound());
     }
@@ -185,15 +233,21 @@ class MemberIntegrationTest {
         String body = mvc.perform(MockMvcRequestBuilders.post("/api/members")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {"firstName": "Stefan",
-                                "lastName": "Laffer",
-                                "street": "Kirchweg 4a",
-                                "zipcode": "86830",
-                                "city": "Hornbach",
-                                "beginMembership": "09/22",
+                                {"id" : "1511",
+                                 "firstName": "Steven",
+                                 "lastName": "Lang",
+                                 "street": "Kirchweg 6",
+                                 "zipcode": "86856",
+                                 "city": "Hiltenfingen",
+                                 "age": "25",
+                                 "email": "horsty@gmail.com",
+                                 "phoneNumber": "017612345678",
+                                 "beginMembership": "09/22",
+                                 "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
-                                "email": "horsty@gmail.com",
-                                 "id" : "1511"}
+                                 "accountHolder": "Steven Lang",
+                                 "iban": "DE12345678901234567890",
+                                 "bankName": "Sparkasse Oberhausen"}
                                 """))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();

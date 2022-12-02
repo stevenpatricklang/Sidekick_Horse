@@ -19,7 +19,9 @@ public class MemberService {
 
     public Member addMemberData(NewMember newMember) {
         String uuid = this.memberUtils.generateUUID();
-        Member member = new Member(newMember.firstName(), newMember.lastName(), newMember.street(), newMember.zipcode(), newMember.city(), newMember.beginMembership(), newMember.membershipActive(), newMember.email(), uuid);
+        Member member = new Member(uuid, newMember.firstName(), newMember.lastName(), newMember.street(), newMember.zipcode(), newMember.city(), newMember.age(),
+                newMember.email(), newMember.phoneNumber(), newMember.beginMembership(), newMember.ridingExperience(), newMember.membershipActive(), newMember.accountHolder(),
+                newMember.iban(), newMember.bankName());
         return this.memberRepository.save(member);
     }
 
@@ -29,7 +31,8 @@ public class MemberService {
 
     public Member updateMemberById(Member member) {
         memberRepository.findById(member.id());
-        Member updatedMember = new Member(member.firstName(), member.lastName(), member.street(), member.zipcode(), member.city(), member.beginMembership(), member.membershipActive(), member.email(), member.id());
+        Member updatedMember = new Member(member.id(), member.firstName(), member.lastName(), member.street(), member.zipcode(), member.city(), member.age(), member.email(),
+                member.phoneNumber(), member.beginMembership(), member.ridingExperience(), member.membershipActive(), member.accountHolder(), member.iban(), member.bankName());
         memberRepository.save(updatedMember);
         return updatedMember;
     }

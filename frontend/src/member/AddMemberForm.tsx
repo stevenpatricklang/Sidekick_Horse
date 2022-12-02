@@ -6,6 +6,18 @@ import {Icon} from '@iconify/react';
 
 export default function AddMemberForm() {
 
+    const [messageStatus, setMessageStatus] = useState("")
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [street, setStreet] = useState("");
+    const [zipcode, setZipcode] = useState("");
+    const [city, setCity] = useState("");
+    const [beginMembership, setBeginMembership] = useState("");
+    const [membershipActive, setMembershipActive] = useState(false);
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
     const baseUrl = '/api/members/';
 
     const postForm = () => {
@@ -35,18 +47,6 @@ export default function AddMemberForm() {
         navigate("/members/list")
     }
 
-    const [messageStatus, setMessageStatus] = useState("")
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [street, setStreet] = useState("");
-    const [zipcode, setZipcode] = useState("");
-    const [city, setCity] = useState("");
-    const [beginMembership, setBeginMembership] = useState("");
-    const [membershipActive, setMembershipActive] = useState(true);
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
-
     const isValidEmail = (email: string) => {
         return /.@./.test(email);
     }
@@ -67,7 +67,11 @@ export default function AddMemberForm() {
         setZipcode("");
         setCity("");
         setBeginMembership("");
-        setMembershipActive(true);
+        setMembershipActive(false);
+    }
+
+    const checkHandler = () => {
+        setMembershipActive(!membershipActive);
     }
 
     return <>
@@ -117,11 +121,11 @@ export default function AddMemberForm() {
                                  placeholder="Month/Year" required/>
 
                     <StyledLabel htmlFor={"membershipActive"}>Membership Active:</StyledLabel>
-                    <input
-                        type="checkbox"
-                        id="membershipActive"
-                        name="membershipActive"
-                        checked={membershipActive}
+                    <input type="checkbox"
+                           id="membershipActive"
+                           name="membershipActive"
+                           checked={membershipActive}
+                           onChange={checkHandler}
                     />
 
                     <StyledLabel htmlFor={"email"}>E-Mail:</StyledLabel>
