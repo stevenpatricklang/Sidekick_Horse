@@ -40,7 +40,7 @@ class MemberIntegrationTest {
                                  "email": "horsty@gmail.com",
                                  "phoneNumber": "017612345678",
                                  "beginMembership": "09/22",
-                                 "ridingExperience": "BEGINNER ",
+                                 "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
                                  "iban": "DE12345678901234567890",

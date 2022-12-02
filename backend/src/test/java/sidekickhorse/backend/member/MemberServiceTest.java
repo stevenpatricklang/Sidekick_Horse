@@ -14,17 +14,18 @@ class MemberServiceTest {
     @Test
     void addMemberWithID() {
 
+
         //GIVEN
 
         MemberRepository memberRepository = mock(MemberRepository.class);
         MemberUtils memberUtils = mock(MemberUtils.class);
         MemberService memberService = new MemberService(memberRepository, memberUtils);
 
-        NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen", "25", "horsty@gmail.com", "017612345678", "09/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE12345678901234567890", "Sparkasse Oberhausem");
-        Member testMember = newMember.withId("1234");
+        NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg", "86856", "Walkertshofen", "29", "abcdefghi@gmx.de", "0176 12345678", "12/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE1234567890123456789", "Soparkasse Neuhausen");
+        Member testMember = newMember.withId("2");
 
-        when(memberUtils.generateUUID()).thenReturn("1234");
         when(memberRepository.save(testMember)).thenReturn(testMember);
+        when(memberUtils.generateUUID()).thenReturn("2");
 
         //WHEN
 
@@ -33,7 +34,7 @@ class MemberServiceTest {
         //THEN
 
         verify(memberUtils).generateUUID();
-        assertEquals(testMember, testMember);
+        assertEquals(testMember, actual);
     }
 
     @Test
