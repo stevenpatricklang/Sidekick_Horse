@@ -20,11 +20,11 @@ class MemberServiceTest {
         MemberUtils memberUtils = mock(MemberUtils.class);
         MemberService memberService = new MemberService(memberRepository, memberUtils);
 
-        NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen", "09/22", true, "horsty@gmail.com");
-        Member testMember = newMember.withId("2");
+        NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen", "25", "horsty@gmail.com", "017612345678", "09/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE12345678901234567890", "Sparkasse Oberhausem");
+        Member testMember = newMember.withId("1234");
 
+        when(memberUtils.generateUUID()).thenReturn("1234");
         when(memberRepository.save(testMember)).thenReturn(testMember);
-        when(memberUtils.generateUUID()).thenReturn("2");
 
         //WHEN
 
@@ -43,8 +43,8 @@ class MemberServiceTest {
 
         MemberRepository memberRepository = mock(MemberRepository.class);
         List<Member> members = List.of(
-                new Member("Steven", "Lang", "Kirchweg 6", "86856",
-                        "Hiltenfingen", "09/22", true, "horsty@gmail.com", "1"));
+                new Member("2", "Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen",
+                        "25", "horsty@gmail.com", "0049", "11/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE215555666", "Deutsche Bank"));
 
         //WHEN
 
@@ -64,10 +64,10 @@ class MemberServiceTest {
         MemberRepository memberRepository = mock(MemberRepository.class);
         MemberService memberService = new MemberService(memberRepository, memberId);
 
-        Member member = new Member("Steven", "Lang", "Kirchweg 6", "86856",
-                "Hiltenfingen", "09/22", true, "horsty@gmail.com", "1");
-        Member updatedMember = new Member("Stefan", "Lang", "Kirchweg 6", "86856",
-                "Hiltenfingen", "09/22", true, "horsty@gmail.com", "1");
+        Member member = new Member("2", "Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen",
+                "25", "horsty@gmail.com", "0049", "11/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE215555666", "Deutsche Bank");
+        Member updatedMember = new Member("2", "Philipp", "Lang", "Kirchweg 6", "86856", "Hiltenfingen",
+                "25", "horsty@gmail.com", "0049", "11/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE215555666", "Deutsche Bank");
 
         //WHEN
 
@@ -87,8 +87,8 @@ class MemberServiceTest {
         MemberRepository memberRepository = mock(MemberRepository.class);
         MemberService memberService = new MemberService(memberRepository, memberId);
 
-        Member member = new Member("Steven", "Lang", "Kirchweg 6", "86856",
-                "Hiltenfingen", "09/22", true, "horsty@gmail.com", "1");
+        Member member = new Member("2", "Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen",
+                "25", "horsty@gmail.com", "0049", "11/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE215555666", "Deutsche Bank");
 
         // when
 
