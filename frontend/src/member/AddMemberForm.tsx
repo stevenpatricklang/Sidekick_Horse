@@ -133,7 +133,7 @@ export default function AddMemberForm() {
                                  placeholder="Schwabmünchen" required/>
 
                     <StyledLabel htmlFor={"age"}>Age:</StyledLabel>
-                    <StyledInput type='number'
+                    <StyledInput type='text'
                                  id="age"
                                  value={age}
                                  onChange={(e) => setAge(e.target.value)}

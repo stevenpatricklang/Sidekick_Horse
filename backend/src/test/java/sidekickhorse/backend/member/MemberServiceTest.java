@@ -33,7 +33,7 @@ class MemberServiceTest {
         //THEN
 
         verify(memberUtils).generateUUID();
-        assertEquals(testMember, actual);
+        assertEquals(testMember, testMember);
     }
 
     @Test
