@@ -89,21 +89,16 @@ export default function AddMemberForm() {
         setBankName("");
     }
 
-    const [open, setOpen] = useState(false);
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
 
     const handleBeginner = () => {
-        setBeginMembership("Beginner");
+        setRidingExperience("Beginner");
     };
 
     const handleIntermediate = () => {
-        setBeginMembership("Intermediate");
+        setRidingExperience("Intermediate");
     };
     const handleAdvanced = () => {
-        setBeginMembership("Advanced");
+        setRidingExperience("Advanced");
     };
 
     const checkHandler = () => {
@@ -177,21 +172,10 @@ export default function AddMemberForm() {
                                  onChange={(e) => setBeginMembership(e.target.value)}
                                  placeholder="01.01.2022" required/>
 
-                    <p className='dropdown'/>
-                    <button onClick={handleOpen}> Riding Experience</button>
-                    {open ? (
-                        <ul className="ridingExperience">
-                            <li className="BEGINNER">
-                                <button onClick={handleBeginner}>BEGINNER</button>
-                            </li>
-                            <li className="INTERMEDIATE">
-                                <button onClick={handleIntermediate}>INTERMEDIATE</button>
-                            </li>
-                            <li className="ADVANCED">
-                                <button onClick={handleAdvanced}>ADVANCED</button>
-                            </li>
-                        </ul>
-                    ) : null}
+                    <StyledLabel htmlFor={"ridingExperience"}>Riding Experience:</StyledLabel>
+                    <button onClick={handleBeginner}>BEGINNER</button>
+                    <button onClick={handleIntermediate}>INTERMEDIATE</button>
+                    <button onClick={handleAdvanced}>ADVANCED</button>
 
                     <p></p>
 
