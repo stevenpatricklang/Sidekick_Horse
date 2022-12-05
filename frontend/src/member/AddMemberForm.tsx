@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 import {Icon} from '@iconify/react';
+import 'react-dropdown/style.css';
 
 export default function AddMemberForm() {
 
@@ -83,11 +84,27 @@ export default function AddMemberForm() {
         setPhoneNumber("");
         setBeginMembership("");
         setRidingExperience("");
-        setMembershipActive(false);
         setAccountHolder("");
         setIban("");
         setBankName("");
     }
+
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleBeginner = () => {
+        setBeginMembership("Beginner");
+    };
+
+    const handleIntermediate = () => {
+        setBeginMembership("Intermediate");
+    };
+    const handleAdvanced = () => {
+        setBeginMembership("Advanced");
+    };
 
     const checkHandler = () => {
         setMembershipActive(!membershipActive);
@@ -137,7 +154,7 @@ export default function AddMemberForm() {
                                  id="age"
                                  value={age}
                                  onChange={(e) => setAge(e.target.value)}
-                                 placeholder="18" required/>
+                                 placeholder="25" required/>
 
                     <StyledLabel htmlFor={"email"}>Email:</StyledLabel>
                     <StyledInput type='email'
@@ -153,29 +170,38 @@ export default function AddMemberForm() {
                                  onChange={(e) => setPhoneNumber(e.target.value)}
                                  placeholder="0176 12345678" required/>
 
-
                     <StyledLabel htmlFor={"beginMembership"}>Begin membership:</StyledLabel>
                     <StyledInput type='date'
                                  id="beginMembership"
                                  value={beginMembership}
                                  onChange={(e) => setBeginMembership(e.target.value)}
-                                 placeholder="12/22" required/>
+                                 placeholder="01.01.2022" required/>
 
-                    <StyledLabel htmlFor={"ridingExperience"}>Riding experience:</StyledLabel>
-                    <StyledInput type='text'
-                                 id="ridingExperience"
-                                 value={ridingExperience}
-                                 onChange={(e) => setRidingExperience(e.target.value)}
-                                 placeholder="Beginner" required/>
+                    <p className='dropdown'/>
+                    <button onClick={handleOpen}> Riding Experience</button>
+                    {open ? (
+                        <ul className="ridingExperience">
+                            <li className="BEGINNER">
+                                <button onClick={handleBeginner}>BEGINNER</button>
+                            </li>
+                            <li className="INTERMEDIATE">
+                                <button onClick={handleIntermediate}>INTERMEDIATE</button>
+                            </li>
+                            <li className="ADVANCED">
+                                <button onClick={handleAdvanced}>ADVANCED</button>
+                            </li>
+                        </ul>
+                    ) : null}
+
+                    <p></p>
 
                     <StyledLabel htmlFor={"membershipActive"}>Membership active:</StyledLabel>
                     <StyledInput type='checkbox'
                                  id="membershipActive"
                                  checked={membershipActive}
-                                 onChange={checkHandler}
-                                 required/>
+                                 onChange={checkHandler}/>
 
-                    <StyledLabel htmlFor={"accountHolder"}>Account holder:</StyledLabel>
+                    <StyledLabel htmlFor={"accountHolder"}>Bank Account Holder:</StyledLabel>
                     <StyledInput type='text'
                                  id="accountHolder"
                                  value={accountHolder}
@@ -189,7 +215,7 @@ export default function AddMemberForm() {
                                  onChange={(e) => setIban(e.target.value)}
                                  placeholder="DE12345678901234567890" required/>
 
-                    <StyledLabel htmlFor={"bankName"}>Bank name:</StyledLabel>
+                    <StyledLabel htmlFor={"bankName"}>Bank Name:</StyledLabel>
                     <StyledInput type='text'
                                  id="bankName"
                                  value={bankName}
@@ -208,7 +234,8 @@ export default function AddMemberForm() {
             </StyledDiv2>
         </StyledSection>
         <br/>
-    </>;
+    </>
+        ;
 }
 
 const StyledSection = styled.section`
@@ -284,3 +311,4 @@ const StyledForm = styled.form`
   align-self: center;
   align-items: center;
 `;
+
