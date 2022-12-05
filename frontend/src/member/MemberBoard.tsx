@@ -43,9 +43,34 @@ export default function MemberCard(props: MemberCardProps) {
                 <StyledCity>
                     {props.member.zipcode}&nbsp;{props.member.city}
                 </StyledCity>
+                <StyledAge>
+                    {props.member.age}
+                </StyledAge>
                 <StyledMail>
                     {props.member.email}
                 </StyledMail>
+                <StyledPhoneNumber>
+                    {props.member.phoneNumber}
+                </StyledPhoneNumber>
+                <StyledBeginMembership>
+                    {props.member.beginMembership}
+                </StyledBeginMembership>
+                <StyledRidingExperience>
+                    {props.member.ridingExperience}
+                </StyledRidingExperience>
+                <StyledMembershipActive>
+                    {props.member.membershipActive}
+                </StyledMembershipActive>
+                <StyledAccountHolder>
+                    {props.member.accountHolder}
+                </StyledAccountHolder>
+                <StyledIBAN>
+                    {props.member.iban}
+                </StyledIBAN>
+                <StyledBankName>
+                    {props.member.bankName}
+                </StyledBankName>
+
                 <StyledDiv>
                     <StyledButton onClick={handleEdit}>Update Member</StyledButton>
                     <StyledButton onClick={deleteMember}>Delete</StyledButton>
@@ -82,17 +107,12 @@ const StyledDiv = styled.div`
   justify-content: center;
   padding: 10px;
 `
-
 const StyledName = styled.p`
   max-width: 340px;
   word-wrap: break-word;
   margin-bottom: 5px;
   padding: 4px;
   font-size: 1.1rem;
-`
-const StyledMail = styled.p`
-  padding: 4px 0 0 4px;
-  font-size: 0.85rem;
 `
 const StyledStreet = styled.p`
   padding: 4px 0 0 4px;
@@ -101,6 +121,42 @@ const StyledStreet = styled.p`
 const StyledCity = styled.p`
   padding: 4px 0 0 4px;
   font-size: 0.85rem;
+`
+const StyledAge = styled.p`
+  padding: 4px 0 0 4px;
+  font-size: 0.85rem;
+`
+const StyledPhoneNumber = styled.p`
+  padding: 4px 0 0 4px;
+  font-size: 0.85rem;
+`
+const StyledMail = styled.p`
+  padding: 4px 0 0 4px;
+  font-size: 0.85rem;
+`
+const StyledBeginMembership = styled.p`
+    padding: 4px 0 0 4px;
+    font-size: 0.85rem;
+`
+const StyledRidingExperience = styled.p`
+    padding: 4px 0 0 4px;
+    font-size: 0.85rem;
+`
+const StyledMembershipActive = styled.p`
+    padding: 4px 0 0 4px;
+    font-size: 0.85rem;
+`
+const StyledAccountHolder = styled.p`
+    padding: 4px 0 0 4px;
+    font-size: 0.85rem;
+`
+const StyledIBAN = styled.p`
+    padding: 4px 0 0 4px;
+    font-size: 0.85rem;
+`
+const StyledBankName = styled.p`
+    padding: 4px 0 0 4px;
+    font-size: 0.85rem;
 `
 const StyledButton = styled.button`
   margin: 3px;
