@@ -16,9 +16,16 @@ export default function MemberModal(props: ModalProps) {
     const [newStreet, setStreet] = useState(props.member.street)
     const [newZipcode, setZipcode] = useState(props.member.zipcode)
     const [newCity, setCity] = useState(props.member.city)
-    const [newBeginMembership, setBeginMembership] = useState(props.member.beginMembership)
-    const [newMembershipActive, setMembershipActive] = useState(props.member.membershipActive)
+    const [newAge, setAge] = useState(props.member.age)
     const [newEmail, setEmail] = useState(props.member.email)
+    const [newPhoneNumber, setPhoneNumber] = useState(props.member.phoneNumber)
+    const [newBeginMembership, setBeginMembership] = useState(props.member.beginMembership)
+    const [newRidingExperience, setRidingExperience] = useState(props.member.ridingExperience)
+    const [newMembershipActive, setMembershipActive] = useState(props.member.membershipActive)
+    const [newAccountHolder, setAccountHolder] = useState(props.member.accountHolder)
+    const [newIBAN, setIBAN] = useState(props.member.iban)
+    const [newBankName, setBankName] = useState(props.member.bankName)
+
 
     function updateMember(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -29,9 +36,16 @@ export default function MemberModal(props: ModalProps) {
             street: newStreet,
             zipcode: newZipcode,
             city: newCity,
+            age: newAge,
+            email: newEmail,
+            phoneNumber: newPhoneNumber,
             beginMembership: newBeginMembership,
             membershipActive: newMembershipActive,
-            email: newEmail
+            ridingExperience: newRidingExperience,
+            accountHolder: newAccountHolder,
+            iban: newIBAN,
+            bankName: newBankName
+
         })
             .then(response => {
                 props.fetchAllMembers()
@@ -65,6 +79,16 @@ export default function MemberModal(props: ModalProps) {
                 <StyledLabel>City</StyledLabel>
                 <StyledInput type="text" value={newCity} onChange={event => setCity((event.target.value))}/>
 
+                <StyledLabel>Age</StyledLabel>
+                <StyledInput type="text" value={newAge} onChange={event => setAge((event.target.value))}/>
+
+                <StyledLabel>Email</StyledLabel>
+                <StyledInput type="text" value={newEmail} onChange={event => setEmail((event.target.value))}/>
+
+                <StyledLabel>PhoneNumber</StyledLabel>
+                <StyledInput type="text" value={newPhoneNumber}
+                             onChange={event => setPhoneNumber((event.target.value))}/>
+
                 <StyledLabel>Begin Membership</StyledLabel>
                 <StyledInput type="text" value={newBeginMembership}
                              onChange={event => setBeginMembership((event.target.value))}/>
@@ -74,8 +98,21 @@ export default function MemberModal(props: ModalProps) {
                        checked={newMembershipActive}
                        onChange={checkHandler}/>
 
-                <StyledLabel>Email</StyledLabel>
-                <StyledInput type="text" value={newEmail} onChange={event => setEmail((event.target.value))}/>
+                <StyledLabel>Riding Experience</StyledLabel>
+                <StyledInput type="text" value={newRidingExperience}
+                             onChange={event => setRidingExperience((event.target.value))}/>
+
+                <StyledLabel>Account Holder</StyledLabel>
+                <StyledInput type="text" value={newAccountHolder}
+                             onChange={event => setAccountHolder((event.target.value))}/>
+
+                <StyledLabel>IBAN</StyledLabel>
+                <StyledInput type="text" value={newIBAN}
+                             onChange={event => setIBAN((event.target.value))}/>
+
+                <StyledLabel>Bank Name</StyledLabel>
+                <StyledInput type="text" value={newBankName}
+                             onChange={event => setBankName((event.target.value))}/>
 
                 <StyledButton>Submit</StyledButton>
 
