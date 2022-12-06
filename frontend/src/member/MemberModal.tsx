@@ -62,18 +62,18 @@ export default function MemberModal(props: ModalProps) {
 
 
     return (
-        <div>
-            <StyledForm onSubmit={updateMember}>
-                <StyledLabel>FirstName</StyledLabel>
-                <StyledInput type="text" value={newFirstName} onChange={event => setFirstName((event.target.value))}/>
+                <StyledForm onSubmit={updateMember}>
+                    <StyledLabel>FirstName</StyledLabel>
+                    <StyledInput type="text" value={newFirstName}
+                                 onChange={event => setFirstName((event.target.value))}/>
 
-                <StyledLabel>LastName</StyledLabel>
-                <StyledInput type="text" value={newLastName} onChange={event => setLastName((event.target.value))}/>
+                    <StyledLabel>LastName</StyledLabel>
+                    <StyledInput type="text" value={newLastName} onChange={event => setLastName((event.target.value))}/>
 
-                <StyledLabel>Street</StyledLabel>
-                <StyledInput type="text" value={newStreet} onChange={event => setStreet((event.target.value))}/>
+                    <StyledLabel>Street</StyledLabel>
+                    <StyledInput type="text" value={newStreet} onChange={event => setStreet((event.target.value))}/>
 
-                <StyledLabel>Zipcode</StyledLabel>
+                    <StyledLabel>Zipcode</StyledLabel>
                 <StyledInput type="text" value={newZipcode} onChange={event => setZipcode((event.target.value))}/>
 
                 <StyledLabel>City</StyledLabel>
@@ -118,7 +118,6 @@ export default function MemberModal(props: ModalProps) {
 
                 <StyledButton onClick={() => props.closeModal(false)}>Cancel</StyledButton>
             </StyledForm>
-        </div>
     )
 }
 
@@ -128,18 +127,15 @@ const StyledForm = styled.form`
   margin: 10px;
   padding: 5px;
 `
-
 const StyledLabel = styled.label`
   font-size: 0.8rem;
 `
-
 const StyledInput = styled.input`
   margin: 5px;
   padding: 3px;
   border-radius: 5px;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .04), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
 `;
-
 const StyledButton = styled.button`
   padding: 6px 8px;
   font-size: 0.8rem;

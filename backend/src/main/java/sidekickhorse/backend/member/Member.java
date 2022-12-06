@@ -1,12 +1,9 @@
 package sidekickhorse.backend.member;
 
-import lombok.With;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@With
 public record Member(
 
         String id,
