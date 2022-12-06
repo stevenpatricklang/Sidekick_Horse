@@ -165,7 +165,6 @@ export default function AddMemberForm() {
                                  placeholder="0176 12345678" required/>
 
                     <StyledLabel htmlFor={"beginMembership"}>Begin membership:</StyledLabel>
-                    <StyledLabel htmlFor={"beginMembership"}>Begin membership:</StyledLabel>
                     <StyledInput type='date'
                                  id="beginMembership"
                                  value={beginMembership}
@@ -243,7 +242,7 @@ const StyledSection = styled.section`
 `
 
 const StyledLabel = styled.label`
-  font-size: 0.8rem;
+  font-size: 1.0rem;
 `
 
 const StyledButton = styled.button`
