@@ -90,7 +90,8 @@ export default function AddMemberForm() {
     }
 
 
-    const handleBeginner = () => {
+    const handleBeginner = (event: any) => {
+        event.preventDefault()
         setRidingExperience("Beginner");
     };
 
