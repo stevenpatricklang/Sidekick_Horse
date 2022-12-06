@@ -40,6 +40,8 @@ export default function MemberCard(props: MemberCardProps) {
 
                 <StyledCity> PLZ & Ort: {props.member.zipcode}&nbsp;{props.member.city}</StyledCity>
 
+                <StyledHr/>
+
                 <StyledAge>Alter: {props.member.age}</StyledAge>
 
                 <StyledMail>E-Mail: {props.member.email}</StyledMail>
