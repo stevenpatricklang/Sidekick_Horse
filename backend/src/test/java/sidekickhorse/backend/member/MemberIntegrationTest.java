@@ -85,6 +85,7 @@ class MemberIntegrationTest {
     @Test
     @DirtiesContext
     void putRequestUpdateMemberData() throws Exception {
+
         // GIVEN
         String body = mvc.perform(MockMvcRequestBuilders.post("/api/members")
                         .contentType(MediaType.APPLICATION_JSON)

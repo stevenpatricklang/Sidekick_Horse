@@ -26,16 +26,17 @@ export default function AddMemberForm() {
     const navigate = useNavigate();
     const [messageStatus, setMessageStatus] = useState("")
 
-    const baseUrl = '/api/members/';
-
-    const handleBeginner = () => {
+    const handleBeginner = (event: any) => {
+        event.preventDefault();
         setRidingExperience("BEGINNER");
     };
 
-    const handleIntermediate = () => {
+    const handleIntermediate = (event: any) => {
+        event.preventDefault();
         setRidingExperience("INTERMEDIATE");
     };
-    const handleAdvanced = () => {
+    const handleAdvanced = (event: any) => {
+        event.preventDefault();
         setRidingExperience("ADVANCED");
     };
 
@@ -44,7 +45,7 @@ export default function AddMemberForm() {
     }
 
     const postForm = () => {
-        axios.post(baseUrl, {
+        axios.post("/api/members/", {
             firstName,
             lastName,
             street,
@@ -184,7 +185,7 @@ export default function AddMemberForm() {
 
                     <button onClick={handleAdvanced}>ADVANCED</button>
 
-                    <p></p>
+                    <StyledDiv3></StyledDiv3>
 
                     <StyledLabel htmlFor={"membershipActive"}>Membership active:</StyledLabel>
                     <StyledInput type='checkbox'
@@ -224,9 +225,8 @@ export default function AddMemberForm() {
                     <Icon icon="mdi:register" inline={true} width="14"/> Add Member</StyledButton>
             </StyledDiv2>
         </StyledSection>
-        <br/>
+        <div></div>
     </>
-        ;
 }
 
 const StyledSection = styled.section`
@@ -295,6 +295,9 @@ const StyledDiv2 = styled.div`
   display: flex;
   justify-content: center;
   padding: 20px;
+`;
+const StyledDiv3 = styled.div`
+    margin: 10px;
 `;
 
 const StyledForm = styled.form`
