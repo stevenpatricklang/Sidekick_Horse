@@ -28,6 +28,21 @@ export default function AddMemberForm() {
 
     const baseUrl = '/api/members/';
 
+    const handleBeginner = () => {
+        setRidingExperience("BEGINNER");
+    };
+
+    const handleIntermediate = () => {
+        setRidingExperience("INTERMEDIATE");
+    };
+    const handleAdvanced = () => {
+        setRidingExperience("ADVANCED");
+    };
+
+    const checkHandler = () => {
+        setMembershipActive(!membershipActive);
+    }
+
     const postForm = () => {
         axios.post(baseUrl, {
             firstName,
@@ -87,23 +102,6 @@ export default function AddMemberForm() {
         setAccountHolder("");
         setIban("");
         setBankName("");
-    }
-
-
-    const handleBeginner = (event: any) => {
-        event.preventDefault()
-        setRidingExperience("Beginner");
-    };
-
-    const handleIntermediate = () => {
-        setRidingExperience("Intermediate");
-    };
-    const handleAdvanced = () => {
-        setRidingExperience("Advanced");
-    };
-
-    const checkHandler = () => {
-        setMembershipActive(!membershipActive);
     }
 
     return <>
@@ -167,6 +165,7 @@ export default function AddMemberForm() {
                                  placeholder="0176 12345678" required/>
 
                     <StyledLabel htmlFor={"beginMembership"}>Begin membership:</StyledLabel>
+                    <StyledLabel htmlFor={"beginMembership"}>Begin membership:</StyledLabel>
                     <StyledInput type='date'
                                  id="beginMembership"
                                  value={beginMembership}
@@ -174,8 +173,16 @@ export default function AddMemberForm() {
                                  placeholder="01.01.2022" required/>
 
                     <StyledLabel htmlFor={"ridingExperience"}>Riding Experience:</StyledLabel>
+                    <StyledInput type='text'
+                                 id="ridingExperience"
+                                 value={ridingExperience}
+                                 onChange={(e) => setRidingExperience(e.target.value)}
+                                 placeholder="" required/>
+
                     <button onClick={handleBeginner}>BEGINNER</button>
+
                     <button onClick={handleIntermediate}>INTERMEDIATE</button>
+
                     <button onClick={handleAdvanced}>ADVANCED</button>
 
                     <p></p>
