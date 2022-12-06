@@ -27,7 +27,7 @@ public class MemberController {
     }
 
     @PutMapping("{id}")
-    public Member updateMemberById(@PathVariable String id, @RequestBody Member member, @Valid NewMember newMember) {
+    public Member updateMemberById(@PathVariable String id, @RequestBody Member member) {
         if (member.id().equals(id)) {
             return memberService.updateMemberById(member);
         }
