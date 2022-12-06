@@ -34,12 +34,10 @@ export default function MemberCard(props: MemberCardProps) {
     return (
         <>
             <StyledLi>
-                <StyledName>
-                    {props.member.firstName}&nbsp;{props.member.lastName}
-                </StyledName>
-                <StyledStreet>
-                    {props.member.street}
-                </StyledStreet>
+                <h3>Name: </h3>
+                <StyledName>{props.member.firstName} {props.member.lastName}</StyledName>
+
+                <StyledStreet>Straße: {props.member.street}</StyledStreet>
                 <StyledCity>
                     {props.member.zipcode}&nbsp;{props.member.city}
                 </StyledCity>
@@ -58,9 +56,10 @@ export default function MemberCard(props: MemberCardProps) {
                 <StyledRidingExperience>
                     {props.member.ridingExperience}
                 </StyledRidingExperience>
-                <StyledMembershipActive>
+                <StyledMembershipActive> Membership Active
                     {props.member.membershipActive}
                 </StyledMembershipActive>
+                <h3>Bankverbindung: </h3>
                 <StyledAccountHolder>
                     {props.member.accountHolder}
                 </StyledAccountHolder>
@@ -90,7 +89,9 @@ const StyledDeleteMessage = styled.p`
   padding: 8px;
   font-size: 0.95rem;
 `
-
+const StyledLabel = styled.label`
+  font-size: 0.7rem;
+`
 const StyledLi = styled.li`
   min-width: 300px;
   max-width: 350px;
