@@ -11,15 +11,16 @@ import static org.mockito.Mockito.*;
 
 class MemberServiceTest {
 
+
+    MemberRepository memberRepository = mock(MemberRepository.class);
+    MemberUtils memberUtils = mock(MemberUtils.class);
+    MemberService memberService = new MemberService(memberRepository, memberUtils);
+
+
     @Test
     void addMemberWithID() {
 
-
         //GIVEN
-
-        MemberRepository memberRepository = mock(MemberRepository.class);
-        MemberUtils memberUtils = mock(MemberUtils.class);
-        MemberService memberService = new MemberService(memberRepository, memberUtils);
 
         NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg", "86856", "Walkertshofen", "29", "abcdefghi@gmx.de", "0176 12345678", "12/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE1234567890123456789", "Soparkasse Neuhausen");
         Member testMember = newMember.withId("2");
@@ -42,7 +43,6 @@ class MemberServiceTest {
 
         //GIVEN
 
-        MemberRepository memberRepository = mock(MemberRepository.class);
         List<Member> members = List.of(
                 new Member("2", "Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen",
                         "25", "horsty@gmail.com", "0049", "11/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE215555666", "Deutsche Bank"));
@@ -50,7 +50,7 @@ class MemberServiceTest {
         //WHEN
 
         when(memberRepository.findAll()).thenReturn(members);
-        List<Member> actual = memberRepository.findAll();
+        List<Member> actual = memberService.getMembersList();
 
         //THEN
 
@@ -60,10 +60,6 @@ class MemberServiceTest {
     @Test
     void updateMemberByValidId() {
         //GIVEN
-
-        MemberUtils memberId = mock(MemberUtils.class);
-        MemberRepository memberRepository = mock(MemberRepository.class);
-        MemberService memberService = new MemberService(memberRepository, memberId);
 
         Member member = new Member("2", "Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen",
                 "25", "horsty@gmail.com", "0049", "11/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE215555666", "Deutsche Bank");
@@ -83,19 +79,16 @@ class MemberServiceTest {
 
     @Test
     void deleteMemberByExistingId() {
-        // given
-        MemberUtils memberId = mock(MemberUtils.class);
-        MemberRepository memberRepository = mock(MemberRepository.class);
-        MemberService memberService = new MemberService(memberRepository, memberId);
+        // GIVEN
 
         Member member = new Member("2", "Steven", "Lang", "Kirchweg 6", "86856", "Hiltenfingen",
                 "25", "horsty@gmail.com", "0049", "11/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE215555666", "Deutsche Bank");
 
-        // when
+        // WHEN
 
         memberService.deleteMemberById((member.id()));
 
-        // then
+        // THEN
         verify(memberRepository).deleteById((member.id()));
     }
 }
