@@ -38,27 +38,6 @@ class MemberServiceTest {
     }
 
     @Test
-    void addMemberDataWithNotValidIBAN() {
-
-        //GIVEN
-        NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg", "86856", "Walkertshofen", "29", "abcdefghi@gmx.de", "0176 12345678", "12/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE87500105173915843399", "Soparkasse Neuhausen");
-        Member testMember = newMember.withId("2");
-
-        when(memberRepository.save(testMember)).thenReturn(testMember);
-        when(memberUtils.generateUUID()).thenReturn("2");
-
-        //WHEN
-
-        Member actual = memberService.addMemberData(newMember);
-
-        //THEN
-
-        verify(memberUtils).generateUUID();
-        assertEquals(testMember, actual);
-    }
-
-
-    @Test
     void getMembersList() {
 
         //GIVEN
