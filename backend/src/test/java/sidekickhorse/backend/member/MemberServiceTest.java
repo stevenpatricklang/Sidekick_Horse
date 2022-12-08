@@ -22,7 +22,7 @@ class MemberServiceTest {
 
         //GIVEN
 
-        NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg", "86856", "Walkertshofen", "29", "abcdefghi@gmx.de", "0176 12345678", "12/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE1234567890123456789", "Soparkasse Neuhausen");
+        NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg", "86856", "Walkertshofen", "29", "abcdefghi@gmx.de", "0176 12345678", "12/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE67500105173915843399", "Soparkasse Neuhausen");
         Member testMember = newMember.withId("2");
 
         when(memberRepository.save(testMember)).thenReturn(testMember);

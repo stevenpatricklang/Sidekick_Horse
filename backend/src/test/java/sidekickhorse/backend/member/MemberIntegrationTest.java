@@ -43,7 +43,7 @@ class MemberIntegrationTest {
                                  "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
-                                 "iban": "DE12345678901234567890",
+                                 "iban": "DE67500105173915843399",
                                  "bankName": "Sparkasse Oberhausen"}
                                 """))
                 .andExpect(status().isOk())
@@ -70,7 +70,7 @@ class MemberIntegrationTest {
                                  "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
-                                 "iban": "DE12345678901234567890",
+                                 "iban": "DE67500105173915843399",
                                  "bankName": "Sparkasse Oberhausen"}]
                         """.replace("<id>", member.id())));
     }
@@ -103,7 +103,7 @@ class MemberIntegrationTest {
                                  "ridingExperience": "INTERMEDIATE",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
-                                 "iban": "DE12345678901234567890",
+                                 "iban": "DE67500105173915843399",
                                  "bankName": "Sparkasse Oberhausen"}
                                 """))
                 .andExpect(status().isOk())
@@ -128,7 +128,7 @@ class MemberIntegrationTest {
                                  "ridingExperience": "INTERMEDIATE",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
-                                 "iban": "DE12345678901234567890",
+                                 "iban": "DE67500105173915843399",
                                  "bankName": "Sparkasse Oberhausen"}
                                 """.replace("<id>", member.id()))))
                 // THEN
@@ -147,7 +147,7 @@ class MemberIntegrationTest {
                                  "ridingExperience": "INTERMEDIATE",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
-                                 "iban": "DE12345678901234567890",
+                                 "iban": "DE67500105173915843399",
                                  "bankName": "Sparkasse Oberhausen"}
                         """.replace("<id>", member.id())));
     }
@@ -171,7 +171,7 @@ class MemberIntegrationTest {
                                  "ridingExperience": "ADVANCED",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
-                                 "iban": "DE12345678901234567890",
+                                 "iban": "DE67500105173915843399",
                                  "bankName": "Sparkasse Oberhausen"}
                                     """))
                 .andExpect(status().isNotFound());
@@ -196,7 +196,7 @@ class MemberIntegrationTest {
                                  "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
-                                 "iban": "DE12345678901234567890",
+                                 "iban": "DE67500105173915843399",
                                  "bankName": "Sparkasse Oberhausen"}
                                     """))
                 .andExpect(status().isMethodNotAllowed());
@@ -221,7 +221,7 @@ class MemberIntegrationTest {
                                  "ridingExperience": "INTERMEDIATE",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
-                                 "iban": "DE12345678901234567890",
+                                 "iban": "DE67500105173915843399",
                                  "bankName": "Sparkasse Oberhausen"}
                                     """))
                 .andExpect(status().isNotFound());
@@ -247,7 +247,7 @@ class MemberIntegrationTest {
                                  "ridingExperience": "ADVANCED",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
-                                 "iban": "DE12345678901234567890",
+                                 "iban": "DE67500105173915843399",
                                  "bankName": "Sparkasse Oberhausen"}
                                 """))
                 .andExpect(status().isOk())
