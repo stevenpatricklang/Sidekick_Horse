@@ -1,7 +1,6 @@
 package sidekickhorse.backend.member;
 
 
-import org.iban4j.IbanUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,17 +19,12 @@ public class MemberService {
     }
 
     public Member addMemberData(NewMember newMember) {
-        Member member = newMember.withId(memberUtils.generateUUID());
-
-        try {
-            IbanUtil.validate(newMember.iban());
-            return memberRepository.save(member);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("IBAN is not valid");
-        }
-
+        String uuid = this.memberUtils.generateUUID();
+        Member member = new Member(uuid, newMember.firstName(), newMember.lastName(), newMember.street(), newMember.zipcode(), newMember.city(), newMember.age(),
+                newMember.email(), newMember.phoneNumber(), newMember.beginMembership(), newMember.ridingExperience(), newMember.membershipActive(), newMember.accountHolder(),
+                newMember.iban(), newMember.bankName());
+        return this.memberRepository.save(member);
     }
-
 
     public List<Member> getMembersList() {
         return this.memberRepository.findAll();
