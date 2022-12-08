@@ -75,6 +75,14 @@ class MemberIntegrationTest {
                         """.replace("<id>", member.id())));
     }
 
+    @DirtiesContext
+    @Test
+    void addMemberDataWithNotValidIban() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/api/members"))
+                .andExpect(status().isBadRequest());
+    }
+
+
     @Test
     void getAllMembersAndExpectEmptyList() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/api/members"))
