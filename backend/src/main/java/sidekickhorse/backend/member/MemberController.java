@@ -18,6 +18,7 @@ public class MemberController {
 
     @PostMapping
     Member addMember(@RequestBody @Valid NewMember member) {
+
         return memberService.addMemberData(member);
     }
 

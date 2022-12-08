@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {Icon} from '@iconify/react';
 import 'react-dropdown/style.css';
 
+
 export default function AddMemberForm() {
 
 
@@ -89,6 +90,12 @@ export default function AddMemberForm() {
         } else {
             setError("");
         }
+        if (!smellsLikeIban(iban)) {
+            setError("Your IBAN is not correct");
+            return;
+        } else {
+            setError("");
+        }
         postForm();
         setFirstName("");
         setLastName("");
@@ -103,6 +110,10 @@ export default function AddMemberForm() {
         setAccountHolder("");
         setIban("");
         setBankName("");
+    }
+
+    function smellsLikeIban(iban: string) {
+        return /^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/.test(iban);
     }
 
     return <>
@@ -305,4 +316,3 @@ const StyledForm = styled.form`
   align-self: center;
   align-items: center;
 `;
-
