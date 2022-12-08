@@ -77,58 +77,6 @@ class MemberIntegrationTest {
 
     @DirtiesContext
     @Test
-    void addMemberDataWithNoValidIban2() throws Exception {
-
-        // GIVEN
-        String body = mvc.perform(MockMvcRequestBuilders.post("/api/members")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("""
-                                {"firstName": "Steven",
-                                 "lastName": "Lang",
-                                 "street": "Kirchweg 6",
-                                 "zipcode": "86856",
-                                 "city": "Hiltenfingen",
-                                 "age": "25",
-                                 "email": "horsty@gmail.com",
-                                 "phoneNumber": "017612345678",
-                                 "beginMembership": "09/22",
-                                 "ridingExperience": "BEGINNER",
-                                 "membershipActive": true,
-                                 "accountHolder": "Steven Lang",
-                                 "iban": "DE67500105173915843399",
-                                 "bankName": "Sparkasse Oberhausen"}
-                                """))
-                .andExpect(status().isOk())
-                .andReturn().getResponse().getContentAsString();
-
-        Member member = objectMapper.readValue(body, Member.class);
-
-        // WHEN
-        mvc.perform(MockMvcRequestBuilders.get("/api/members"))
-
-                // THEN
-                .andExpect(status().isOk())
-                .andExpect(content().json("""
-                                 [{"id" : "<id>",
-                                 "firstName": "Steven",
-                                 "lastName": "Lang",
-                                 "street": "Kirchweg 6",
-                                 "zipcode": "86856",
-                                 "city": "Hiltenfingen",
-                                 "age": "25",
-                                 "email": "horsty@gmail.com",
-                                 "phoneNumber": "017612345678",
-                                 "beginMembership": "09/22",
-                                 "ridingExperience": "BEGINNER",
-                                 "membershipActive": true,
-                                 "accountHolder": "Steven Lang",
-                                 "iban": "DE67500105173915843399",
-                                 "bankName": "Sparkasse Oberhausen"}]
-                        """.replace("<id>", member.id())));
-    }
-
-    @DirtiesContext
-    @Test
     void addMemberDataWithNotValidIban() throws Exception {
         mvc.perform(MockMvcRequestBuilders.post("/api/members"))
                 .andExpect(status().isBadRequest());
