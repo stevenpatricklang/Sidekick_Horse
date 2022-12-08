@@ -1,6 +1,5 @@
 package sidekickhorse.backend.member;
 
-import org.iban4j.IbanUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,12 +18,8 @@ public class MemberController {
 
     @PostMapping
     Member addMember(@RequestBody @Valid NewMember member) {
-        try {
-            IbanUtil.validate(member.iban());
-            return memberService.addMemberData(member);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("IBAN is not valid");
-        }
+
+        return memberService.addMemberData(member);
     }
 
     @GetMapping
