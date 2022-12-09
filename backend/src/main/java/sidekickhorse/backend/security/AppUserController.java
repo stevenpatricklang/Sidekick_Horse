@@ -57,7 +57,7 @@ public class AppUserController {
 
     }
 
-    @PostMapping("/librarian")
+    @PostMapping("/admin")
     @ResponseStatus(code = HttpStatus.CREATED)
     public AppUser registerLibrarian(@Valid @RequestBody AppUser newAppUser) {
         AppUser appUser = newAppUser.withRole(AppUserRole.ADMIN);
