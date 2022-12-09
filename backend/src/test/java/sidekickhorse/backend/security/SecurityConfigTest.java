@@ -15,14 +15,14 @@ class SecurityConfigTest {
     @Test
     void userDetailServiceAsUser() {
         // given
-        String rawPassword = "user123";
+        String rawPassword = "password123";
         String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
         AppUser appUser = new AppUser(
-                "id1",
-                "user",
+                "5",
+                "Steven",
                 rawPassword,
                 encodedPassword,
-                AppUserRole.MEMBER);
+                AppUserRole.ADMIN);
 
 
         // when

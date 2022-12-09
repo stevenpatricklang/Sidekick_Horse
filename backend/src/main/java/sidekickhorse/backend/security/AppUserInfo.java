@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 @With
 public record AppUserInfo(
-        @NotBlank(message = "User's name cannot be empty.")
+        @NotBlank(message = "Name can`t be empty.")
         String username,
         AppUserRole role
 ) {

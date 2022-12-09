@@ -29,25 +29,25 @@ class AppUserIntegrationTest {
 
     @Test
     @WithMockUser
-    void expect200_GET_login() throws Exception {
+    void GET_Login() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/app-users/login")
-                        .header("Authorization", "Basic:" + Base64.getEncoder().encodeToString("user:user123".getBytes())))
+                        .header("Authorization", "Basic:" + Base64.getEncoder().encodeToString("user:Steven".getBytes())))
                 .andExpect(status().is(200));
     }
 
 
     @Test
-    @WithMockUser(username = "appUser")
-    void expect200_GET_me() throws Exception {
+    @WithMockUser(username = "Steven")
+    void GET_Me() throws Exception {
         mockMvc.perform(get("/api/app-users/me"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("appUser"));
+                .andExpect(content().string("Steven"));
     }
 
 
     @Test
     @WithMockUser(roles = {"ADMIN"})
-    void expect200_GET_role_asAdmin() throws Exception {
+    void GET_Role_Admin() throws Exception {
         mockMvc.perform(get("/api/app-users/role"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[ROLE_ADMIN]"));
@@ -55,24 +55,22 @@ class AppUserIntegrationTest {
 
     @Test
     @WithMockUser(roles = {"MEMBER"})
-    void expect200_GET_role_asMember() throws Exception {
+    void GET_Role_Member() throws Exception {
         mockMvc.perform(get("/api/app-users/role"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[ROLE_MEMBER]"));
     }
 
     @Test
-    @WithMockUser(roles = {"ADMIN"}, username = "appUser")
+    @WithMockUser(roles = {"ADMIN"}, username = "Steven")
     @DirtiesContext
-    void expect201_POST_addLibrarian() throws Exception {
+    void addAdmin() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/admin")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {
-                                    "username": "appUser",
-                                    "rawPassword": "Password898#",
-                                    "role": "LIBRARIAN"
-                                }
+                                {"username": "Steven",
+                                 "rawPassword": "Password123#",
+                                 "role": "ADMIN"}
                                 """).with(csrf()))
                 .andExpect(status().isCreated());
 
@@ -80,20 +78,18 @@ class AppUserIntegrationTest {
                 .andExpect(status().isOk());
         mockMvc.perform(get("/api/app-users/me"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("appUser"));
+                .andExpect(content().string("Steven"));
     }
 
     @Test
     @DirtiesContext
-    @WithMockUser(roles = {"MEMBER"}, username = "appUser")
-    void expect201_POST_addMember() throws Exception {
+    @WithMockUser(roles = {"MEMBER"}, username = "Steven")
+    void addMember() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/member")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {
-                                    "username": "appUser",
-                                    "rawPassword": "Password899#"
-                                }
+                                {"username": "Steven",
+                                    "rawPassword": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isCreated());
 
@@ -108,23 +104,19 @@ class AppUserIntegrationTest {
     @Test
     @DirtiesContext
     @WithMockUser(roles = {"ADMIN"})
-    void expect409_conflict_POST_addLibrarian_WithAlreadyExistingName() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/librarian")
+    void addAdminWithAlreadyExistingName() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/admin")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {
-                                    "username": "ira",
-                                    "rawPassword": "Password898#"
-                                }
+                                {"username": "Steven",
+                                 "rawPassword": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isCreated());
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/librarian")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/admin")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {
-                                    "username": "ira",
-                                    "rawPassword": "Password898#"
-                                }
+                                {"username": "Steven",
+                                 "rawPassword": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isConflict());
     }
@@ -132,39 +124,32 @@ class AppUserIntegrationTest {
     @Test
     @DirtiesContext
     @WithMockUser(roles = {"MEMBER"})
-    void expect409_conflict_POST_addMember_WithAlreadyExistingName() throws Exception {
+    void addMemberWithAlreadyExistingName() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/member")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {
-                                    "username": "lars",
-                                    "rawPassword": "Password899#"
-                                }
+                                {"username": "Steven",
+                                 "rawPassword": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isCreated());
         mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/member")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {
-                                    "username": "lars",
-                                    "rawPassword": "Password899#"
-                                }
+                                {"username": "Steven",
+                                 "rawPassword": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isConflict());
     }
 
-
     @Test
     @DirtiesContext
-    @WithMockUser(username = "lars", roles = {"MEMBER"})
-    void expect204_DELETE_deleteMember() throws Exception {
+    @WithMockUser(username = "Steven", roles = {"MEMBER"})
+    void deleteMember() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/member")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {
-                                    "username": "lars",
-                                    "rawPassword": "Password899#"
-                                }
+                                {"username": "Steven",
+                                 "rawPassword": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isCreated())
                 .andReturn().getResponse().getContentAsString();
@@ -176,16 +161,14 @@ class AppUserIntegrationTest {
     @Test
     @DirtiesContext
     @WithMockUser(roles = {"ADMIN"})
-    void expectAppUserInfo_GET_AppUserInfo() throws Exception {
+    void appUserInfo() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/admin")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {
-                                    "id": "id1",
-                                    "username": "user",
-                                    "rawPassword": "Password30#",
-                                    "role": "LIBRARIAN"
-                                }
+                                {"id": "5",
+                                 "username": "user",
+                                 "rawPassword": "Password123#",
+                                 "role": "ADMIN"}
                                 """).with(csrf()))
                 .andReturn().getResponse().getContentAsString();
 
@@ -193,11 +176,8 @@ class AppUserIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(
                         """
-                                {
-                                    "username": "user",
-                                    "role": "LIBRARIAN"
-                                }
+                                {"username": "user",
+                                 "role": "ADMIN"}
                                 """));
     }
-
 }
