@@ -29,7 +29,7 @@ class AppUserIntegrationTest {
 
     @Test
     @WithMockUser
-    void GET_Login() throws Exception {
+    void getLogin() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/app-users/login")
                         .header("Authorization", "Basic:" + Base64.getEncoder().encodeToString("user:Steven".getBytes())))
                 .andExpect(status().is(200));
@@ -38,7 +38,7 @@ class AppUserIntegrationTest {
 
     @Test
     @WithMockUser(username = "Steven")
-    void GET_Me() throws Exception {
+    void getMe() throws Exception {
         mockMvc.perform(get("/api/app-users/me"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Steven"));
@@ -47,7 +47,7 @@ class AppUserIntegrationTest {
 
     @Test
     @WithMockUser(roles = {"ADMIN"})
-    void GET_Role_Admin() throws Exception {
+    void getRoleAdmin() throws Exception {
         mockMvc.perform(get("/api/app-users/role"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[ROLE_ADMIN]"));
@@ -55,7 +55,7 @@ class AppUserIntegrationTest {
 
     @Test
     @WithMockUser(roles = {"MEMBER"})
-    void GET_Role_Member() throws Exception {
+    void getRoleMember() throws Exception {
         mockMvc.perform(get("/api/app-users/role"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("[ROLE_MEMBER]"));
