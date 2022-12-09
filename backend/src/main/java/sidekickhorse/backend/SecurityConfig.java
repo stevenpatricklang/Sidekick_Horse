@@ -1,5 +1,10 @@
 package sidekickhorse.backend;
 
+<<<<<<< HEAD
+=======
+import de.neuefische.booklibrary.backend.security.AppUser;
+import de.neuefische.booklibrary.backend.security.AppUserService;
+>>>>>>> 8e5b8b0 (add dependencies to pom.xml)
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
