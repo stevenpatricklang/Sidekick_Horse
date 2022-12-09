@@ -58,7 +58,6 @@ export default function MemberCard(props: MemberCardProps) {
                 </StyledMembershipActive>
 
                 <StyledHr/>
-                <StyledHr/>
 
                 <StyledAccountHolder>Account Holder: {props.member.accountHolder}</StyledAccountHolder>
 

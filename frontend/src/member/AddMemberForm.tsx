@@ -239,11 +239,9 @@ const StyledSection = styled.section`
   border-radius: 1pc;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .4);
 `
-
 const StyledLabel = styled.label`
   font-size: 1.0rem;
 `
-
 const StyledButton = styled.button`
   font-size: 1.0rem;
   margin: 3px;
@@ -302,7 +300,6 @@ const StyledInput = styled.input`
   border-radius: 5px;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .04), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
 `;
-
 const StyledDiv1 = styled.div`
   align-content: center;
   display: flex;
