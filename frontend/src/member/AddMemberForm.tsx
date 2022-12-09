@@ -217,7 +217,6 @@ export default function AddMemberForm() {
                     {error && <StyledMessage>{error}</StyledMessage>}
                     {messageStatus && <StyledMessage>{messageStatus}</StyledMessage>}
                 </StyledDiv1>
-
             </StyledForm>
             <StyledDiv2>
                 <StyledButton onClick={handleFormSubmit}>
