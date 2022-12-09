@@ -22,7 +22,6 @@ function RegisterPage() {
             });
     }
 
-
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         register()
@@ -41,7 +40,7 @@ function RegisterPage() {
                     <input name="rawPassword" type={passwordShown ? "text" : "password"} id="password"
                            placeholder="password"
                            onChange={event => setRawPassword(event.target.value)}/>
-                    <i onClick={togglePassword} id="eye">{eye}</i>
+                    <i onClick={togglePassword} id="eye">{}</i>
                 </div>
                 <button className="secondary">Register</button>
             </form>
