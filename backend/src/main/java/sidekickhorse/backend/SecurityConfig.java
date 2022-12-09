@@ -19,8 +19,8 @@ import sidekickhorse.backend.security.AppUserService;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private static final String EXCEPTION_MSG = "You cannot use this custom UserDetailsManager for this action.";
-    private static final String LIBRARIAN_ROLE = "ADMIN";
+    private static final String EXCEPTION_MSG = "You can`t use this custom User for this action.";
+    private static final String ADMIN_ROLE = "ADMIN";
 
     private final AppUserService appUserService;
 
@@ -46,16 +46,15 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/api/app-users/role").authenticated()
                 .antMatchers(HttpMethod.GET, "/api/app-users/logout").authenticated()
                 .antMatchers(HttpMethod.POST, "/api/app-users/member").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/app-users/librarian").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/app-users/admin").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/api/app-users/deleteMe").authenticated()
 
 
-                .antMatchers(HttpMethod.GET, "/api/books").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/books/search/**").hasRole(LIBRARIAN_ROLE)
-                .antMatchers(HttpMethod.GET, "/api/books/isbn/**").hasRole(LIBRARIAN_ROLE)
-                .antMatchers(HttpMethod.POST, "/api/books").hasRole(LIBRARIAN_ROLE)
-                .antMatchers(HttpMethod.PUT, "/api/books/**").hasRole(LIBRARIAN_ROLE)
-                .antMatchers(HttpMethod.DELETE, "/api/books/**").hasRole(LIBRARIAN_ROLE)
+                .antMatchers(HttpMethod.GET, "/api/members").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/members/{id}").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/members").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.PUT, "/api/members/**").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.DELETE, "/api/members/**").hasRole(ADMIN_ROLE)
 
                 .antMatchers(HttpMethod.GET, "/", "/static/**", "/index.html", "/register").permitAll()
                 .and()

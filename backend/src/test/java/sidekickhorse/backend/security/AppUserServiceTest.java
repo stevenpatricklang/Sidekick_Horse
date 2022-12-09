@@ -16,11 +16,11 @@ class AppUserServiceTest {
     @Test
     void findByUsernameAndReturnUsername() {
         // given
-        AppUser newAppUser = new AppUser("1", "Bob", "password", "", null);
+        AppUser newAppUser = new AppUser("5", "Steven", "password123", "", null);
         when(mockAppUserRepository.findByUsername(newAppUser.username())).thenReturn(newAppUser);
 
         // when
-        AppUser actual = appUserService.findByUsername("Bob");
+        AppUser actual = appUserService.findByUsername("Steven");
 
         // then
         verify(mockAppUserRepository).findByUsername(newAppUser.username());
@@ -30,12 +30,12 @@ class AppUserServiceTest {
     @Test
     void getAppUserInfoAndReturnAppUserInfo() {
         // given
-        AppUser newAppUser = new AppUser("1", "Bob", "password", "", null);
+        AppUser newAppUser = new AppUser("5", "Steven", "password123", "", null);
         AppUserInfo appUserInfo = new AppUserInfo(newAppUser.username(), newAppUser.role());
         when(mockAppUserRepository.findByUsername(newAppUser.username())).thenReturn(newAppUser);
 
         // when
-        AppUserInfo actual = appUserService.getUserInfo("Bob");
+        AppUserInfo actual = appUserService.getUserInfo("Steven");
 
         // then
         verify(mockAppUserRepository).findByUsername(newAppUser.username());
@@ -45,10 +45,10 @@ class AppUserServiceTest {
     @Test
     void addUserReturnsUserAlreadyExistsException() {
         //given
-        String username = "testuser";
-        AppUser newAppUser = new AppUser("1", username, "password", "", null);
+        String username = "Philipp";
+        AppUser newAppUser = new AppUser("5", username, "password123", "", null);
         when(mockAppUserRepository.existsByUsername(username)).thenReturn(true);
-        when(mockPasswordEncoder.encode("password")).thenReturn("encodedPassword");
+        when(mockPasswordEncoder.encode("password123")).thenReturn("encodedPassword");
         //when
         try {
             appUserService.save(newAppUser, mockPasswordEncoder);
@@ -64,7 +64,7 @@ class AppUserServiceTest {
     @Test
     void saveAppUserSuccessful() {
         //given
-        AppUser newAppUser = new AppUser("id-1", "ira", "password", "", AppUserRole.MEMBER);
+        AppUser newAppUser = new AppUser("id-5", "Steven", "password123", "", AppUserRole.ADMIN);
 
         newAppUser = newAppUser.withPasswordBcrypt("encodedPassword");
         AppUser encodedAppUser = newAppUser
@@ -82,7 +82,7 @@ class AppUserServiceTest {
         AppUser actual = appUserService.save(newAppUser, mockPasswordEncoder);
 
         //then
-        verify(mockPasswordEncoder).encode("password");
+        verify(mockPasswordEncoder).encode("password123");
         verify(mockAppUserRepository).existsByUsername(newAppUser.username());
         verify(mockAppUserRepository).save(encodedAppUser);
         assertEquals(encodedAppUser, actual);
@@ -92,7 +92,7 @@ class AppUserServiceTest {
     @Test
     void deleteAppUserSuccessful() {
         //given
-        AppUser newAppUser = new AppUser("id-1", "username", "password", "", AppUserRole.MEMBER);
+        AppUser newAppUser = new AppUser("id-5", "Steven", "password123", "", AppUserRole.ADMIN);
         String username = newAppUser.username();
 
         //when
