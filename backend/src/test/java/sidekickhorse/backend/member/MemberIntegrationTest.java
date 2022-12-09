@@ -75,11 +75,30 @@ class MemberIntegrationTest {
                         """.replace("<id>", member.id())));
     }
 
-    @DirtiesContext
     @Test
+    @DirtiesContext
     void addMemberDataWithNotValidIban() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/api/members"))
-                .andExpect(status().isBadRequest());
+        mvc.perform(MockMvcRequestBuilders.post("/api/members")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"firstName": "Steven",
+                                 "lastName": "Lang",
+                                 "street": "Kirchweg 6",
+                                 "zipcode": "86856",
+                                 "city": "Hiltenfingen",
+                                 "age": "25",
+                                 "email": "horsty@gmail.com",
+                                 "phoneNumber": "017612345678",
+                                 "beginMembership": "09/22",
+                                 "ridingExperience": "BEGINNER",
+                                 "membershipActive": true,
+                                 "accountHolder": "Steven Lang",
+                                 "iban": "DE675001051739158",
+                                 "bankName": "Sparkasse Oberhausen"}
+                                """))
+                .andExpect(status().is(400))
+                .andExpect(status().reason("IBAN is not valid"));
+
     }
 
 
