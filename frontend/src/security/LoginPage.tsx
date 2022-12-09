@@ -44,7 +44,7 @@ export default function LoginPage(props: Props) {
                     <input name="password" type={passwordShown ? "text" : "password"} id="password"
                            placeholder="password"
                            onChange={event => setPassword(event.target.value)}/>
-                    <b onClick={togglePassword} id="eye">{eye}</b>
+                    <b onClick={togglePassword} id="eye">{}</b>
                 </div>
                 <button className="primary">Login</button>
             </form>
