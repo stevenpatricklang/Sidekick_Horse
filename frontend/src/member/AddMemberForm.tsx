@@ -5,9 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {Icon} from '@iconify/react';
 import 'react-dropdown/style.css';
 
-
 export default function AddMemberForm() {
-
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -113,7 +111,7 @@ export default function AddMemberForm() {
     }
 
     function smellsLikeIban(iban: string) {
-        return /^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/.test(iban);
+        return /^([A-Z]{2}?[0-9]{2})(?=(?:[]?[A-Z0-9]){9,30}$)((?:[]?[A-Z0-9]{3,5}){2,7})([]?[A-Z0-9]{1,3})?$/.test(iban);
     }
 
     return <>
@@ -190,11 +188,11 @@ export default function AddMemberForm() {
                                  onChange={(e) => setRidingExperience(e.target.value)}
                                  placeholder="" required/>
 
-                    <button onClick={handleBeginner}>BEGINNER</button>
+                    <StyledButtonSmall onClick={handleBeginner}>BEGINNER</StyledButtonSmall>
 
-                    <button onClick={handleIntermediate}>INTERMEDIATE</button>
+                    <StyledButtonSmall onClick={handleIntermediate}>INTERMEDIATE</StyledButtonSmall>
 
-                    <button onClick={handleAdvanced}>ADVANCED</button>
+                    <StyledButtonSmall onClick={handleAdvanced}>ADVANCED</StyledButtonSmall>
 
                     <StyledDiv3></StyledDiv3>
 
@@ -255,6 +253,11 @@ const StyledSection = styled.section`
 const StyledLabel = styled.label`
   font-size: 1.0rem;
 `
+const StyledDivIban = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+`;
 
 const StyledButton = styled.button`
   font-size: 1.0rem;
@@ -279,6 +282,28 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledButtonSmall = styled.button`
+  font-size: 0.85rem;
+  margin: 3px;
+  padding: 5px;
+  width: 140px;
+  transition-duration: 0.4s;
+  background-color: var(--color-button-background);
+  color: var(--color-text);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--color-button-hover);
+  }
+
+  &:active {
+    background-color: var(--color-button-active);
+  }
+`;
 
 const StyledMessage = styled.p`
   margin: 10px;

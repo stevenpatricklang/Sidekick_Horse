@@ -52,10 +52,13 @@ export default function MemberCard(props: MemberCardProps) {
 
                 <StyledRidingExperience> Reiterfahrung: {props.member.ridingExperience}</StyledRidingExperience>
 
-                <StyledMembershipActive> Ist die Mitgliedschaft
-                    aktiv: {props.member.membershipActive}</StyledMembershipActive>
+                <StyledMembershipActive> Die Mitgliedschaft ist: <StyledInput type='checkbox'
+                                                                              id="membershipActive"
+                                                                              checked={props.member.membershipActive}/>
+                </StyledMembershipActive>
 
                 <StyledHr/>
+
                 <StyledAccountHolder>Account Holder: {props.member.accountHolder}</StyledAccountHolder>
 
                 <StyledIBAN>IBAN: {props.member.iban}</StyledIBAN>
@@ -81,6 +84,12 @@ const StyledHr = styled.hr`
  width: 95%;
  color: rgb(218, 218, 218);
 `
+const StyledInput = styled.input`
+  margin: 3px;
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .04), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
+`;
 const StyledDeleteMessage = styled.p`
   margin-bottom: 10px;
   padding: 8px;
@@ -96,6 +105,7 @@ const StyledLi = styled.li`
   border: 1px solid rgba(10 10 10 0.3);
   border-radius: 1pc;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
+  background-color: rgba(255, 255, 255, 0.9);
 `
 const StyledDiv = styled.div`
   display: flex;
@@ -110,37 +120,44 @@ const StyledName = styled.p`
 `
 const StyledStreet = styled.p`
    font-size: 0.95rem;
+   margin-bottom: 2px;
 `
 const StyledCity = styled.p`
   font-size: 0.95rem;
 `
 const StyledAge = styled.p`
   font-size: 0.95rem;
+  margin-bottom: 2px;
 `
 const StyledPhoneNumber = styled.p`
   font-size: 0.95rem;
 `
 const StyledMail = styled.p`
   font-size: 0.95rem;
+  margin-bottom: 2px;
 `
 const StyledBeginMembership = styled.p`
     font-size: 0.95rem;
+    margin-bottom: 2px;
 `
 const StyledRidingExperience = styled.p`
     font-size: 0.95rem;
+    margin-bottom: 2px;
 `
 const StyledMembershipActive = styled.p`
     font-size: 0.95rem;
 `
 const StyledAccountHolder = styled.p`
     font-size: 0.95rem;
+    margin-bottom: 2px;
 `
 const StyledIBAN = styled.p`
     font-size: 0.95rem;
+    margin-bottom: 2px;
 `
 const StyledBankName = styled.p`
     font-size: 0.95rem;
-`
+   `
 const StyledButton = styled.button`
   margin: 3px;
   padding: 5px;
