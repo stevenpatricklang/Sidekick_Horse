@@ -1,7 +1,7 @@
 import React, {Dispatch, SetStateAction, useCallback, useState} from 'react';
 import {AppUserInfo} from "./AppUserInfo";
 import axios from "axios";
-import Modal from "react-modal";
+import Modal from 'react-modal';
 
 
 type DeleteAccountProps = {
