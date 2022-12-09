@@ -1,7 +1,5 @@
 package sidekickhorse.backend;
 
-import de.neuefische.booklibrary.backend.security.AppUser;
-import de.neuefische.booklibrary.backend.security.AppUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -15,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import sidekickhorse.backend.security.AppUser;
+import sidekickhorse.backend.security.AppUserService;
 
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -106,4 +106,4 @@ public class SecurityConfig {
 
         };
     }
-
+}
