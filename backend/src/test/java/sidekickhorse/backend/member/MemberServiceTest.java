@@ -1,6 +1,5 @@
 package sidekickhorse.backend.member;
 
-import org.iban4j.IbanFormatException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -38,28 +37,6 @@ class MemberServiceTest {
         assertEquals(testMember, actual);
     }
 
-    @Test
-    void addMemberWithIdWithNoValidIban() {
-
-        //GIVEN
-        NewMember newMember = new NewMember("Steven", "Lang", "Kirchweg", "86856", "Walkertshofen", "29", "abcdefghi@gmx.de", "0176 12345678", "12/22", RidingExperience.BEGINNER, true, "Steven Lang", "DE67500105173915843399", "Soparkasse Neuhausen");
-        Member testMember = newMember.withId("2");
-
-        when(memberRepository.save(testMember)).thenReturn(testMember);
-        when(memberUtils.generateUUID()).thenReturn("2");
-
-        //WHEN
-        Member actual = memberService.addMemberData(newMember);
-        ;
-        //THEN
-        String message1 = "IBAN is not valid";
-        try {
-            memberService.addMemberData(newMember);
-        } catch (IbanFormatException e) {
-            message1 = e.getMessage();
-        }
-        assertEquals(message1, "IBAN is not valid");
-    }
 
     @Test
     void getMembersList() {
