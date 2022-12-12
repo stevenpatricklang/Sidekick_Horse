@@ -178,12 +178,11 @@ export default function AddMemberForm() {
                                  value={ridingExperience}
                                  onChange={(e) => setRidingExperience(e.target.value)}
                                  placeholder="" required/>
-
-                    <button onClick={handleBeginner}>BEGINNER</button>
-
-                    <button onClick={handleIntermediate}>INTERMEDIATE</button>
-
-                    <button onClick={handleAdvanced}>ADVANCED</button>
+                    <StyledDiv>
+                        <button onClick={handleBeginner}>BEGINNER</button>
+                        <button onClick={handleIntermediate}>INTERMEDIATE</button>
+                        <button onClick={handleAdvanced}>ADVANCED</button>
+                    </StyledDiv>
 
                     <StyledDiv3></StyledDiv3>
 
@@ -229,6 +228,11 @@ export default function AddMemberForm() {
     </>
 }
 
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+`
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;

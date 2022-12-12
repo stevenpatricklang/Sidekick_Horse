@@ -56,6 +56,20 @@ export default function MemberCard(props: MemberCardProps) {
 
     }
 
+    const handleBeginner = (event: any) => {
+        event.preventDefault();
+        setRidingExperience("BEGINNER");
+    };
+
+    const handleIntermediate = (event: any) => {
+        event.preventDefault();
+        setRidingExperience("INTERMEDIATE");
+    };
+    const handleAdvanced = (event: any) => {
+        event.preventDefault();
+        setRidingExperience("ADVANCED");
+    };
+
     const checkHandler = () => {
         setMembershipActive(!newMembershipActive);
     }
@@ -115,6 +129,11 @@ export default function MemberCard(props: MemberCardProps) {
                     <StyledLabel>Riding Experience</StyledLabel>
                     <StyledInput type="text" value={newRidingExperience}
                                  onChange={event => setRidingExperience((event.target.value))}/>
+                    <StyledDiv>
+                        <button onClick={handleBeginner}>BEGINNER</button>
+                        <button onClick={handleIntermediate}>INTERMEDIATE</button>
+                        <button onClick={handleAdvanced}>ADVANCED</button>
+                    </StyledDiv>
 
                     <StyledLabel>Account Holder</StyledLabel>
                     <StyledInput type="text" value={newAccountHolder}
@@ -191,13 +210,6 @@ const StyledSection = styled.section`
   border-radius: 1pc;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .4);
 `
-const StyledDiv1 = styled.div`
-  align-content: center;
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 10px;
-`;
 
 const StyledForm = styled.form`
   display: flex;
