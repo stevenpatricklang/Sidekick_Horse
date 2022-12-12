@@ -1,37 +1,61 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './App.css';
 import styled from "styled-components";
 import {NavLink, Route, Routes} from "react-router-dom";
-import Homepage from "./pages/About";
+import About from "./pages/About";
 import AddMemberForm from "./member/AddMemberForm";
 import MemberPage from "./member/MemberPage";
+import axios from "axios";
+import SecuredPage from "./security/SecuredPage";
 
 
-export default function App() {
+function App() {
+
+    const [username, setUsername] = useState<string>();
+    const fetchUsername = useCallback(() => {
+        axios.get("/api/app-users/me")
+            .then(response => response.data)
+            .then(setUsername)
+    }, [])
+    useEffect(fetchUsername, [fetchUsername])
+
+    if (username === undefined) {
+        return <>Loading...</>
+    }
+    if (username === 'anonymousUser')
+
+        return <>
+            <StyledHeader>
+
+                <StyledButton to="/">Home</StyledButton>
+                <h1>Welcome to Sidekick Horse Administration</h1>
+                <StyledDiv>
+
+                </StyledDiv>
+            </StyledHeader>
+
+            <StyledMain>
+                <Routes>
+                    {/*<Route path="/" element={<LoginPage fetchUsername={fetchUsername}/>}></Route>*/}
+                    {/*<Route path="/register" element={<RegisterPage/>}></Route>*/}
+                    <Route path="/" element={<About/>}/>
+                    <Route path="/members/add" element={<AddMemberForm/>}/>
+                    <Route path="/members/list" element={<MemberPage/>}/>
+                </Routes>
+            </StyledMain>
+
+            <StyledFooter>
+                <p>© 2022 Sidekick Horses</p>
+            </StyledFooter>
+        </>
+
+
     return <>
-        <StyledHeader>
-
-            <StyledButton to="/">Home</StyledButton>
-            <h1>Welcome to Sidekick Horse Administration</h1>
-            <StyledDiv>
-
-            </StyledDiv>
-        </StyledHeader>
-
-        <StyledMain>
-            <Routes>
-                <Route path="/" element={<Homepage/>}/>
-                <Route path="/members/add" element={<AddMemberForm/>}/>
-                <Route path="/members/list" element={<MemberPage/>}/>
-            </Routes>
-        </StyledMain>
-
-        <StyledFooter>
-            <p>© 2022 Sidekick Horses</p>
-        </StyledFooter>
+        <SecuredPage fetchUsername={fetchUsername} setUsername={setUsername}/>
     </>
 }
 
+export default App;
 
 
 const StyledDiv = styled.div`

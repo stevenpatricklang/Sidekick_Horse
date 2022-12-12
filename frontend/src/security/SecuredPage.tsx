@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, {Dispatch, SetStateAction, useCallback, useEffect, useState} from "react";
 import DeleteAccount from "./DeleteAccount";
-import "./css/SecuredPage.css";
 import {AppUserInfo} from "./AppUserInfo";
 
 type SecuredProps = {
