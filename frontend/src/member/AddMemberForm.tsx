@@ -7,6 +7,7 @@ import 'react-dropdown/style.css';
 
 export default function AddMemberForm() {
 
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [street, setStreet] = useState("");
@@ -177,12 +178,11 @@ export default function AddMemberForm() {
                                  value={ridingExperience}
                                  onChange={(e) => setRidingExperience(e.target.value)}
                                  placeholder="" required/>
-
-                    <StyledButtonSmall onClick={handleBeginner}>BEGINNER</StyledButtonSmall>
-
-                    <StyledButtonSmall onClick={handleIntermediate}>INTERMEDIATE</StyledButtonSmall>
-
-                    <StyledButtonSmall onClick={handleAdvanced}>ADVANCED</StyledButtonSmall>
+                    <StyledDiv>
+                        <button onClick={handleBeginner}>BEGINNER</button>
+                        <button onClick={handleIntermediate}>INTERMEDIATE</button>
+                        <button onClick={handleAdvanced}>ADVANCED</button>
+                    </StyledDiv>
 
                     <StyledDiv3></StyledDiv3>
 
@@ -217,6 +217,7 @@ export default function AddMemberForm() {
                     {error && <StyledMessage>{error}</StyledMessage>}
                     {messageStatus && <StyledMessage>{messageStatus}</StyledMessage>}
                 </StyledDiv1>
+
             </StyledForm>
             <StyledDiv2>
                 <StyledButton onClick={handleFormSubmit}>
@@ -227,6 +228,11 @@ export default function AddMemberForm() {
     </>
 }
 
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+`
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -238,9 +244,11 @@ const StyledSection = styled.section`
   border-radius: 1pc;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .4);
 `
+
 const StyledLabel = styled.label`
   font-size: 1.0rem;
 `
+
 const StyledButton = styled.button`
   font-size: 1.0rem;
   margin: 3px;
@@ -264,28 +272,6 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledButtonSmall = styled.button`
-  font-size: 0.85rem;
-  margin: 3px;
-  padding: 5px;
-  width: 140px;
-  transition-duration: 0.4s;
-  background-color: var(--color-button-background);
-  color: var(--color-text);
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 5px;
-
-  &:hover {
-    background-color: var(--color-button-hover);
-  }
-
-  &:active {
-    background-color: var(--color-button-active);
-  }
-`;
 
 const StyledMessage = styled.p`
   margin: 10px;
@@ -299,6 +285,7 @@ const StyledInput = styled.input`
   border-radius: 5px;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .04), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
 `;
+
 const StyledDiv1 = styled.div`
   align-content: center;
   display: flex;
