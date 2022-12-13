@@ -7,7 +7,6 @@ import 'react-dropdown/style.css';
 
 export default function AddMemberForm() {
 
-
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [street, setStreet] = useState("");
@@ -30,7 +29,6 @@ export default function AddMemberForm() {
         event.preventDefault();
         setRidingExperience("BEGINNER");
     };
-
     const handleIntermediate = (event: any) => {
         event.preventDefault();
         setRidingExperience("INTERMEDIATE");

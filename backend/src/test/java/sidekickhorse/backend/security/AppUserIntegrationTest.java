@@ -69,7 +69,7 @@ class AppUserIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"username": "Steven",
-                                 "rawPassword": "Password123#",
+                                 "password": "Password123#",
                                  "role": "ADMIN"}
                                 """).with(csrf()))
                 .andExpect(status().isCreated());
@@ -89,7 +89,7 @@ class AppUserIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"username": "Steven",
-                                    "rawPassword": "Password123#"}
+                                 "password": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isCreated());
 
@@ -109,14 +109,14 @@ class AppUserIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"username": "Steven",
-                                 "rawPassword": "Password123#"}
+                                 "password": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isCreated());
         mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/admin")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"username": "Steven",
-                                 "rawPassword": "Password123#"}
+                                 "password": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isConflict());
     }
@@ -129,14 +129,14 @@ class AppUserIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"username": "Steven",
-                                 "rawPassword": "Password123#"}
+                                 "password": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isCreated());
         mockMvc.perform(MockMvcRequestBuilders.post("/api/app-users/member")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"username": "Steven",
-                                 "rawPassword": "Password123#"}
+                                 "password": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isConflict());
     }
@@ -149,7 +149,7 @@ class AppUserIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"username": "Steven",
-                                 "rawPassword": "Password123#"}
+                                 "password": "Password123#"}
                                 """).with(csrf()))
                 .andExpect(status().isCreated())
                 .andReturn().getResponse().getContentAsString();
@@ -167,7 +167,7 @@ class AppUserIntegrationTest {
                         .content("""
                                 {"id": "5",
                                  "username": "user",
-                                 "rawPassword": "Password123#",
+                                 "password": "Password123#",
                                  "role": "ADMIN"}
                                 """).with(csrf()))
                 .andReturn().getResponse().getContentAsString();

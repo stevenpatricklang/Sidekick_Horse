@@ -70,12 +70,12 @@ class AppUserServiceTest {
         AppUser encodedAppUser = newAppUser
                 .withId(newAppUser.id())
                 .withUsername(newAppUser.username())
-                .withRawPassword("")
+                .withPassword("")
                 .withPasswordBcrypt(newAppUser.passwordBcrypt())
                 .withRole(newAppUser.role());
 
         when(mockAppUserRepository.existsByUsername(newAppUser.username())).thenReturn(false);
-        when(mockPasswordEncoder.encode(newAppUser.rawPassword())).thenReturn(newAppUser.passwordBcrypt());
+        when(mockPasswordEncoder.encode(newAppUser.password())).thenReturn(newAppUser.passwordBcrypt());
         when(mockAppUserRepository.save(encodedAppUser)).thenReturn(encodedAppUser);
 
         //when

@@ -7,6 +7,8 @@ import AddMemberForm from "./member/AddMemberForm";
 import MemberPage from "./member/MemberPage";
 import axios from "axios";
 import SecuredPage from "./security/SecuredPage";
+import LoginPage from "./security/LoginPage";
+import RegisterPage from "./security/RegisterPage";
 
 
 function App() {
@@ -26,19 +28,20 @@ function App() {
 
         return <>
             <StyledHeader>
-
-                <StyledButton to="/">Home</StyledButton>
+                <div>
+                </div>
                 <h1>Welcome to Sidekick Horse Administration</h1>
-                <StyledDiv>
-
-                </StyledDiv>
+                <StyledButton to="/api/app-users/login">Login</StyledButton>
             </StyledHeader>
 
             <StyledMain>
+                <StyledDiv2>
+                    Please Register or Login to access the Admin Area!
+                </StyledDiv2>
                 <Routes>
-                    {/*<Route path="/" element={<LoginPage fetchUsername={fetchUsername}/>}></Route>*/}
-                    {/*<Route path="/register" element={<RegisterPage/>}></Route>*/}
-                    <Route path="/" element={<About/>}/>
+                    {<Route path="/" element={<RegisterPage/>}></Route>}
+                    {<Route path="/api/app-users/login" element={<LoginPage fetchUsername={fetchUsername}/>}></Route>}
+                    <Route path="/member" element={<About/>}/>
                     <Route path="/members/add" element={<AddMemberForm/>}/>
                     <Route path="/members/list" element={<MemberPage/>}/>
                 </Routes>
@@ -57,11 +60,12 @@ function App() {
 
 export default App;
 
-
-const StyledDiv = styled.div`
-  width: 160px;
-`
-
+const StyledDiv2 = styled.div`
+    font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+`;
 const StyledButton = styled(NavLink)`
   font-size: 1.0rem;
   margin: 3px;
@@ -96,6 +100,9 @@ const StyledHeader = styled.header`
 
 
 const StyledMain = styled.main`
+   display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 50px;
   min-height: 200px;
   background-color: var(--color-background);`
