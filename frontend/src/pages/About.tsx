@@ -5,14 +5,18 @@ import styled from "styled-components";
 
 export default function About() {
     return <>
+
         <StyledDiv>
             <StyledImage src={process.env.PUBLIC_URL + '/horse1.png'} alt="Logo von Pferden bw"/></StyledDiv>
         <StyledNav>
-            <StyledButton to="/members/add">Add Member</StyledButton>
-            <StyledButton to="/members/list">Members List</StyledButton>
+            <StyledDiv1>
+                <StyledButton to="/members/add">Add Member</StyledButton>
+                <StyledButton to="/members/list">Members List</StyledButton>
+            </StyledDiv1>
         </StyledNav>
     </>
 }
+
 
 const StyledImage = styled.img`
   width: 70vw;
@@ -23,6 +27,16 @@ const StyledDiv = styled.div`
   justify-content: center;
   align-content: center;
 `
+const StyledDiv1 = styled.div`
+  font-size: 1.25rem;
+  font-weight: 600;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+`;
 
 const StyledNav = styled.nav`
   display: flex;

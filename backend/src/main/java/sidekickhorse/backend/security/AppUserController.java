@@ -59,7 +59,7 @@ public class AppUserController {
 
     @PostMapping("/admin")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public AppUser registerLibrarian(@Valid @RequestBody AppUser newAppUser) {
+    public AppUser registerAdmin(@Valid @RequestBody AppUser newAppUser) {
         AppUser appUser = newAppUser.withRole(AppUserRole.ADMIN);
         return saveAppUser(appUser);
 
