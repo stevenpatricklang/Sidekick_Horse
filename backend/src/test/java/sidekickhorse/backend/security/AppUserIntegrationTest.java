@@ -101,6 +101,7 @@ class AppUserIntegrationTest {
                 .andExpect(content().string("[ROLE_MEMBER]"));
     }
 
+
     @Test
     @DirtiesContext
     @WithMockUser(roles = {"ADMIN"})

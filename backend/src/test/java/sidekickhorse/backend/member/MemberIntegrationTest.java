@@ -81,9 +81,18 @@ class MemberIntegrationTest {
     }
 
     @Test
+    void getAllMembersAndExpectEmptyList() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/api/members"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[]"));
+    }
+
     @DirtiesContext
-    void addMemberDataWithNotValidIban() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/api/members")
+    @WithMockUser(roles = "ADMIN")
+    @Test
+    void addMemberDataFalseIban() throws Exception {
+
+        String body = mvc.perform(MockMvcRequestBuilders.post("/api/members")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"firstName": "Steven",
@@ -98,21 +107,13 @@ class MemberIntegrationTest {
                                  "ridingExperience": "BEGINNER",
                                  "membershipActive": true,
                                  "accountHolder": "Steven Lang",
-                                 "iban": "DE675001051739158",
+                                 "iban": "DE67500105173915843398",
                                  "bankName": "Sparkasse Oberhausen"}
-                                """))
+                                """).with(csrf()))
                 .andExpect(status().is(400))
-                .andExpect(status().reason("IBAN is not valid"));
-
+                .andReturn().getResponse().getContentAsString();
     }
 
-
-    @Test
-    void getAllMembersAndExpectEmptyList() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/api/members"))
-                .andExpect(status().isOk())
-                .andExpect(content().json("[]"));
-    }
 
     @Test
     @DirtiesContext
