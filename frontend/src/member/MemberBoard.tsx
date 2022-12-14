@@ -91,65 +91,70 @@ export default function MemberCard(props: MemberCardProps) {
         return (
             <StyledSection>
                 <StyledForm onSubmit={updateMember}>
-                    <StyledLabel>FirstName</StyledLabel>
-                    <StyledInput type="text" value={newFirstName}
-                                 onChange={event => setFirstName((event.target.value))}/>
+                    <StyledDiv88>
+                        <StyledLabel>FirstName</StyledLabel>
+                        <StyledInput type="text" value={newFirstName}
+                                     onChange={event => setFirstName((event.target.value))}/>
 
-                    <StyledLabel>LastName</StyledLabel>
-                    <StyledInput type="text" value={newLastName} onChange={event => setLastName((event.target.value))}/>
+                        <StyledLabel>LastName</StyledLabel>
+                        <StyledInput type="text" value={newLastName}
+                                     onChange={event => setLastName((event.target.value))}/>
 
-                    <StyledLabel>Street</StyledLabel>
-                    <StyledInput type="text" value={newStreet} onChange={event => setStreet((event.target.value))}/>
+                        <StyledLabel>Street</StyledLabel>
+                        <StyledInput type="text" value={newStreet} onChange={event => setStreet((event.target.value))}/>
 
-                    <StyledLabel>Zipcode</StyledLabel>
-                    <StyledInput type="text" value={newZipcode} onChange={event => setZipcode((event.target.value))}/>
+                        <StyledLabel>Zipcode</StyledLabel>
+                        <StyledInput type="text" value={newZipcode}
+                                     onChange={event => setZipcode((event.target.value))}/>
 
-                    <StyledLabel>City</StyledLabel>
-                    <StyledInput type="text" value={newCity} onChange={event => setCity((event.target.value))}/>
+                        <StyledLabel>City</StyledLabel>
+                        <StyledInput type="text" value={newCity} onChange={event => setCity((event.target.value))}/>
 
-                    <StyledLabel>Age</StyledLabel>
-                    <StyledInput type="text" value={newAge} onChange={event => setAge((event.target.value))}/>
+                        <StyledLabel>Age</StyledLabel>
+                        <StyledInput type="text" value={newAge} onChange={event => setAge((event.target.value))}/>
 
-                    <StyledLabel>Email</StyledLabel>
-                    <StyledInput type="text" value={newEmail} onChange={event => setEmail((event.target.value))}/>
+                        <StyledLabel>Email</StyledLabel>
+                        <StyledInput type="text" value={newEmail} onChange={event => setEmail((event.target.value))}/>
 
-                    <StyledLabel>PhoneNumber</StyledLabel>
-                    <StyledInput type="text" value={newPhoneNumber}
-                                 onChange={event => setPhoneNumber((event.target.value))}/>
+                        <StyledLabel>PhoneNumber</StyledLabel>
+                        <StyledInput type="text" value={newPhoneNumber}
+                                     onChange={event => setPhoneNumber((event.target.value))}/>
+                    </StyledDiv88>
+                    <StyledDiv88>
+                        <StyledLabel>Begin Membership</StyledLabel>
+                        <StyledInput type="text" value={newBeginMembership}
+                                     onChange={event => setBeginMembership((event.target.value))}/>
 
-                    <StyledLabel>Begin Membership</StyledLabel>
-                    <StyledInput type="text" value={newBeginMembership}
-                                 onChange={event => setBeginMembership((event.target.value))}/>
+                        <StyledLabel>Membership Active</StyledLabel>
+                        <input type="checkbox"
+                               checked={newMembershipActive}
+                               onChange={checkHandler}/>
 
-                    <StyledLabel>Membership Active</StyledLabel>
-                    <input type="checkbox"
-                           checked={newMembershipActive}
-                           onChange={checkHandler}/>
+                        <StyledLabel>Riding Experience</StyledLabel>
+                        <StyledInput type="text" value={newRidingExperience}
+                                     onChange={event => setRidingExperience((event.target.value))}/>
+                        <StyledDiv>
+                            <button onClick={handleBeginner}>BEGINNER</button>
+                            <button onClick={handleIntermediate}>INTERMEDIATE</button>
+                            <button onClick={handleAdvanced}>ADVANCED</button>
+                        </StyledDiv>
 
-                    <StyledLabel>Riding Experience</StyledLabel>
-                    <StyledInput type="text" value={newRidingExperience}
-                                 onChange={event => setRidingExperience((event.target.value))}/>
-                    <StyledDiv>
-                        <button onClick={handleBeginner}>BEGINNER</button>
-                        <button onClick={handleIntermediate}>INTERMEDIATE</button>
-                        <button onClick={handleAdvanced}>ADVANCED</button>
-                    </StyledDiv>
+                        <StyledLabel>Account Holder</StyledLabel>
+                        <StyledInput type="text" value={newAccountHolder}
+                                     onChange={event => setAccountHolder((event.target.value))}/>
 
-                    <StyledLabel>Account Holder</StyledLabel>
-                    <StyledInput type="text" value={newAccountHolder}
-                                 onChange={event => setAccountHolder((event.target.value))}/>
+                        <StyledLabel>IBAN</StyledLabel>
+                        <StyledInput type="text" value={newIBAN}
+                                     onChange={event => setIBAN((event.target.value))}/>
 
-                    <StyledLabel>IBAN</StyledLabel>
-                    <StyledInput type="text" value={newIBAN}
-                                 onChange={event => setIBAN((event.target.value))}/>
-
-                    <StyledLabel>Bank Name</StyledLabel>
-                    <StyledInput type="text" value={newBankName}
-                                 onChange={event => setBankName((event.target.value))}/>
-                    <StyledDiv>
-                        <StyledButton>Submit</StyledButton>
-                        <StyledButton onClick={() => setDoEdit(false)}>Cancel</StyledButton>
-                    </StyledDiv>
+                        <StyledLabel>Bank Name</StyledLabel>
+                        <StyledInput type="text" value={newBankName}
+                                     onChange={event => setBankName((event.target.value))}/>
+                        <StyledDiv>
+                            <StyledButton>Submit</StyledButton>
+                            <StyledButton onClick={() => setDoEdit(false)}>Cancel</StyledButton>
+                        </StyledDiv>
+                    </StyledDiv88>
                 </StyledForm>
             </StyledSection>
         )
@@ -176,11 +181,8 @@ export default function MemberCard(props: MemberCardProps) {
 
                 <StyledRidingExperience> Reiterfahrung: {props.member.ridingExperience}</StyledRidingExperience>
 
-                <StyledMembershipActive> Ist die Mitgliedschaft
-                    aktiv: <input type="checkbox"
-                                  checked={newMembershipActive}/></StyledMembershipActive>
-
                 <StyledHr/>
+
                 <StyledAccountHolder>Account Holder: {props.member.accountHolder}</StyledAccountHolder>
 
                 <StyledIBAN>IBAN: {props.member.iban}</StyledIBAN>
@@ -213,13 +215,23 @@ const StyledSection = styled.section`
 
 const StyledForm = styled.form`
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
+  padding: 5px;
+`
+
+const StyledDiv88 = styled.form`
+  display: flex;
   flex-direction: column;
   margin: 10px;
   padding: 5px;
 `
+
 const StyledLabel = styled.label`
   font-size: 0.8rem;
 `
+
 const StyledInput = styled.input`
   margin: 5px;
   padding: 3px;
@@ -228,14 +240,16 @@ const StyledInput = styled.input`
 `;
 
 const StyledHr = styled.hr`
- width: 95%;
- color: rgb(218, 218, 218);
+  width: 95%;
+  color: rgb(218, 218, 218);
 `
+
 const StyledDeleteMessage = styled.p`
   margin-bottom: 10px;
   padding: 8px;
   font-size: 0.95rem;
 `
+
 const StyledLi = styled.li`
   min-width: 300px;
   max-width: 350px;
@@ -246,48 +260,69 @@ const StyledLi = styled.li`
   border: 1px solid rgba(10 10 10 0.3);
   border-radius: 1pc;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
+  background-color: rgba(255, 255, 255, 0.9);
 `
+
 const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
 `
+
 const StyledName = styled.p`
   max-width: 340px;
   word-wrap: break-word;
   margin-bottom: 2px;
   font-size: 1.0rem;
 `
+
 const StyledStreet = styled.p`
-   font-size: 0.95rem;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
 `
+
 const StyledCity = styled.p`
   font-size: 0.95rem;
 `
+
 const StyledAge = styled.p`
   font-size: 0.95rem;
+  margin-bottom: 2px;
 `
+
 const StyledPhoneNumber = styled.p`
   font-size: 0.95rem;
 `
+
 const StyledMail = styled.p`
   font-size: 0.95rem;
+  margin-bottom: 2px;
 `
+
 const StyledBeginMembership = styled.p`
-    font-size: 0.95rem;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
 `
+
 const StyledRidingExperience = styled.p`
-    font-size: 0.95rem;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
 `
+
 const StyledAccountHolder = styled.p`
-    font-size: 0.95rem;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
 `
+
 const StyledIBAN = styled.p`
-    font-size: 0.95rem;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
 `
+
 const StyledBankName = styled.p`
-    font-size: 0.95rem;
+  font-size: 0.95rem;
 `
+
 const StyledButton = styled.button`
   margin: 3px;
   padding: 5px;
