@@ -5,21 +5,12 @@ import {Route, Routes, useNavigate} from "react-router-dom";
 import About from "./pages/About";
 import AddMemberForm from "./member/AddMemberForm";
 import MemberPage from "./member/MemberPage";
+import axios from "axios";
+import LoginPage from "./security/LoginPage";
+import RegisterPage from "./security/RegisterPage";
 
-function App() {
 
-    const [username, setUsername] = useState<string>();
-    const fetchUsername = useCallback(() => {
-        axios.get("/api/app-users/me")
-            .then(response => response.data)
-            .then(setUsername)
-    }, [])
-    useEffect(fetchUsername, [fetchUsername])
-
-    if (username === undefined) {
-        return <>Loading...</>
-    }
-    if (username === 'anonymousUser')
+export default function App() {
 
     const [username, setUsername] = useState<string>();
     const fetchUsername = useCallback(() => {
@@ -39,13 +30,12 @@ function App() {
 
     if (username === undefined) {
         return <>Loading...</>
-            }
+    }
     if (username === 'anonymousUser')
 
         return <>
-                <StyledHeader>
-                <h1> Sidekick Horse Administration</h1>
-
+            <StyledHeader>
+                <h1>Sidekick Horse Administration</h1>
             </StyledHeader>
 
             <StyledMain>
@@ -75,19 +65,11 @@ function App() {
             </Routes>
         </StyledMain>
 
-            <StyledFooter>
-                <p>© 2022 Sidekick Horses</p>
-            </StyledFooter>
-        </>
-
-
-    return <>
-        <SecuredPage fetchUsername={fetchUsername} setUsername={setUsername}/>
+        <StyledFooter>
+            <p>© 2022 Sidekick Horses</p>
+        </StyledFooter>
     </>
 }
-
-export default App;
-
 
 const StyledH1 = styled.h1`
   font-size: 2rem;
