@@ -49,9 +49,11 @@ const StyledHeadline = styled.h1`
 
 const StyledUl = styled.ul`
   align-content: center;
+  align-self: center;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   flex-wrap: wrap;
+  padding: 0;
 `
 const StyledButton = styled(NavLink)`
   font-size: 1.0rem;

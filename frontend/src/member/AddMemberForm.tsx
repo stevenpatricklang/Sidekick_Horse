@@ -106,7 +106,7 @@ export default function AddMemberForm() {
     return <>
         <StyledSection>
             <StyledForm onSubmit={handleFormSubmit}>
-                <StyledDiv1>
+                <StyledDiv88>
                     <StyledLabel htmlFor="firstName">First name:</StyledLabel>
                     <StyledInput type='text'
                                  id="firstName"
@@ -163,6 +163,8 @@ export default function AddMemberForm() {
                                  onChange={(e) => setPhoneNumber(e.target.value)}
                                  placeholder="0176 12345678" required/>
 
+                </StyledDiv88>
+                <StyledDiv88>
                     <StyledLabel htmlFor={"beginMembership"}>Begin membership:</StyledLabel>
                     <StyledInput type='date'
                                  id="beginMembership"
@@ -178,12 +180,8 @@ export default function AddMemberForm() {
                                  placeholder="" required/>
 
                     <StyledButtonSmall onClick={handleBeginner}>BEGINNER</StyledButtonSmall>
-
                     <StyledButtonSmall onClick={handleIntermediate}>INTERMEDIATE</StyledButtonSmall>
-
                     <StyledButtonSmall onClick={handleAdvanced}>ADVANCED</StyledButtonSmall>
-
-                    <StyledDiv3></StyledDiv3>
 
                     <StyledLabel htmlFor={"membershipActive"}>Membership active:</StyledLabel>
                     <StyledInput type='checkbox'
@@ -211,12 +209,11 @@ export default function AddMemberForm() {
                                  value={bankName}
                                  onChange={(e) => setBankName(e.target.value)}
                                  placeholder="Sparkasse" required/>
-
-
-                    {error && <StyledMessage>{error}</StyledMessage>}
-                    {messageStatus && <StyledMessage>{messageStatus}</StyledMessage>}
-                </StyledDiv1>
+                </StyledDiv88>
             </StyledForm>
+            {error && <StyledMessage>{error}</StyledMessage>}
+            {messageStatus && <StyledMessage>{messageStatus}</StyledMessage>}
+
             <StyledDiv2>
                 <StyledButton onClick={handleFormSubmit}>
                     <Icon icon="mdi:register" inline={true} width="14"/> Add Member</StyledButton>
@@ -226,12 +223,13 @@ export default function AddMemberForm() {
     </>
 }
 
-
 const StyledSection = styled.section`
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  align-items: center;
   margin: 10px;
   padding: 8px 20px 25px 20px;
   border: 1px solid rgba(10 10 10 0.3);
@@ -254,9 +252,11 @@ const StyledButton = styled.button`
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
+
   &:hover {
     background-color: var(--color-button-hover);
   }
+
   &:active {
     background-color: var(--color-button-active);
   }
@@ -275,13 +275,15 @@ const StyledButtonSmall = styled.button`
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
+
   &:hover {
     background-color: var(--color-button-hover);
   }
+
   &:active {
     background-color: var(--color-button-active);
   }
-`;
+`
 
 const StyledMessage = styled.p`
   margin: 10px;
@@ -294,27 +296,26 @@ const StyledInput = styled.input`
   padding: 3px;
   border-radius: 5px;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .04), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
-`;
-const StyledDiv1 = styled.div`
-  align-content: center;
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 10px;
-`;
+`
 
 const StyledDiv2 = styled.div`
   align-content: center;
   display: flex;
   justify-content: center;
   padding: 20px;
-`;
-const StyledDiv3 = styled.div`
-    margin: 10px;
-`;
+`
 
 const StyledForm = styled.form`
   display: flex;
+  flex-wrap: wrap;
+    justify-content: center;
   align-self: center;
   align-items: center;
-`;
+`
+
+const StyledDiv88 = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+`

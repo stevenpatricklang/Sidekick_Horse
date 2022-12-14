@@ -133,11 +133,10 @@ export default function MemberCard(props: MemberCardProps) {
                         <StyledLabel>Riding Experience</StyledLabel>
                         <StyledInput type="text" value={newRidingExperience}
                                      onChange={event => setRidingExperience((event.target.value))}/>
-                        <StyledDiv>
-                            <button onClick={handleBeginner}>BEGINNER</button>
-                            <button onClick={handleIntermediate}>INTERMEDIATE</button>
-                            <button onClick={handleAdvanced}>ADVANCED</button>
-                        </StyledDiv>
+
+                            <StyledButtonSmall onClick={handleBeginner}>BEGINNER</StyledButtonSmall>
+                            <StyledButtonSmall onClick={handleIntermediate}>INTERMEDIATE</StyledButtonSmall>
+                            <StyledButtonSmall onClick={handleAdvanced}>ADVANCED</StyledButtonSmall>
 
                         <StyledLabel>Account Holder</StyledLabel>
                         <StyledInput type="text" value={newAccountHolder}
@@ -215,7 +214,7 @@ const StyledSection = styled.section`
 
 const StyledForm = styled.form`
   display: flex;
-  flex-direction: row;
+justify-content: center;
   flex-wrap: wrap;
   margin: 10px;
   padding: 5px;
@@ -243,6 +242,29 @@ const StyledHr = styled.hr`
   width: 95%;
   color: rgb(218, 218, 218);
 `
+
+const StyledButtonSmall = styled.button`
+  font-size: 0.85rem;
+  margin: 3px;
+  padding: 5px;
+  width: 140px;
+  transition-duration: 0.4s;
+  background-color: var(--color-button-background);
+  color: var(--color-text);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--color-button-hover);
+  }
+
+  &:active {
+    background-color: var(--color-button-active);
+  }
+`;
 
 const StyledDeleteMessage = styled.p`
   margin-bottom: 10px;
