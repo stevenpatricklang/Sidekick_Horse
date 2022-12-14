@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 type Props = {
@@ -11,7 +11,6 @@ export default function LoginPage(props: Props) {
     const [password, setPassword] = useState<string>("")
     const [messageStatus, setMessageStatus] = useState('')
     const [error, setError] = useState("");
-    const navigate = useNavigate();
 
     const login = () => {
         axios.get("/api/app-users/login", {
