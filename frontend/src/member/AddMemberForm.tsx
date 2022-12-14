@@ -223,11 +223,7 @@ export default function AddMemberForm() {
     </>
 }
 
-const StyledDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-`
+
 const StyledSection = styled.section`
   width: 100%;
   display: flex;
