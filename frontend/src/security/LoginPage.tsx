@@ -1,6 +1,6 @@
-import React, {FormEvent, useState} from "react";
+import React, {useState} from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import styled from "styled-components";
 
 type Props = {
@@ -9,6 +9,8 @@ type Props = {
 export default function LoginPage(props: Props) {
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
+    const [messageStatus, setMessageStatus] = useState('')
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
 
@@ -19,8 +21,16 @@ export default function LoginPage(props: Props) {
                 password
             }
         })
-            .then(props.fetchUsername)
-            .catch(() => alert("Login failed"))
+            .then((response) => response.status)
+            .catch((error) => {
+                console.log("Error =>" + error)
+            })
+            .then((status) => {
+                if (status === 200) {
+                    setMessageStatus(username + ' is successfully logged in.');
+                }
+            })
+
             .then(() => setTimeout(() => setGoToAdminArea(), 2000))
     }
 
@@ -28,16 +38,19 @@ export default function LoginPage(props: Props) {
         navigate("/admin")
     }
 
-    function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    function handleFormSubmit(event: any) {
         event.preventDefault();
         login()
-
+        setUsername("");
+        setPassword("");
     }
 
     return <>
+
         <StyledSection>
-            <StyledForm onSubmit={handleSubmit}>
-                <StyledDiv1>
+            <StyledForm onSubmit={handleFormSubmit}>
+                <StyledDiv2>
+                    <StyledDiv1>Please Login to Enter the Admin Area.</StyledDiv1>
                     <StyledLabel htmlFor="Username">Username:</StyledLabel>
                     <StyledInput type='text'
                                  id="username"
@@ -51,14 +64,57 @@ export default function LoginPage(props: Props) {
                                  value={password}
                                  placeholder="Password" required
                                  onChange={event => setPassword(event.target.value)}/>
-                    onClick
-                </StyledDiv1>
-                <StyledButton className="primary">Login</StyledButton>
+                    {error && <StyledMessage>{error}</StyledMessage>}
+                    {messageStatus && <StyledMessage>{messageStatus}</StyledMessage>}
+                </StyledDiv2>
+                <StyledDiv4>Dont have an account?&nbsp;
+                    <Link to={{pathname: "/register"}}>Please Register</Link></StyledDiv4>
+                <StyledDiv3>
+                    <StyledButton onClick={handleFormSubmit}>Login</StyledButton>
+                </StyledDiv3>
             </StyledForm>
         </StyledSection>
     </>
 }
 
+
+const StyledMessage = styled.p`
+  margin: 10px;
+  padding: 8px;
+  font-size: 0.8rem;
+`
+const StyledDiv1 = styled.div`
+  font-size: 1.25rem;
+  font-weight: 600;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+`;
+const StyledDiv2 = styled.div`
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+`;
+const StyledDiv3 = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+`;
+const StyledDiv4 = styled.div`
+  font-size: 1.0rem;
+  font-weight: 400;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+`;
 const StyledSection = styled.section`
   justify-content: center;
   flex-direction: column;
@@ -100,13 +156,6 @@ const StyledInput = styled.input`
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .04), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
 `;
 
-const StyledDiv1 = styled.div`
-  align-content: center;
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 10px;
-`;
 const StyledForm = styled.form`
 width: 70%
   display: flex;

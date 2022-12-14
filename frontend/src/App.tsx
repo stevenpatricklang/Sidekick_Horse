@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import './App.css';
 import styled from "styled-components";
-import {NavLink, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import About from "./pages/About";
 import AddMemberForm from "./member/AddMemberForm";
 import MemberPage from "./member/MemberPage";
@@ -11,7 +11,7 @@ import LoginPage from "./security/LoginPage";
 import RegisterPage from "./security/RegisterPage";
 
 
-function App() {
+export default function App() {
 
     const [username, setUsername] = useState<string>();
     const fetchUsername = useCallback(() => {
@@ -28,20 +28,14 @@ function App() {
 
         return <>
             <StyledHeader>
-                <div>
-                </div>
-                <h1>Welcome to Sidekick Horse Administration</h1>
-                <StyledButton to="/api/app-users/login">Login</StyledButton>
+                <h1>Sidekick Horse Administration</h1>
             </StyledHeader>
 
             <StyledMain>
-                <StyledDiv2>
-                    Please Register or Login to access the Admin Area!
-                </StyledDiv2>
                 <Routes>
-                    {<Route path="/" element={<RegisterPage/>}></Route>}
-                    {<Route path="/api/app-users/login" element={<LoginPage fetchUsername={fetchUsername}/>}></Route>}
-                    <Route path="/member" element={<About/>}/>
+                    {<Route path="/register" element={<RegisterPage/>}></Route>}
+                    {<Route path="/" element={<LoginPage fetchUsername={fetchUsername}/>}></Route>}
+                    <Route path="/admin" element={<About/>}/>
                     <Route path="/members/add" element={<AddMemberForm/>}/>
                     <Route path="/members/list" element={<MemberPage/>}/>
                 </Routes>
@@ -58,40 +52,9 @@ function App() {
     </>
 }
 
-export default App;
-
-const StyledDiv2 = styled.div`
-    font-size: 1.5rem;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-`;
-const StyledButton = styled(NavLink)`
-  font-size: 1.0rem;
-  margin: 3px;
-  padding: 10px;
-  width: 160px;
-  transition-duration: 0.4s;
-  background-color: var(--color-button-background);
-  color: var(--color-text);
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 10px;
-
-  &:hover {
-    background-color: var(--color-button-hover);
-  }
-
-  &:active {
-    background-color: var(--color-button-active);
-  }
-`;
-
 const StyledHeader = styled.header`
   display: flex;
-  justify-content: space-between;
+    justify-content: center;
   align-items: center;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .5), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .5);
   padding: 10px;
@@ -100,7 +63,7 @@ const StyledHeader = styled.header`
 
 
 const StyledMain = styled.main`
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin: 50px;
