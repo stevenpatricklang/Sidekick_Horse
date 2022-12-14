@@ -13,7 +13,6 @@ export default function LoginPage(props: Props) {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-
     const login = () => {
         axios.get("/api/app-users/login", {
             auth: {
@@ -23,19 +22,21 @@ export default function LoginPage(props: Props) {
         })
             .then((response) => response.status)
             .catch((error) => {
-                console.log("Error =>" + error)
+                if (error.response.status === 401) {
+                    setError("Username oder Passwort falsch");
+                    (setTimeout(() => setError(""), 5000));
+                }
+
             })
             .then((status) => {
                 if (status === 200) {
-                    setMessageStatus(username + ' is successfully logged in.');
+                    setMessageStatus(username + ' wurde eingeloggt');
+                    (setTimeout(() => {
+                        props.fetchUsername();
+                        setMessageStatus("")
+                    }, 1500));
                 }
             })
-
-            .then(() => setTimeout(() => setGoToAdminArea(), 2000))
-    }
-
-    const setGoToAdminArea = () => {
-        navigate("/admin")
     }
 
     function handleFormSubmit(event: any) {

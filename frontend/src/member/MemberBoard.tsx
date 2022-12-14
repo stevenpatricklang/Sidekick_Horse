@@ -279,9 +279,6 @@ const StyledBeginMembership = styled.p`
 const StyledRidingExperience = styled.p`
     font-size: 0.95rem;
 `
-const StyledMembershipActive = styled.p`
-    font-size: 0.95rem;
-`
 const StyledAccountHolder = styled.p`
     font-size: 0.95rem;
 `
