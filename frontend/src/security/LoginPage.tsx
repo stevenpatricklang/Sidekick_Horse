@@ -22,14 +22,14 @@ export default function LoginPage(props: Props) {
             .then((response) => response.status)
             .catch((error) => {
                 if (error.response.status === 401) {
-                    setError("Username oder Passwort falsch");
+                    setError("Username or password is not correct");
                     (setTimeout(() => setError(""), 5000));
                 }
 
             })
             .then((status) => {
                 if (status === 200) {
-                    setMessageStatus(username + ' wurde eingeloggt');
+                    setMessageStatus(username + ' is logged in');
                     (setTimeout(() => {
                         props.fetchUsername();
                         setMessageStatus("")
