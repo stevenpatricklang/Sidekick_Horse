@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import PasswordChecklist from "react-password-checklist"
 
 
 export default function RegisterPage() {
-    const [username, setUsername] = useState<string>("")
+    const [username, setUsername] = useState("")
     const [messageStatus, setMessageStatus] = useState('')
-    const [Password, setPassword] = useState<string>("")
+    const [password, setPassword] = useState("")
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
@@ -16,14 +16,14 @@ export default function RegisterPage() {
     const register = () => {
         axios.post("/api/app-users/member", {
             username,
-            Password,
+            password,
         })
             .then((response) => response.status)
             .catch((error) => {
                 console.log("Error =>" + error)
             })
             .then((status) => {
-                if (status === 200) {
+                if (status === 201) {
                     setMessageStatus(username + ' was successfully created.');
                 }
             })
@@ -31,11 +31,11 @@ export default function RegisterPage() {
     }
 
     const setGoToLogin = () => {
-        navigate("/login")
+        navigate("/")
     }
 
     const isUsernameNotEmpty = (username: string) => {
-        return /.@./.test(username);
+        return /(?!^$)([^\s])/.test(username);
     }
 
     function handleFormSubmit(event: any) {
@@ -53,9 +53,9 @@ export default function RegisterPage() {
 
     return <>
         <StyledSection>
-            <h2>Registration:</h2>
             <StyledForm onSubmit={handleFormSubmit}>
                 <StyledDiv1>
+                    <StyledDiv3>Please Register</StyledDiv3>
                     <StyledLabel htmlFor="Username">Username:</StyledLabel>
                     <StyledInput type='text'
                                  id="username"
@@ -65,10 +65,9 @@ export default function RegisterPage() {
                     <StyledLabel htmlFor="password">Password:</StyledLabel>
                     <StyledInput type="text"
                                  id="password"
-                                 value={Password}
+                                 value={password}
                                  placeholder="Password" required
                                  onChange={event => setPassword(event.target.value)}/>
-
                     {error && <StyledMessage>{error}</StyledMessage>}
                     {messageStatus && <StyledMessage>{messageStatus}</StyledMessage>}
                 </StyledDiv1>
@@ -76,12 +75,14 @@ export default function RegisterPage() {
                     <PasswordChecklist
                         rules={["minLength", "specialChar", "number", "capital"]}
                         minLength={8}
-                        value={Password}
+                        value={password}
                         messages={{
                             minLength: "Password must have at least 8 characters",
                         }}
                     />
                 </StyledDiv2>
+                <StyledDiv4>Do you have already an account?&nbsp;
+                    <Link to={{pathname: "/"}}>Please Login</Link></StyledDiv4>
                 <StyledDiv2>
                     <StyledButton onClick={handleFormSubmit}>Register</StyledButton>
                 </StyledDiv2>
@@ -90,15 +91,44 @@ export default function RegisterPage() {
     </>;
 }
 
+
 const StyledMessage = styled.p`
   margin: 10px;
   padding: 8px;
   font-size: 0.8rem;
 `
+const StyledDiv1 = styled.div`
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+`;
 const StyledDiv2 = styled.div`
   display: flex;
   justify-content: center;
   padding: 20px;
+`;
+const StyledDiv3 = styled.div`
+  font-size: 1.25rem;
+  font-weight: 600;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+`;
+const StyledDiv4 = styled.div`
+  font-size: 1.0rem;
+  font-weight: 400;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
 `;
 const StyledSection = styled.section`
   display: flex;
@@ -112,7 +142,6 @@ const StyledSection = styled.section`
   border-radius: 1pc;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .4), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .4);
 `
-
 const StyledButton = styled.button`
   justify-content: center;
   font-size: 1.0rem;
@@ -143,14 +172,6 @@ const StyledInput = styled.input`
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .04), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .04);
 `;
 
-const StyledDiv1 = styled.div`
-  justify-content: center;
-  align-content: center;
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 10px;
-`;
 const StyledForm = styled.form`
   width: 90%
   display: flex;
