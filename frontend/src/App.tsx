@@ -52,10 +52,10 @@ export default function App() {
 
     return <>
 
-        <StyledHeader>
+        <StyledHeader1>
             <StyledH1>Sidekick Horse Administration</StyledH1>
             <StyledButton onClick={logout}>Logout</StyledButton>
-        </StyledHeader>
+        </StyledHeader1>
 
         <StyledMain>
             <Routes>
@@ -98,7 +98,16 @@ const StyledButton = styled.button`
 
 const StyledHeader = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .5), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .5);
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: var(--color-background);
+  `
+const StyledHeader1 = styled.header`
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .5), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .5);
   padding: 10px;
