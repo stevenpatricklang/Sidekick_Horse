@@ -11,6 +11,7 @@ Sidekick Horse project: https://github.com/stevenpatricklang/Sidekick_Horse
 IntelliJ Java v19 Spring Basic-Auth React Create-React-App React-Router fly.io  MongoDB Maven Git Github Github-Actions Github-Projects Github-Issues Github-Pull-Requests War-file
 
 clone - installing - start:
+
 FE:
 clone repo => cd frontend => npm i => npm start
 
