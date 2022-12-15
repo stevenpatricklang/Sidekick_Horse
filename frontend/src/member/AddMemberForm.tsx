@@ -225,7 +225,7 @@ export default function AddMemberForm() {
 
 
 const StyledSection = styled.section`
-  width: 40%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;

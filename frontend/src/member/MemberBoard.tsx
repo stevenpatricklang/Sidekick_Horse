@@ -50,6 +50,7 @@ export default function MemberCard(props: MemberCardProps) {
         })
             .then(response => {
                 props.fetchAllMembers()
+                setDoEdit(false);
                 return response.data
             })
             .catch(error => console.log(error))
@@ -91,69 +92,72 @@ export default function MemberCard(props: MemberCardProps) {
         return (
             <StyledSection>
                 <StyledForm onSubmit={updateMember}>
-                    <StyledDiv5>
-                        <StyledLabel>FirstName</StyledLabel>
-                        <StyledInput type="text" value={newFirstName}
-                                     onChange={event => setFirstName((event.target.value))}/>
+                    <StyledDiv6>
+                        <StyledDiv5>
+                            <StyledLabel>FirstName</StyledLabel>
+                            <StyledInput type="text" value={newFirstName}
+                                         onChange={event => setFirstName((event.target.value))}/>
 
-                        <StyledLabel>LastName</StyledLabel>
-                        <StyledInput type="text" value={newLastName}
-                                     onChange={event => setLastName((event.target.value))}/>
+                            <StyledLabel>LastName</StyledLabel>
+                            <StyledInput type="text" value={newLastName}
+                                         onChange={event => setLastName((event.target.value))}/>
 
-                        <StyledLabel>Street</StyledLabel>
-                        <StyledInput type="text" value={newStreet} onChange={event => setStreet((event.target.value))}/>
+                            <StyledLabel>Street</StyledLabel>
+                            <StyledInput type="text" value={newStreet} onChange={event => setStreet((event.target.value))}/>
 
-                        <StyledLabel>Zipcode</StyledLabel>
-                        <StyledInput type="text" value={newZipcode}
-                                     onChange={event => setZipcode((event.target.value))}/>
+                            <StyledLabel>Zipcode</StyledLabel>
+                            <StyledInput type="text" value={newZipcode}
+                                         onChange={event => setZipcode((event.target.value))}/>
 
-                        <StyledLabel>City</StyledLabel>
-                        <StyledInput type="text" value={newCity} onChange={event => setCity((event.target.value))}/>
+                            <StyledLabel>City</StyledLabel>
+                            <StyledInput type="text" value={newCity} onChange={event => setCity((event.target.value))}/>
 
-                        <StyledLabel>Age</StyledLabel>
-                        <StyledInput type="text" value={newAge} onChange={event => setAge((event.target.value))}/>
+                            <StyledLabel>Age</StyledLabel>
+                            <StyledInput type="text" value={newAge} onChange={event => setAge((event.target.value))}/>
 
-                        <StyledLabel>Email</StyledLabel>
-                        <StyledInput type="text" value={newEmail} onChange={event => setEmail((event.target.value))}/>
+                            <StyledLabel>Email</StyledLabel>
+                            <StyledInput type="text" value={newEmail} onChange={event => setEmail((event.target.value))}/>
 
-                        <StyledLabel>PhoneNumber</StyledLabel>
-                        <StyledInput type="text" value={newPhoneNumber}
-                                     onChange={event => setPhoneNumber((event.target.value))}/>
-                    </StyledDiv5>
-                    <StyledDiv5>
-                        <StyledLabel>Begin Membership</StyledLabel>
-                        <StyledInput type="text" value={newBeginMembership}
-                                     onChange={event => setBeginMembership((event.target.value))}/>
+                            <StyledLabel>PhoneNumber</StyledLabel>
+                            <StyledInput type="text" value={newPhoneNumber}
+                                         onChange={event => setPhoneNumber((event.target.value))}/>
+                        </StyledDiv5>
+                        <StyledDiv5>
+                            <StyledLabel>Begin Membership</StyledLabel>
+                            <StyledInput type="text" value={newBeginMembership}
+                                         onChange={event => setBeginMembership((event.target.value))}/>
 
-                        <StyledLabel>Membership Active</StyledLabel>
-                        <input type="checkbox"
-                               checked={newMembershipActive}
-                               onChange={checkHandler}/>
+                            <StyledLabel>Membership Active</StyledLabel>
+                            <input type="checkbox"
+                                   checked={newMembershipActive}
+                                   onChange={checkHandler}/>
 
-                        <StyledLabel>Riding Experience</StyledLabel>
-                        <StyledInput type="text" value={newRidingExperience}
-                                     onChange={event => setRidingExperience((event.target.value))}/>
+                            <StyledLabel>Riding Experience</StyledLabel>
+                            <StyledInput type="text" value={newRidingExperience}
+                                         onChange={event => setRidingExperience((event.target.value))}/>
 
                             <StyledButtonSmall onClick={handleBeginner}>BEGINNER</StyledButtonSmall>
                             <StyledButtonSmall onClick={handleIntermediate}>INTERMEDIATE</StyledButtonSmall>
                             <StyledButtonSmall onClick={handleAdvanced}>ADVANCED</StyledButtonSmall>
 
-                        <StyledLabel>Account Holder</StyledLabel>
-                        <StyledInput type="text" value={newAccountHolder}
-                                     onChange={event => setAccountHolder((event.target.value))}/>
+                            <StyledLabel>Account Holder</StyledLabel>
+                            <StyledInput type="text" value={newAccountHolder}
+                                         onChange={event => setAccountHolder((event.target.value))}/>
 
-                        <StyledLabel>IBAN</StyledLabel>
-                        <StyledInput type="text" value={newIBAN}
-                                     onChange={event => setIBAN((event.target.value))}/>
+                            <StyledLabel>IBAN</StyledLabel>
+                            <StyledInput type="text" value={newIBAN}
+                                         onChange={event => setIBAN((event.target.value))}/>
 
-                        <StyledLabel>Bank Name</StyledLabel>
-                        <StyledInput type="text" value={newBankName}
-                                     onChange={event => setBankName((event.target.value))}/>
-                        <StyledDiv>
-                            <StyledButton>Submit</StyledButton>
-                            <StyledButton onClick={() => setDoEdit(false)}>Cancel</StyledButton>
-                        </StyledDiv>
-                    </StyledDiv5>
+                            <StyledLabel>Bank Name</StyledLabel>
+                            <StyledInput type="text" value={newBankName}
+                                         onChange={event => setBankName((event.target.value))}/>
+                        </StyledDiv5>
+                    </StyledDiv6>
+                    <StyledDiv2>
+                        <StyledButton onClick={() => updateMember}>Submit changes</StyledButton>
+                        <StyledButton onClick={() => setDoEdit(false)}>Cancel</StyledButton>
+                    </StyledDiv2>
+
                 </StyledForm>
             </StyledSection>
         )
@@ -193,10 +197,10 @@ export default function MemberCard(props: MemberCardProps) {
 
                 <StyledBankName> Name der Bank: {props.member.bankName}</StyledBankName>
 
-                <StyledDiv>
+                <StyledDiv1>
                     <StyledButton onClick={() => setDoEdit(true)}>Update Member</StyledButton>
                     <StyledButton onClick={deleteMember}>Delete</StyledButton>
-                </StyledDiv>
+                </StyledDiv1>
 
                 {messageStatus && <StyledDeleteMessage>{messageStatus}</StyledDeleteMessage>}
             </StyledLi>
@@ -207,7 +211,7 @@ export default function MemberCard(props: MemberCardProps) {
 
 const StyledSection = styled.section`
   display: flex;
-  flex-direction: column;
+  
   justify-content: center;
   align-content: center;
   margin: 10px;
@@ -218,18 +222,24 @@ const StyledSection = styled.section`
 `
 
 const StyledForm = styled.form`
+
+flex-direction: column;
   display: flex;
-justify-content: center;
-  flex-wrap: wrap;
   margin: 10px;
   padding: 5px;
 `
-
+const StyledDiv6 = styled.div`
+display: flex;
+  flex-direction: row
+  margin: 10px;
+  padding: 5px;
+`
 const StyledDiv5 = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 10px;
-  padding: 5px;
+  align-self: center;
+  align-items: center;
+  margin: 20px;
 `
 
 const StyledLabel = styled.label`
@@ -249,10 +259,10 @@ const StyledHr = styled.hr`
 `
 
 const StyledButtonSmall = styled.button`
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   margin: 3px;
   padding: 5px;
-  width: 140px;
+  width: 100px;
   transition-duration: 0.4s;
   background-color: var(--color-button-background);
   color: var(--color-text);
@@ -290,8 +300,15 @@ const StyledLi = styled.li`
   background-color: rgba(255, 255, 255, 0.9);
 `
 
-const StyledDiv = styled.div`
+const StyledDiv1 = styled.div`
   display: flex;
+  justify-content: center;
+  padding: 10px;
+`
+
+const StyledDiv2 = styled.div`
+display: flex;
+align-items: center;
   justify-content: center;
   padding: 10px;
 `
@@ -344,9 +361,11 @@ const StyledBankName = styled.p`
   font-size: 0.95rem;
 `
 const StyledButton = styled.button`
-  margin: 3px;
-  padding: 5px;
-  width: 75px;
+    font-size: 0.95rem;
+  margin: 5px;
+  padding: 10px;
+  min-width: 120px;
+
   transition-duration: 0.4s;
   background-color: var(--color-button-background);
   color: var(--color-text);

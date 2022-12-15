@@ -23,7 +23,7 @@ const StyledDiv1 = styled.div`
 `
 
 const StyledImage = styled.img`
-  width: 70vw;
+  width: 65vw;
 `
 const StyledDiv = styled.div`
   margin-bottom: 30px;
@@ -37,10 +37,10 @@ const StyledNav = styled.nav`
   align-content: center;
 `
 const StyledButton = styled(NavLink)`
-  font-size: 1.0rem;
-  margin: 3px;
-  padding: 10px;
-  width: 160px;
+  font-size: 1.1rem;
+  margin: 10px;
+  padding: 15px;
+  width: 175px;
   transition-duration: 0.4s;
   background-color: var(--color-button-background);
   color: var(--color-text);

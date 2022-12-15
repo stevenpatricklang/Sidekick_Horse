@@ -52,7 +52,7 @@ public class AppUserController {
     @PostMapping("/member")
     @ResponseStatus(code = HttpStatus.CREATED)
     public AppUser registerMember(@Valid @RequestBody AppUser newAppUser) {
-        AppUser appUser = newAppUser.withRole(AppUserRole.MEMBER);
+        AppUser appUser = newAppUser.withRole(AppUserRole.ADMIN);
         return saveAppUser(appUser);
 
     }
