@@ -91,7 +91,7 @@ export default function MemberCard(props: MemberCardProps) {
         return (
             <StyledSection>
                 <StyledForm onSubmit={updateMember}>
-                    <StyledDiv88>
+                    <StyledDiv5>
                         <StyledLabel>FirstName</StyledLabel>
                         <StyledInput type="text" value={newFirstName}
                                      onChange={event => setFirstName((event.target.value))}/>
@@ -119,8 +119,8 @@ export default function MemberCard(props: MemberCardProps) {
                         <StyledLabel>PhoneNumber</StyledLabel>
                         <StyledInput type="text" value={newPhoneNumber}
                                      onChange={event => setPhoneNumber((event.target.value))}/>
-                    </StyledDiv88>
-                    <StyledDiv88>
+                    </StyledDiv5>
+                    <StyledDiv5>
                         <StyledLabel>Begin Membership</StyledLabel>
                         <StyledInput type="text" value={newBeginMembership}
                                      onChange={event => setBeginMembership((event.target.value))}/>
@@ -153,7 +153,7 @@ export default function MemberCard(props: MemberCardProps) {
                             <StyledButton>Submit</StyledButton>
                             <StyledButton onClick={() => setDoEdit(false)}>Cancel</StyledButton>
                         </StyledDiv>
-                    </StyledDiv88>
+                    </StyledDiv5>
                 </StyledForm>
             </StyledSection>
         )
@@ -179,6 +179,11 @@ export default function MemberCard(props: MemberCardProps) {
                 <StyledBeginMembership>Beginn der Mitgliedschaft: {props.member.beginMembership}</StyledBeginMembership>
 
                 <StyledRidingExperience> Reiterfahrung: {props.member.ridingExperience}</StyledRidingExperience>
+
+                <StyledMembershipActive> Die Mitgliedschaft ist: <StyledInput type='checkbox'
+                                                                              id="membershipActive"
+                                                                              checked={props.member.membershipActive}/>
+                </StyledMembershipActive>
 
                 <StyledHr/>
 
@@ -220,7 +225,7 @@ justify-content: center;
   padding: 5px;
 `
 
-const StyledDiv88 = styled.form`
+const StyledDiv5 = styled.form`
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -302,49 +307,42 @@ const StyledStreet = styled.p`
   font-size: 0.95rem;
   margin-bottom: 2px;
 `
-
 const StyledCity = styled.p`
   font-size: 0.95rem;
 `
-
 const StyledAge = styled.p`
   font-size: 0.95rem;
   margin-bottom: 2px;
 `
-
 const StyledPhoneNumber = styled.p`
   font-size: 0.95rem;
 `
-
 const StyledMail = styled.p`
   font-size: 0.95rem;
   margin-bottom: 2px;
 `
-
 const StyledBeginMembership = styled.p`
   font-size: 0.95rem;
   margin-bottom: 2px;
 `
-
 const StyledRidingExperience = styled.p`
   font-size: 0.95rem;
   margin-bottom: 2px;
 `
-
+const StyledMembershipActive = styled.p`
+    font-size: 0.95rem;
+`
 const StyledAccountHolder = styled.p`
   font-size: 0.95rem;
   margin-bottom: 2px;
 `
-
 const StyledIBAN = styled.p`
   font-size: 0.95rem;
   margin-bottom: 2px;
 `
-
 const StyledBankName = styled.p`
   font-size: 0.95rem;
 `
-
 const StyledButton = styled.button`
   margin: 3px;
   padding: 5px;

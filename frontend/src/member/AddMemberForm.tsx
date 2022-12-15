@@ -106,7 +106,7 @@ export default function AddMemberForm() {
     return <>
         <StyledSection>
             <StyledForm onSubmit={handleFormSubmit}>
-                <StyledDiv88>
+                <StyledDiv5>
                     <StyledLabel htmlFor="firstName">First name:</StyledLabel>
                     <StyledInput type='text'
                                  id="firstName"
@@ -163,8 +163,8 @@ export default function AddMemberForm() {
                                  onChange={(e) => setPhoneNumber(e.target.value)}
                                  placeholder="0176 12345678" required/>
 
-                </StyledDiv88>
-                <StyledDiv88>
+                </StyledDiv5>
+                <StyledDiv5>
                     <StyledLabel htmlFor={"beginMembership"}>Begin membership:</StyledLabel>
                     <StyledInput type='date'
                                  id="beginMembership"
@@ -209,7 +209,7 @@ export default function AddMemberForm() {
                                  value={bankName}
                                  onChange={(e) => setBankName(e.target.value)}
                                  placeholder="Sparkasse" required/>
-                </StyledDiv88>
+                </StyledDiv5>
             </StyledForm>
             {error && <StyledMessage>{error}</StyledMessage>}
             {messageStatus && <StyledMessage>{messageStatus}</StyledMessage>}
@@ -225,7 +225,7 @@ export default function AddMemberForm() {
 
 
 const StyledSection = styled.section`
-  width: 100%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -264,10 +264,10 @@ const StyledButton = styled.button`
 `;
 
 const StyledButtonSmall = styled.button`
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   margin: 3px;
-  padding: 5px;
-  width: 140px;
+  padding: 3px;
+  width: 100px;
   transition-duration: 0.4s;
   background-color: var(--color-button-background);
   color: var(--color-text);
@@ -314,9 +314,10 @@ const StyledForm = styled.form`
   align-items: center;
 `
 
-const StyledDiv88 = styled.form`
+const StyledDiv5 = styled.form`
   display: flex;
   flex-direction: column;
   align-self: center;
   align-items: center;
+  margin: 20px;
 `

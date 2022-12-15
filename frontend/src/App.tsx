@@ -28,6 +28,10 @@ export default function App() {
         navigate("/")
     }
 
+    const setGoToHome = () => {
+        navigate("/")
+    }
+
     if (username === undefined) {
         return <>Loading...</>
     }
@@ -53,6 +57,7 @@ export default function App() {
     return <>
 
         <StyledHeader1>
+            <StyledButton onClick={setGoToHome}>Home</StyledButton>
             <StyledH1>Sidekick Horse Administration</StyledH1>
             <StyledButton onClick={logout}>Logout</StyledButton>
         </StyledHeader1>
@@ -77,7 +82,7 @@ const StyledH1 = styled.h1`
 `
 const StyledButton = styled.button`
   font-size: 1.0rem;
-  margin: 25px;
+  margin: 5px;
   padding: 10px;
   width: 160px;
   transition-duration: 0.4s;
