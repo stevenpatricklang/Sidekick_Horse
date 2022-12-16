@@ -6,8 +6,9 @@ import styled from "styled-components";
 export default function About() {
     return <>
         <StyledDiv1>
+
             <StyledDiv>
-                <StyledImage src={process.env.PUBLIC_URL + '/horse1.png'} alt="Logo von Pferden bw"/></StyledDiv>
+                <StyledImage src={process.env.PUBLIC_URL + '/pic2.jpg'} alt="Logo von Pferden bw"/></StyledDiv>
             <br></br>
             <StyledNav>
                 <StyledButton to="/members/add">Add Member</StyledButton>
@@ -23,7 +24,8 @@ const StyledDiv1 = styled.div`
 `
 
 const StyledImage = styled.img`
-  width: 65vw;
+  width: 55vw;
+  border-radius: 45px;
 `
 const StyledDiv = styled.div`
   margin-bottom: 30px;

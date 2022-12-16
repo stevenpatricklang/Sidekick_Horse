@@ -117,16 +117,16 @@ const StyledHeader1 = styled.header`
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .5), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .5);
   padding: 10px;
   margin-bottom: 20px;
-  background-color: var(--color-background);
+  background-color: rgb(235, 235, 235);
   `
 const StyledMain = styled.main`
   display: flex;
-flex-direction: column;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 50px;
   min-height: 200px;
-  background-color: var(--color-background);`
+  background-color: rgb(227, 227, 227);`
 
 
 const StyledFooter = styled.footer`
