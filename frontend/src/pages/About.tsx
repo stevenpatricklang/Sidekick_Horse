@@ -24,11 +24,11 @@ const StyledDiv1 = styled.div`
 `
 
 const StyledImage = styled.img`
-  width: 55vw;
+  width: 50vw;
   border-radius: 45px;
 `
 const StyledDiv = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-content: center;

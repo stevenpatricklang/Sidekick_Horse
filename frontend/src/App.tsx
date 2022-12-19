@@ -115,7 +115,7 @@ const StyledHeader1 = styled.header`
   justify-content: space-around;
   align-items: center;
   box-shadow: 0 .0625rem .5rem 0 rgba(0, 0, 0, .5), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .5);
-  padding: 10px;
+  padding: 5px;
   margin-bottom: 20px;
   background-color: rgb(235, 235, 235);
   `

@@ -29,7 +29,7 @@ export default function LoginPage(props: Props) {
             })
             .then((status) => {
                 if (status === 200) {
-                    setMessageStatus(username + ' is logged in');
+                    setMessageStatus('The User' + username + ' is logged in');
                     (setTimeout(() => {
                         props.fetchUsername();
                         setMessageStatus("")
