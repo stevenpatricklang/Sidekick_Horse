@@ -2,7 +2,7 @@ Sidekick Horse
 
 Sidekick Horse is an Administration app to care for an horseclub with an fully java backend and react frontend.
 
-You can add, edit and delete members. To enter the admin area you can login and registrate.
+You can add, edit and delete members. To enter the admin area you can login and registrate. Use "admin" for the username, and "Admin1234!" for the password.
 
 Sidekick Horse: https://sidekick-horses.fly.dev/
 
